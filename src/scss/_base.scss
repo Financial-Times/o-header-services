@@ -1,4 +1,4 @@
-@mixin oHeaderServicesContainer($class: 'o-header-services', $bleed: false) {
+@mixin oHeaderServicesContainer($bleed: false) {
 	@include oGridContainer($bleed: $bleed);
 
 	@if $bleed {
