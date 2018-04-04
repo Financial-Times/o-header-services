@@ -1,19 +1,19 @@
-@if $o-header-services-is-silent == false {
+@mixin oHeaderServicesB2B($class: 'o-header-services') {
 	@include oBrandConfigureFor('o-header-services', 'b2b') {
-		.o-header-services--b2b {
-			.o-header-services__product-name {
+		.#{class}--b2b {
+			.#{class}__product-name {
 				color: oBrandGet('product-title');
 			}
 
-			.o-header-services__hamburger {
+			.#{class}__hamburger {
 				background-color: oBrandGet('nav-background');
 			}
 
-			.o-header-services__primary-nav {
+			.#{class}__primary-nav {
 				background-color: oBrandGet('nav-background');
 			}
 
-			.o-header-services__nav-link {
+			.#{class}__nav-link {
 				color: oBrandGet('nav-text');
 
 				&:hover,
