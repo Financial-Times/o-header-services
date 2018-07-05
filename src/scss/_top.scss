@@ -1,4 +1,4 @@
-@mixin oHeaderServicesTop($class: 'o-header-services') {
+@mixin oHeaderServicesTop($class: 'o-header-services', $logo: $o-header-services-default-logo) {
 	.#{$class}__top {
 		@include oTypographySans($scale: 0);
 		color: _oHeaderServicesGet('top-text');
@@ -13,7 +13,7 @@
 		margin: 8px 8px 8px 0;
 		float: left;
 		display: inline-block;
-		background: url("https://www.ft.com/__origami/service/image/v2/images/raw/ftlogo-v1:#{_oHeaderServicesGet('logo')}?source=o-header-services&format=svg&width=55") no-repeat;
+		background-image: url($logo);
 		background-repeat: no-repeat;
 		background-size: contain;
 		background-position: 0;
