@@ -1,8 +1,0 @@
-{
-  "name": "o-header-services",
-  "description": "Header for internal FT products",
-  "scripts": {
-    "heroku-postbuild": "npx origami-build-tools install",
-    "start": "npx origami-build-tools demo --run-server"
-  }
-}

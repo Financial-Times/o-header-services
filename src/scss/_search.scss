@@ -1,24 +1,38 @@
 @mixin oHeaderServicesSearch {
 	.o-header-services__primary-nav--search {
 		@include oFormsBaseFeatures();
-		@include oFormsInlineFeature();
-		
-		.o-header-services__container {
-			display: flex;
+		@include oFormsSuffixFeature();
+		border-bottom: 1px solid _oHeaderServicesGet('nav-border');
+
+		.o-header-services__nav-list {
+			float: left;
 		}
 
-		.o-forms--inline  {
+		.o-forms  {
 			margin: 0 0 0 auto;
+			float: right;
+
+			@include oGridRespondTo($until: M)  {
+				margin: 0 auto;
+			}
 		}
 
-		.o-forms__inline-item {
-			text-align: right;
+		.o-forms__affix-wrapper {
+			margin: 0;
 		}
 
 		.o-forms__text {
-			border-top: 0;
 			border-bottom: 0;
-			min-width: 100vmin;
+		}
+
+		.o-forms__suffix {
+			padding: 0;
+		}
+
+		.o-header-services__search-button {
+			@include oTypographySansBold(0);
+			@include oButtonsTheme(primary);
+			@include oButtonsSize(big);
 		}
 	}
 }
