@@ -1,5 +1,7 @@
 @mixin oHeaderServicesPrimaryNav($class: 'o-header-services') {
 	.#{$class}__primary-nav {
+		@include oTypographySans($scale: 0);
+
 		background-color: _oHeaderServicesGet('nav-background');
 		border-bottom: 1px solid _oHeaderServicesGet('nav-border');
 		zoom: 1;
@@ -25,7 +27,7 @@
 	}
 
 	.#{$class}__nav-link {
-		@include oTypographySansBold($scale: 0);
+		@include oTypographyBold('sans');
 		color: _oHeaderServicesGet('nav-text');
 
 		text-transform: uppercase;

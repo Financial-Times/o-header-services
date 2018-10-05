@@ -1,0 +1,8 @@
+{
+  "name": "o-header-services",
+  "scripts": {},
+  "env": {},
+  "formation": {},
+  "addons": [],
+  "buildpacks": ["heroku/nodejs"]
+}

@@ -1,0 +1,24 @@
+@mixin oHeaderServicesSearch {
+	.o-header-services__primary-nav--search {
+		@include oFormsBaseFeatures();
+		@include oFormsInlineFeature();
+		
+		.o-header-services__container {
+			display: flex;
+		}
+
+		.o-forms--inline  {
+			margin: 0 0 0 auto;
+		}
+
+		.o-forms__inline-item {
+			text-align: right;
+		}
+
+		.o-forms__text {
+			border-top: 0;
+			border-bottom: 0;
+			min-width: 100vmin;
+		}
+	}
+}

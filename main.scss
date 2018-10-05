@@ -1,8 +1,9 @@
+@import 'o-brand/main';
+@import 'o-forms/main';
+@import 'o-grid/main';
 @import 'o-header/main';
 @import 'o-icons/main';
 @import 'o-typography/main';
-@import 'o-grid/main';
-@import 'o-brand/main';
 
 @import 'src/scss/brand';
 @import 'src/scss/base';
@@ -13,6 +14,7 @@
 @import 'src/scss/theme';
 @import 'src/scss/primary_nav';
 @import 'src/scss/secondary_nav';
+@import 'src/scss/search';
 
 @if $o-header-services-is-silent == false {
 	@include oHeaderServices();

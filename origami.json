@@ -59,6 +59,15 @@
 			"description": "This component is themable. The current available themes are B2B and B2C. If you're creating a product that isn't within B2B or B2C please contact Origami."
 		},
 		{
+			"name": "primary-with-search",
+			"title": "Primary nav with search form",
+			"template": "demos/src/navigation-with-search.mustache",
+			"brands": [
+				"internal"
+			],
+			"description": "A form field to perform searches"
+		},
+		{
 			"title": "Pa11y",
 			"name": "pa11y",
 			"template": "demos/src/pa11y.mustache",
