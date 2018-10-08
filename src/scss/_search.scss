@@ -2,7 +2,6 @@
 	.o-header-services__primary-nav--search {
 		@include oFormsBaseFeatures();
 		@include oFormsSuffixFeature();
-		border-bottom: 1px solid _oHeaderServicesGet('nav-border');
 
 		.o-header-services__nav-list {
 			float: left;
@@ -22,7 +21,7 @@
 		}
 
 		.o-forms__text {
-			border-bottom: 0;
+			border-top: 0;
 		}
 
 		.o-forms__suffix {
