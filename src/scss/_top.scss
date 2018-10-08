@@ -1,5 +1,5 @@
-@mixin oHeaderServicesTop($class: 'o-header-services', $logo: $o-header-services-default-logo) {
-	.#{$class}__top {
+@mixin oHeaderServicesTop($logo: $o-header-services-default-logo) {
+	.o-header-services__top {
 		@include oTypographySans($scale: 0);
 		color: _oHeaderServicesGet('top-text');
 		background-color: _oHeaderServicesGet('top-background');
@@ -7,7 +7,7 @@
 		display: block;
 	}
 
-	.#{$class}__ftlogo {
+	.o-header-services__ftlogo {
 		width: 40px;
 		height: 40px;
 		margin: 8px 8px 8px 0;
@@ -25,7 +25,7 @@
 	}
 
 
-	.#{$class}__hamburger {
+	.o-header-services__hamburger {
 		height: $_o-header-services-top-bar-y-small;
 		width: $_o-header-services-top-bar-y-small;
 		float: left;
@@ -36,7 +36,7 @@
 		}
 	}
 
-	.#{$class}__hamburger-icon {
+	.o-header-services__hamburger-icon {
 		@include oIconsGetIcon('hamburger', white, 40, $apply-base-styles: false, $apply-width-height: false, $iconset-version: 1);
 		display: block;
 		background-size: 40px 40px;
@@ -46,7 +46,7 @@
 		width: $_o-header-services-top-bar-y-small;
 	}
 
-	.#{$class}__title {
+	.o-header-services__title {
 		padding: $_o-header-services-padding-y $_o-header-services-padding-x;
 		display: inline-block;
 		float: left;
@@ -56,7 +56,7 @@
 		}
 	}
 
-	.#{$class}__product-name {
+	.o-header-services__product-name {
 		@include oTypographySansBold($scale: 4);
 		text-overflow: ellipsis;
 		color: _oHeaderServicesGet('product-title');
@@ -93,7 +93,7 @@
 		}
 	}
 
-	.#{$class}__related-content {
+	.o-header-services__related-content {
 		float: right;
 		padding: 16px $_o-header-services-padding-x;
 		-webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
