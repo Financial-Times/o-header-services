@@ -1,23 +1,10 @@
-	//
-	// @if _oHeaderServicesSupports('b2b') {
-	// 	.o-header-services--b2b {
-	// 		@include oHeaderServicesTheme($theme: 'b2b');
-	// 	}
-	// }
-	//
-	// @if _oHeaderServicesSupports('b2c') {
-	// 	.o-header-services--b2c {
-	// 		@include oHeaderServicesTheme($theme: 'b2c');
-	// 	}
-	// }
-	//
 @mixin oHeaderServicesTheme($theme) {
 	@if type-of($theme) != 'string' {
 		@error 'oHeaderServicesTheme `$theme` must be a string but "#{$theme}" is of type "#{type-of($theme)}".';
 	}
-	//
-	// @if _oHeaderServicesSupports($theme) {
-	// 	.o-header-services--#{$theme} {
+
+	@if _oHeaderServicesSupports($theme) {
+		.o-header-services--#{$theme} {
 			.o-header-services__product-name {
 				color: _oHeaderServicesGet('nav-text', $from: $theme);
 			}
@@ -40,6 +27,6 @@
 					background-color: _oHeaderServicesGet('nav-hover-background', $from: $theme);
 				}
 			}
-	// 	}
-	// }
+		}
+	}
 }
