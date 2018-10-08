@@ -1,21 +1,21 @@
-@mixin oHeaderServicesTheme($theme, $class: 'o-header-services') {
+@mixin oHeaderServicesTheme($theme) {
 	@if type-of($theme) != 'string' {
 		@error 'oHeaderServicesTheme `$theme` must be a string but "#{$theme}" is of type "#{type-of($theme)}".';
 	}
 
-	.#{$class}__product-name {
+	.o-header-services__product-name {
 		color: _oHeaderServicesGet('product-title', $from: $theme);
 	}
 
-	.#{$class}__hamburger {
+	.o-header-services__hamburger {
 		background-color: _oHeaderServicesGet('nav-background', $from: $theme);
 	}
 
-	.#{$class}__primary-nav {
+	.o-header-services__primary-nav {
 		background-color: _oHeaderServicesGet('nav-background', $from: $theme);
 	}
 
-	.#{$class}__nav-link {
+	.o-header-services__nav-link {
 		color: _oHeaderServicesGet('nav-text', $from: $theme);
 
 		&:hover,
