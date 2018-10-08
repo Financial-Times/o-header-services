@@ -32,21 +32,21 @@
 	},
 	"demos": [
 		{
-			"name": "very-simple",
+			"name": "site-title",
 			"title": "Site title only",
-			"template": "demos/src/very-simple.mustache",
+			"template": "demos/src/site-title.mustache",
 			"description": "If your site has no navigation you can use this top bar only."
 		},
 		{
-			"name": "one-level-of-navigation",
+			"name": "primary-navigation",
 			"title": "Header with navigation add-on",
-			"template": "demos/src/one-navigation.mustache",
+			"template": "demos/src/primary-navigation.mustache",
 			"description": "For sites with a few pages, there is a navigation style available. These nav items collapse into a drawer at narrow screen widths."
 		},
 		{
-			"name": "two-levels-of-navigation",
+			"name": "sub-navigation",
 			"title": "Header with a primary and secondary navigation",
-			"template": "demos/src/two-navigation.mustache",
+			"template": "demos/src/sub-navigation.mustache",
 			"description": "For sites with more than a few sections, a secondary navigation is also available"
 		},
 		{
