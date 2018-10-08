@@ -71,5 +71,5 @@ $brand: oBrandGetCurrentBrand();
 	@include oBrandDefine('o-header-services', 'whitelabel', (
 		'variables': (),
 		'supports-variants': ()
-	}
+	));
 }
