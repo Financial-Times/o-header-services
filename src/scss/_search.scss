@@ -1,19 +1,20 @@
 @mixin oHeaderServicesSearch {
-	.o-header-services__primary-nav--search {
+	.o-header-services__search {
+		@include oHeaderSearch();
 		@include oFormsBaseFeatures();
 		@include oFormsSuffixFeature();
-
-		.o-header-services__nav-list {
-			float: left;
-		}
+		background-color: _oHeaderServicesGet('nav-background');
+		border-bottom: 1px solid _oHeaderServicesGet('nav-border');
+		padding: 0;
 
 		.o-forms  {
-			margin: 0 0 0 auto;
-			float: right;
+			margin: 0 auto;
+			max-width: 80%;
+		}
 
-			@include oGridRespondTo($until: M)  {
-				margin: 0 auto;
-			}
+		.o-header__search {
+			padding: 0;
+			background-color: inherit;
 		}
 
 		.o-forms__affix-wrapper {
@@ -21,17 +22,25 @@
 		}
 
 		.o-forms__text {
-			border-top: 0;
-		}
-
-		.o-forms__suffix {
-			padding: 0;
+			border: 0;
+			border-left: 1px solid _oHeaderServicesGet('nav-border');
 		}
 
 		.o-header-services__search-button {
 			@include oTypographySansBold(0);
 			@include oButtonsTheme(primary);
 			@include oButtonsSize(big);
+		}
+
+		.o-header__search-close {
+			@include oIconsGetIcon('cross', black, $_o-header-icon-size-large, $iconset-version: 1);
+			border: 0;
+			margin-left: $_o-header-padding-x;
+			vertical-align: top;
+
+			@include oGridRespondTo($until: 'M') {
+				display: none;
+			}
 		}
 	}
 }
