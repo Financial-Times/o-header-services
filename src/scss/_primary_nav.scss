@@ -1,5 +1,5 @@
-@mixin oHeaderServicesPrimaryNav($class: 'o-header-services') {
-	.#{$class}__primary-nav {
+@mixin oHeaderServicesPrimaryNav() {
+	.o-header-services__primary-nav {
 		background-color: _oHeaderServicesGet('nav-background');
 		border-bottom: 1px solid _oHeaderServicesGet('nav-border');
 		zoom: 1;
@@ -10,12 +10,12 @@
 		}
 	}
 
-	.#{$class}__nav-list {
+	.o-header-services__nav-list {
 		margin: 0 (0 - ($_o-header-services-padding-x * 2));
 		padding: 0;
 	}
 
-	.#{$class}__nav-item {
+	.o-header-services__nav-item {
 		display: inline-block;
 		zoom: 1;
 
@@ -24,7 +24,7 @@
 		}
 	}
 
-	.#{$class}__nav-link {
+	.o-header-services__nav-link {
 		@include oTypographySansBold($scale: 0);
 		color: _oHeaderServicesGet('nav-text');
 
