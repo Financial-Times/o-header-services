@@ -21,6 +21,8 @@
 	@include oHeaderServicesDrawer;
 	@include oHeaderServicesPrimaryNav;
 	@include oHeaderServicesSubNav;
+	@include oHeaderServicesTheme($theme: 'b2b');
+	@include oHeaderServicesTheme($theme: 'b2c');
 
 	.o-header-services {
 		background-color: _oHeaderServicesGet('top-background');
@@ -32,17 +34,5 @@
 
 	.o-header-services__bleed-container {
 		@include oHeaderServicesContainer($bleed: true);
-	}
-
-	@if _oHeaderServicesSupports('b2b') {
-		.o-header-services--b2b {
-			@include oHeaderServicesTheme($theme: 'b2b');
-		}
-	}
-
-	@if _oHeaderServicesSupports('b2c') {
-		.o-header-services--b2c {
-			@include oHeaderServicesTheme($theme: 'b2c');
-		}
 	}
 }
