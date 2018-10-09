@@ -3,26 +3,30 @@
 		@error 'oHeaderServicesTheme `$theme` must be a string but "#{$theme}" is of type "#{type-of($theme)}".';
 	}
 
-	.o-header-services__product-name {
-		color: _oHeaderServicesGet('product-title', $from: $theme);
-	}
+	@if _oHeaderServicesSupports($theme) {
+		.o-header-services--#{$theme} {
+			.o-header-services__product-name {
+				color: _oHeaderServicesGet('nav-text', $from: $theme);
+			}
 
-	.o-header-services__hamburger {
-		background-color: _oHeaderServicesGet('nav-background', $from: $theme);
-	}
+			.o-header-services__hamburger {
+				background-color: _oHeaderServicesGet('nav-background', $from: $theme);
+			}
 
-	.o-header-services__primary-nav {
-		background-color: _oHeaderServicesGet('nav-background', $from: $theme);
-	}
+			.o-header-services__primary-nav {
+				background-color: _oHeaderServicesGet('nav-background', $from: $theme);
+			}
 
-	.o-header-services__nav-link {
-		color: _oHeaderServicesGet('nav-text', $from: $theme);
+			.o-header-services__nav-link {
+				color: _oHeaderServicesGet('nav-text', $from: $theme);
 
-		&:hover,
-		&--selected,
-		&[aria-selected=true] {
-			color: _oHeaderServicesGet('nav-hover-text', $from: $theme);
-			background-color: _oHeaderServicesGet('nav-hover-background', $from: $theme);
+				&:hover,
+				&--selected,
+				&[aria-selected=true] {
+					color: _oHeaderServicesGet('nav-text', $from: $theme);
+					background-color: _oHeaderServicesGet('nav-hover-background', $from: $theme);
+				}
+			}
 		}
 	}
 }

@@ -39,7 +39,7 @@
 		&:hover,
 		&--selected,
 		&[aria-selected=true] {
-			color: _oHeaderServicesGet('nav-hover-text');
+			color: inherit;
 			background-color: _oHeaderServicesGet('nav-hover-background');
 		}
 	}
