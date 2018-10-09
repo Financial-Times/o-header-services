@@ -24,7 +24,8 @@
 	"demosDefaults": {
 		"dependencies": [
 			"o-fonts@^3.0.0",
-			"o-normalise@^1.0.0"
+			"o-normalise@^1.0.0",
+			"o-viewport"
 		],
 		"sass": "demos/src/main.scss",
 		"js": "demos/src/main.js",
