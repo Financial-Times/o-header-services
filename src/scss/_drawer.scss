@@ -1,7 +1,0 @@
-@mixin oHeaderServicesDrawer() {
-	@include oHeaderDrawer();
-
-	.o-header__visually-hidden {
-		@include oHeaderVisuallyHidden;
-	}
-}

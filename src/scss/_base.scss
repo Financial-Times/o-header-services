@@ -18,7 +18,6 @@
 
 @mixin oHeaderServices($logo: $o-header-services-default-logo) {
 	@include oHeaderServicesTop($logo);
-	@include oHeaderServicesDrawer;
 	@include oHeaderServicesPrimaryNav;
 	@include oHeaderServicesSubNav;
 	@include oHeaderServicesTheme($theme: 'b2b');
