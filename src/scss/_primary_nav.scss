@@ -1,72 +1,80 @@
 @mixin oHeaderServicesPrimaryNav() {
 	.o-header-services__primary-nav {
 		background-color: _oHeaderServicesGet('nav-background');
-		border-bottom: 1px solid _oHeaderServicesGet('nav-border');
-	}
-
-	.o-header-services__container {
-		&[data-o-header-services-nav] {
-			overflow: hidden;
-			height: 40px;
-		}
-
-		[data-o-header-services-nav-list] {
-			overflow: auto;
-		}
-	}
-
-	.o-header-services__nav-list {
-		display: flex;
-		list-style: none;
-		margin: 0 (0 - ($_o-header-services-padding-x * 2));
-		padding: 0;
-		white-space: nowrap;
-	}
-
-
-	.o-header-services__nav-link {
-		@include oTypographyBold('sans');
-		color: _oHeaderServicesGet('nav-text');
-
-		text-transform: uppercase;
-		text-decoration: none;
-		display: block;
-		-webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
-		margin: 0;
-		padding: $_o-header-services-padding-y $_o-header-services-padding-x*2;
-
-		&:hover,
-		&--selected,
-		&[aria-selected=true] {
-			color: inherit;
-			background-color: _oHeaderServicesGet('nav-hover-background');
-		}
-	}
-
-	.o-header-services__scroll-button {
-		$custom-theme: (background: black, accent: 'black-20', colorizer: 'primary');
-		@include oButtonsTheme($theme: $custom-theme);
+		border: 1px solid _oHeaderServicesGet('nav-border');
+		min-width: 240px;
+		max-width: max-content;
 		position: absolute;
-		top: 0;
-		height: 100%;
-		transition: .25s opacity .5s;
-		display: inline-block;
+		z-index: 1;
 
-		&--left {
-			@include oButtonsIconButton('arrow-left', $is-icon-only: true, $theme: $custom-theme);
-			min-width: 25px;
-			left: 0;
+		.o-header-services__nav-list {
+			display: flex;
+			flex-direction: column;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			white-space: nowrap;
 		}
 
-		&--right {
-			@include oButtonsIconButton('arrow-right', $is-icon-only: true, $theme: $custom-theme);
-			min-width: 25px;
-			right: 0;
+		@include oGridRespondTo($from: M) {
+			max-width: 100%;
+			position: relative;
+			border-width: 0 0 1px 0;
+
+			.o-header-services__nav-list {
+				flex-direction: row;
+				margin: 0 (0 - ($_o-header-services-padding-x * 2));
+			}
+
+			.o-header-services__nav-container {
+				@include oHeaderServicesContainer;
+			}
+		};
+
+		.o-header-services__nav-link {
+			@include oTypographyBold('sans');
+			color: _oHeaderServicesGet('nav-text');
+
+			text-transform: uppercase;
+			text-decoration: none;
+			display: block;
+			-webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+			margin: 0;
+			padding: $_o-header-services-padding-y $_o-header-services-padding-x*2;
+
+			&:hover,
+			&--selected,
+			&[aria-selected=true] {
+				color: inherit;
+				background-color: _oHeaderServicesGet('nav-hover-background');
+			}
 		}
 
-		&[disabled] {
-			opacity: 0;
-			pointer-events: none;
+		.o-header-services__scroll-button {
+			$custom-theme: (background: black, accent: 'black-20', colorizer: 'primary');
+			@include oButtonsTheme($theme: $custom-theme);
+			position: absolute;
+			top: 0;
+			height: 100%;
+			transition: .25s opacity .5s;
+			display: inline-block;
+
+			&--left {
+				@include oButtonsIconButton('arrow-left', $is-icon-only: true, $theme: $custom-theme);
+				min-width: 25px;
+				left: 0;
+			}
+
+			&--right {
+				@include oButtonsIconButton('arrow-right', $is-icon-only: true, $theme: $custom-theme);
+				min-width: 25px;
+				right: 0;
+			}
+
+			&[disabled] {
+				opacity: 0;
+				pointer-events: none;
+			}
 		}
 	}
 };
