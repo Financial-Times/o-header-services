@@ -16,6 +16,8 @@
 
 	.o-header-services {
 		background-color: _oHeaderServicesGet('top-background');
+		@include oTypographySans($scale: 0);
+
 	}
 
 	.o-header-services__container {

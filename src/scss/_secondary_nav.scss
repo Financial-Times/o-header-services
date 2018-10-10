@@ -1,18 +1,87 @@
 @mixin oHeaderServicesSubNav() {
-	@include oHeaderSubnav();
-	//this is actually an override for _master_ brand from o-header..
-	.o-header-services {
-		.o-header__subnav-list--breadcrumb {
-			.o-header__subnav-link {
-				color: _oHeaderServicesGet('subnav-text');
+	.o-header-services__subnav {
+		background-color: _oHeaderServicesGet('subnav-background');
+		border-bottom: 1px solid _oHeaderServicesGet('nav-border');
+	}
+
+	.o-header-services__subnav-content {
+		display: flex;
+		white-space: nowrap;
+	}
+
+	.o-header-services__subnav-item {
+		position: relative;
+	}
+
+	.o-header-services__subnav-link {
+		display: inline-block;
+		position: relative;
+		color: _oHeaderServicesGet('subnav-text');
+		text-decoration: none;
+		padding: 8px 0;
+
+		&:hover:after,
+		&[aria-selected=true]:after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 4px;
+			background-color: _oHeaderServicesGet('subnav-text');
+		}
+	}
+
+	.o-header-services__subnav-list {
+		display: flex;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.o-header-services__subnav-list--breadcrumb {
+		.o-header-services__subnav-item {
+			padding-left: 6px;
+
+			&:first-child {
+				padding-left: 0;
+
+				&:before {
+					content: none;
+				}
 			}
-			.o-header__subnav-item:before {
-				@include oIconsGetIcon('arrow-right', _oHeaderServicesGet('subnav-text'), 15, $apply-base-styles: false, $apply-width-height: false, $iconset-version: 1);
+
+			&:before {
+				@include oIconsGetIcon('arrow-right', _oHeaderServicesGet('subnav-text'), 15px);
+				content: '';
+				position: relative;
+				top: 0.125em;
 			}
 		}
-		.o-header__subnav-link--highlight:after,
-		.o-header__subnav-link[aria-selected="true"]:after {
-			background-color: _oHeaderServicesGet('subnav-text');
+
+		.o-header-services__subnav-link {
+			@include oTypographyBold('sans');
+			text-transform: uppercase;
+		}
+	}
+
+	.o-header-services__subnav-list--children {
+		.o-header-services__subnav-item {
+			padding-left: 16px;
+
+			&:first-child {
+				margin-left: 14px;
+				padding-left: 13px;
+
+				&:before {
+					content: '';
+					position: absolute;
+					top: 15%;
+					left: 0;
+					height: 70%;
+					border-left: 1px solid _oHeaderServicesGet('nav-border');
+				}
+			}
 		}
 	}
 }

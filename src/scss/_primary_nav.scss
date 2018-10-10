@@ -19,14 +19,15 @@
 		overflow: auto;
 		margin: 0 (0 - ($_o-header-services-padding-x * 2));
 		padding: 0;
-	}
-
-	.o-header-services__nav-item {
 		white-space: nowrap;
 	}
+	//
+	// .o-header-services__nav-item {
+	// 	white-space: nowrap;
+	// }
 
 	.o-header-services__nav-link {
-		@include oTypographySansBold($scale: 0);
+		@include oTypographyBold('sans');
 		color: _oHeaderServicesGet('nav-text');
 
 		text-transform: uppercase;
