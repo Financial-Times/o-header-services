@@ -2,6 +2,10 @@
 	.o-header-services__subnav {
 		background-color: _oHeaderServicesGet('subnav-background');
 		border-bottom: 1px solid _oHeaderServicesGet('nav-border');
+
+		[data-o-header-services-nav] {
+			height: 36px;
+		}
 	}
 
 	.o-header-services__subnav-content {

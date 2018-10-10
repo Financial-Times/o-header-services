@@ -4,27 +4,25 @@
 		border-bottom: 1px solid _oHeaderServicesGet('nav-border');
 	}
 
-	.o-header-services__container[data-o-header-services-nav] {
-		overflow: hidden;
-		height: 40px;
-	}
+	.o-header-services__container {
+		&[data-o-header-services-nav] {
+			overflow: hidden;
+			height: 40px;
+		}
 
-	.o-header-services__scroll-wrapper {
-		overflow: auto;
+		[data-o-header-services-nav-list] {
+			overflow: auto;
+		}
 	}
 
 	.o-header-services__nav-list {
 		display: flex;
 		list-style: none;
-		overflow: auto;
 		margin: 0 (0 - ($_o-header-services-padding-x * 2));
 		padding: 0;
 		white-space: nowrap;
 	}
-	//
-	// .o-header-services__nav-item {
-	// 	white-space: nowrap;
-	// }
+
 
 	.o-header-services__nav-link {
 		@include oTypographyBold('sans');
