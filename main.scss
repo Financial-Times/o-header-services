@@ -3,7 +3,7 @@
 @import 'o-typography/main';
 @import 'o-grid/main';
 @import 'o-brand/main';
-// @import 'o-buttons/main';``
+@import 'o-buttons/main';
 @import 'o-visual-effects/main';
 
 @import 'src/scss/brand';
@@ -11,7 +11,7 @@
 @import 'src/scss/variables';
 @import 'src/scss/top';
 @import 'src/scss/theme';
-@import 'src/scss/primary_nav';
+@import 'src/scss/primary-nav';
 @import 'src/scss/secondary_nav';
 
 @if $o-header-services-is-silent == false {

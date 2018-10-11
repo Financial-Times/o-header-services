@@ -22,6 +22,12 @@
 		a {
 			text-decoration: none;
 		}
+
+		ol,
+		ul {
+			list-style-type: none;
+			white-space: nowrap;
+		}
 	}
 
 	.o-header-services__container {
@@ -35,5 +41,10 @@
 	.o-header__visually-hidden {
 		position: absolute;
 		clip: rect(1px, 1px, 1px, 1px);
+	}
+
+	.o-header-services__nav-link {
+		color: _oHeaderServicesGet('nav-text');
+		text-decoration: none;
 	}
 }
