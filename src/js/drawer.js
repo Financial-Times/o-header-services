@@ -1,37 +1,25 @@
-function init (headerEl, nav) {
-	let burger = headerEl.querySelector('.o-header-services__hamburger-icon');
-
-	burger.addEventListener('click', () => {
-		toggle(nav)
-	});
-
-	nav.addEventListener('click', () => {
-		toggle(nav);
-	})
-}
-
 function toggle (nav) {
-	if(nav.classList.contains('toggle--open')) {
+	const hide = (state) => {
+		nav.setAttribute('aria-hidden', state);
+		nav.classList.toggle('o-header-services__toggle--closed');
+		nav.classList.toggle('o-header-services__toggle--open');
+	}
+
+	if(nav.classList.contains('o-header-services__toggle--open')) {
 		//display the nav before animating it
-		nav.setAttribute('aria-hidden', true);
-		nav.classList.toggle('toggle--closed');
-		nav.classList.toggle('toggle--open');
+		hide(true);
 		//give the DOM time to display the nav before animating it, or animations don't work.
-		setTimeout(() => {
-			nav.style.display = 'none';
-		}, 600)
+		setTimeout(() => nav.style.display = 'none', 600)
+		toggleTabbing(nav, false);
 	} else {
 		//display the nav before animating it
 		nav.style.display = 'block';
 		//give the DOM time to display the nav before animating it, or animations don't work.
-		setTimeout(() => {
-			nav.setAttribute('aria-hidden', false);
-			nav.classList.toggle('toggle--closed');
-			nav.classList.toggle('toggle--open');
-		}, 0)
+		setTimeout(() => hide(false), 0)
+		toggleTabbing(nav, true);
 	}
-
 }
+
 // This function is to solve accessibility issue
 // when o-header-drawer is closed => tabbing is disabled.
 // when o-header-drawer is open => tabbing is enabled.
@@ -48,5 +36,21 @@ function toggleTabbing (nav, isEnabled) {
 	}
 }
 
+function init (headerEl) {
+	let nav = headerEl.querySelector('.o-header-services__primary-nav');
+
+	if (!nav) {
+		return;
+	}
+
+	if (window.innerWidth < 740) {
+		nav.setAttribute('aria-hidden', 'true');
+		nav.classList.add('o-header-services__toggle--closed');
+		nav.addEventListener('click', () => toggle(nav));
+	}
+
+	let burger = headerEl.querySelector('.o-header-services__hamburger-icon');
+	burger.addEventListener('click', () => toggle(nav));
+}
 
 export default { init };

@@ -1,9 +1,9 @@
 import * as oUtils from 'o-utils';
 
 function init(headerEl) {
-	const containers = headerEl.querySelectorAll('[data-o-header-services-nav]');
+	const container = headerEl.querySelector('[data-o-header-services-nav]');
 
-	if (containers === null) {
+	if (container === null) {
 		return;
 	}
 
@@ -74,7 +74,7 @@ function init(headerEl) {
 		checkCurrentPosition();
 	}
 
-	containers.forEach(checkScroll);
+	checkScroll(container);
 }
 
 export default { init };

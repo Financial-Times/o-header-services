@@ -1,4 +1,5 @@
 import drawer from './drawer'
+import scroll from './scroll'
 
 class HeaderServices {
 	/**
@@ -8,18 +9,8 @@ class HeaderServices {
 	constructor (headerEl) {
 		this.headerEl = headerEl;
 
-		let nav = headerEl.querySelector('.o-header-services__primary-nav');
-
-		if (!nav) {
-			return;
-		}
-
-		if (window.innerWidth < 740) {
-			nav.setAttribute('aria-hidden', 'true');
-			nav.classList.add('toggle--closed');
-		}
-
-		drawer.init(headerEl, nav);
+		drawer.init(this.headerEl);
+		scroll.init(this.headerEl);
 	}
 
 	/**

@@ -1,9 +1,8 @@
 @mixin oHeaderServicesPrimaryNav() {
-	.toggle--open,
-	.toggle--closed {
+	.o-header-services__toggle--open,
+	.o-header-services__toggle--closed {
 		&.o-header-services__primary-nav {
 			transition: opacity 0.5s $o-visual-effects-transition-fade;
-			display: block;
 		}
 
 		.o-header-services__nav-list {
@@ -76,33 +75,6 @@
 			&[aria-selected=true] {
 				color: inherit;
 				background-color: _oHeaderServicesGet('nav-hover-background');
-			}
-		}
-
-		.o-header-services__scroll-button {
-			$custom-theme: (background: black, accent: 'black-20', colorizer: 'primary');
-			@include oButtonsTheme($theme: $custom-theme);
-			position: absolute;
-			top: 0;
-			height: 100%;
-			transition: .25s opacity .5s;
-			display: inline-block;
-
-			&--left {
-				@include oButtonsIconButton('arrow-left', $is-icon-only: true, $theme: $custom-theme);
-				min-width: 25px;
-				left: 0;
-			}
-
-			&--right {
-				@include oButtonsIconButton('arrow-right', $is-icon-only: true, $theme: $custom-theme);
-				min-width: 25px;
-				right: 0;
-			}
-
-			&[disabled] {
-				opacity: 0;
-				pointer-events: none;
 			}
 		}
 	}
