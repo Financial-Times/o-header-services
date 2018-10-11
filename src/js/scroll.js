@@ -1,5 +1,9 @@
 import * as oUtils from 'o-utils';
 
+/**
+ * Enable scrolling for navigation bars.
+ * @param {HTMLElement} headerEl - The parent element of the scrollable nav
+ */
 function init(headerEl) {
 	const container = headerEl.querySelector('[data-o-header-services-nav]');
 
@@ -7,10 +11,10 @@ function init(headerEl) {
 		return;
 	}
 
-	const checkScroll = (container) => {
-		const buttons = Array.from(container.getElementsByTagName('button'));
-		const list = container.querySelector('[data-o-header-services-nav-list]');
+	const buttons = Array.from(container.getElementsByTagName('button'));
+	const list = container.querySelector('[data-o-header-services-nav-list]');
 
+	function checkScroll (container) => {
 		let scrollWidth;
 		let listWidth = list.clientWidth;
 
