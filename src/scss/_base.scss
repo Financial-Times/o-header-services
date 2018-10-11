@@ -26,4 +26,9 @@
 	.o-header-services__bleed-container {
 		@include oHeaderServicesContainer($bleed: true);
 	}
+
+	.o-header__visually-hidden {
+		position: absolute;
+		clip: rect(1px, 1px, 1px, 1px);
+	}
 }

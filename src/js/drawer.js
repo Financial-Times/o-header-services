@@ -4,24 +4,19 @@
  * @access private
  */
 function toggle (nav) {
-	const hide = (state) => {
-		nav.setAttribute('aria-hidden', state);
-		nav.classList.toggle('o-header-services__toggle--closed');
-		nav.classList.toggle('o-header-services__toggle--open');
-	}
-
-	if(nav.classList.contains('o-header-services__toggle--open')) {
+	if(nav.classList.contains('o-header-services__primary-nav--hidden')) {
 		//display the nav before animating it
-		hide(true);
+		nav.classList.toggle('o-header-services__primary-nav--hidden')
+
 		//give the DOM time to display the nav before animating it, or animations don't work.
-		setTimeout(() => nav.style.display = 'none', 600)
-		toggleTabbing(nav, false);
+		setTimeout(() => nav.setAttribute('aria-hidden', false) , 100)
+		toggleTabbing(nav, true);
 	} else {
 		//display the nav before animating it
-		nav.style.display = 'block';
+		nav.setAttribute('aria-hidden', true);
 		//give the DOM time to display the nav before animating it, or animations don't work.
-		setTimeout(() => hide(false), 0)
-		toggleTabbing(nav, true);
+		setTimeout(() => nav.classList.toggle('o-header-services__primary-nav--hidden'), 100)
+		toggleTabbing(nav, false);
 	}
 }
 
@@ -58,13 +53,13 @@ function init (headerEl) {
 	}
 
 	if (window.innerWidth < 740) {
-		nav.setAttribute('aria-hidden', 'true');
-		nav.classList.add('o-header-services__toggle--closed');
+		nav.classList.add('o-header-services__primary-nav--hidden');
+		nav.setAttribute('aria-hidden', true);
 		nav.addEventListener('click', () => toggle(nav));
-	}
 
-	let burger = headerEl.querySelector('.o-header-services__hamburger-icon');
-	burger.addEventListener('click', () => toggle(nav));
+		let burger = headerEl.querySelector('.o-header-services__hamburger-icon');
+		burger.addEventListener('click', () => toggle(nav));
+	}
 }
 
 export default { init };

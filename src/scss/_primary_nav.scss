@@ -1,14 +1,25 @@
 @mixin oHeaderServicesPrimaryNav() {
-	.o-header-services__toggle--open,
-	.o-header-services__toggle--closed {
-		&.o-header-services__primary-nav {
-			transition: opacity 0.5s $o-visual-effects-transition-fade;
+	@include oGridRespondTo($until: M) {
+		.o-header-services__primary-nav {
+				transition: opacity 0.5s $o-visual-effects-transition-fade;
+
+				&[aria-hidden=true] {
+					opacity: 0;
+
+					.o-header-services__nav-list {
+						transform: translate3d(0, -100%, 0);
+					}
+				}
+
+			.o-header-services__nav-list {
+				transition: all 0.5s $o-visual-effects-transition-expand;
+			}
 		}
 
-		.o-header-services__nav-list {
-			transition: all 0.5s $o-visual-effects-transition-expand;
+		.o-header-services__primary-nav--visibility {
+			visibility: hidden;
 		}
-	}
+	};
 
 	.o-header-services__primary-nav {
 		position: absolute;
@@ -17,13 +28,6 @@
 		height: 100%;
 		background-color: rgba(0,0,0,0.2);
 
-		&[aria-hidden=true] {
-			opacity: 0;
-			display: none;
-			.o-header-services__nav-list {
-				transform: translate3d(0, -100%, 0);
-			}
-		}
 		.o-header-services__nav-list {
 			background-color: _oHeaderServicesGet('nav-background');
 			border: 1px solid _oHeaderServicesGet('nav-border');

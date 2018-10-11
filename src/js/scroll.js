@@ -14,7 +14,7 @@ function init(headerEl) {
 	const buttons = Array.from(container.getElementsByTagName('button'));
 	const list = container.querySelector('[data-o-header-services-nav-list]');
 
-	function checkScroll (container) => {
+	function checkScroll (container) {
 		let scrollWidth;
 		let listWidth = list.clientWidth;
 
