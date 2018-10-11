@@ -10,7 +10,8 @@
     "o-typography": "^5.7.5",
     "o-buttons": "^5.15.0",
     "o-utils": "^1.0.5",
-    "o-visual-effects": "^2.0.3"
+    "o-visual-effects": "^2.0.3",
+    "o-forms": "^5.8.3"
   },
   "main": [
     "main.scss",

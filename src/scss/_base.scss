@@ -17,6 +17,11 @@
 	.o-header-services {
 		background-color: _oHeaderServicesGet('top-background');
 		@include oTypographySans($scale: 0);
+		-webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+
+		a {
+			text-decoration: none;
+		}
 	}
 
 	.o-header-services__container {
