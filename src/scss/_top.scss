@@ -4,6 +4,7 @@
 		background-color: _oHeaderServicesGet('top-background');
 		overflow: hidden;
 		display: block;
+		z-index: 2;
 	}
 
 	.o-header-services__ftlogo {

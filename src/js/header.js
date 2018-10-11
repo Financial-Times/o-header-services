@@ -16,6 +16,7 @@ class HeaderServices {
 
 		if (window.innerWidth < 740) {
 			nav.setAttribute('aria-hidden', 'true');
+			nav.classList.add('toggle--closed');
 		}
 
 		drawer.init(headerEl, nav);
