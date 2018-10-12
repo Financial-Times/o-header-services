@@ -51,13 +51,22 @@
 			"description": "For sites with more than a few sections, a secondary navigation is also available"
 		},
 		{
-			"name": "themes",
-			"title": "Product themes",
-			"template": "demos/src/themes.mustache",
+			"name": "theme-b2c",
+			"title": "Product theme: B2C",
+			"template": "demos/src/theme-b2c.mustache",
 			"brands": [
 				"master"
 			],
-			"description": "This component is themable. The current available themes are B2B and B2C. If you're creating a product that isn't within B2B or B2C please contact Origami."
+			"description": "B2C theme for this header component. If you're creating a product that isn't within B2B or B2C please contact Origami."
+		},
+		{
+			"name": "theme-b2b",
+			"title": "Product theme: B2B",
+			"template": "demos/src/theme-b2b.mustache",
+			"brands": [
+				"master"
+			],
+			"description": "B2B theme for this header component. If you're creating a product that isn't within B2B or B2C please contact Origami."
 		},
 		{
 			"title": "Pa11y",
