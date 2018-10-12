@@ -1,7 +1,7 @@
 @mixin oHeaderServicesBase() {
 	.o-header-services {
-		background-color: _oHeaderServicesGet('top-background');
 		@include oTypographySans($scale: 0);
+		background-color: _oHeaderServicesGet('top-background');
 		-webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
 
 		a {
@@ -16,7 +16,7 @@
 
 		.o-header__visually-hidden {
 			position: absolute;
-			clip: rect(1px, 1px, 1px, 1px);
+			clip: rect(0 0 0 0);
 		}
 	}
 }

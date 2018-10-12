@@ -16,7 +16,7 @@
 			.o-header-services__primary-nav {
 				background-color: _oHeaderServicesGet('nav-background', $from: $theme);
 				@include oGridRespondTo($until: M) {
-					background-color: rgba(0,0,0,0.2);
+					background-color: rgba(0, 0, 0, 0.2);
 				};
 			}
 

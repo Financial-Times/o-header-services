@@ -2,7 +2,7 @@
 	.o-header-services__subnav {
 		background-color: _oHeaderServicesGet('nav-background');
 		border-bottom: 1px solid _oHeaderServicesGet('nav-border');
-		height: 36px;
+		height: oTypographySpacingSize(9);
 		overflow: hidden;
 	}
 
@@ -73,6 +73,7 @@
 	.o-header-services__subnav-link {
 		display: inline-block;
 		position: relative;
+		color: _oHeaderServicesGet('nav-text');
 		padding: 8px 0;
 
 		&:hover:after,
@@ -93,7 +94,7 @@
 		position: absolute;
 		top: 0;
 		height: 100%;
-		transition: .25s opacity .5s;
+		transition: opacity 0.5s $o-visual-effects-transition-fade;
 		display: inline-block;
 
 		&--left {

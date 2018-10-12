@@ -1,7 +1,7 @@
-import HeaderServices from './src/js/header'
+import HeaderServices from './src/js/header';
 
 const constructAll = () => {
-	HeaderServices.init()
+	HeaderServices.init();
 	document.removeEventListener('o.DOMContentLoaded', constructAll);
 };
 

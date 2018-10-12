@@ -6,16 +6,16 @@
 function toggle (nav) {
 	if(nav.classList.contains('o-header-services__primary-nav--hidden')) {
 		//display the nav before animating it
-		nav.classList.toggle('o-header-services__primary-nav--hidden')
+		nav.classList.toggle('o-header-services__primary-nav--hidden');
 
 		//give the DOM time to display the nav before animating it, or animations don't work.
-		setTimeout(() => nav.setAttribute('aria-hidden', false) , 100)
+		setTimeout(() => nav.setAttribute('aria-hidden', false) , 100);
 		toggleTabbing(nav, true);
 	} else {
 		//display the nav before animating it
 		nav.setAttribute('aria-hidden', true);
 		//give the DOM time to display the nav before animating it, or animations don't work.
-		setTimeout(() => nav.classList.toggle('o-header-services__primary-nav--hidden'), 100)
+		setTimeout(() => nav.classList.toggle('o-header-services__primary-nav--hidden'), 100);
 		toggleTabbing(nav, false);
 	}
 }

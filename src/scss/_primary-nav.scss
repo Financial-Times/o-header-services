@@ -9,7 +9,7 @@
 		@include oGridRespondTo($until: M) {
 			position: absolute;
 			z-index: $_o-header-services-primary-nav-z-index;
-			background-color: rgba(0,0,0,0.2);
+			background-color: rgba(0, 0, 0, 0.2);
 			transition: opacity 0.5s $o-visual-effects-transition-fade;
 
 			&[aria-hidden=true] {

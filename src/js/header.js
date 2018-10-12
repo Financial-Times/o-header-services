@@ -1,5 +1,5 @@
-import drawer from './drawer'
-import scroll from './scroll'
+import drawer from './drawer';
+import scroll from './scroll';
 
 class HeaderServices {
 	/**
