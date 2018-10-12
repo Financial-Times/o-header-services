@@ -43,7 +43,8 @@
 		clip: rect(1px, 1px, 1px, 1px);
 	}
 
-	.o-header-services__nav-link {
+	.o-header-services__nav-link,
+	.o-header-services__subnav-link {
 		color: _oHeaderServicesGet('nav-text');
 		text-decoration: none;
 	}

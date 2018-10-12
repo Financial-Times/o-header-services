@@ -22,20 +22,19 @@ $_o-header-services-brand: oBrandGetCurrentBrand();
 			nav-background: oColorsGetPaletteColor('white-60'),
 			nav-border: oColorsGetPaletteColor('black-20'),
 			nav-hover-background: oColorsGetPaletteColor('black-5'),
-			subnav-text: oColorsGetPaletteColor('black'),
-			subnav-background: oColorsGetPaletteColor('white-40'),
-		'b2b': (
-			product-title: oColorsGetPaletteColor('white'),
-			nav-text: oColorsGetPaletteColor('white'),
-			nav-background: oColorsGetPaletteColor('claret'),
-			nav-hover-background: oColorsGetPaletteColor('claret-30')
+			'b2b': (
+				product-title: oColorsGetPaletteColor('white'),
+				nav-text: oColorsGetPaletteColor('white'),
+				nav-background: oColorsGetPaletteColor('claret'),
+				nav-hover-background: oColorsGetPaletteColor('claret-30')
+			),
+			'b2c': (
+				product-title: oColorsGetPaletteColor('org-b2c-light'),
+				nav-text: oColorsGetPaletteColor('white'),
+				nav-background: oColorsGetPaletteColor('org-b2c'),
+				nav-hover-background: oColorsGetPaletteColor('org-b2c-dark')
+			)
 		),
-		'b2c': (
-			product-title: oColorsGetPaletteColor('org-b2c-light'),
-			nav-text: oColorsGetPaletteColor('white'),
-			nav-background: oColorsGetPaletteColor('org-b2c'),
-			nav-hover-background: oColorsGetPaletteColor('org-b2c-dark')
-		)),
 		'supports-variants': (
 			'b2b',
 			'b2c'
@@ -50,9 +49,7 @@ $_o-header-services-brand: oBrandGetCurrentBrand();
 			nav-text: oColorsGetPaletteColor('black'),
 			nav-background: oColorsGetPaletteColor('slate-white-5'),
 			nav-border: oColorsGetPaletteColor('black-20'),
-			nav-hover-background: oColorsGetPaletteColor('slate-white-15'),
-			subnav-text: oColorsGetPaletteColor('black'),
-			subnav-background: oColorsGetPaletteColor('slate-white-5')
+			nav-hover-background: oColorsGetPaletteColor('slate-white-15')
 		),
 		'supports-variants': ()
 	));

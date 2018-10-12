@@ -8,7 +8,7 @@
 
 		@include oGridRespondTo($until: M) {
 			position: absolute;
-			z-index: 1;
+			z-index: $_o-header-services-primary-nav-z-index;
 			background-color: rgba(0,0,0,0.2);
 			transition: opacity 0.5s $o-visual-effects-transition-fade;
 
@@ -31,7 +31,7 @@
 			@include oHeaderServicesContainer;
 		}
 	};
-	
+
 	.o-header-services__nav-list {
 		background-color: _oHeaderServicesGet('nav-background');
 		min-width: 170px;
