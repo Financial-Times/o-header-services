@@ -1,19 +1,4 @@
-@mixin oHeaderServicesContainer($bleed: false) {
-	@include oGridContainer($bleed: $bleed);
-
-	@if $bleed {
-		max-width: 100%;
-		padding: 0 20px;
-	}
-}
-
-@mixin oHeaderServices($logo: $o-header-services-default-logo) {
-	@include oHeaderServicesTop($logo);
-	@include oHeaderServicesPrimaryNav;
-	@include oHeaderServicesSubNav;
-	@include oHeaderServicesTheme($theme: 'b2b');
-	@include oHeaderServicesTheme($theme: 'b2c');
-
+@mixin oHeaderServicesBase() {
 	.o-header-services {
 		background-color: _oHeaderServicesGet('top-background');
 		@include oTypographySans($scale: 0);
@@ -28,7 +13,30 @@
 			list-style-type: none;
 			white-space: nowrap;
 		}
+
+		.o-header__visually-hidden {
+			position: absolute;
+			clip: rect(1px, 1px, 1px, 1px);
+		}
 	}
+}
+
+@mixin oHeaderServicesContainer($bleed: false) {
+	@include oGridContainer($bleed: $bleed);
+
+	@if $bleed {
+		max-width: 100%;
+		padding: 0 20px;
+	}
+}
+
+@mixin oHeaderServices($logo: $o-header-services-default-logo) {
+	@include oHeaderServicesBase;
+	@include oHeaderServicesTop($logo);
+	@include oHeaderServicesPrimaryNav;
+	@include oHeaderServicesSubNav;
+	@include oHeaderServicesTheme($theme: 'b2b');
+	@include oHeaderServicesTheme($theme: 'b2c');
 
 	.o-header-services__container {
 		@include oHeaderServicesContainer;
@@ -36,16 +44,5 @@
 
 	.o-header-services__bleed-container {
 		@include oHeaderServicesContainer($bleed: true);
-	}
-
-	.o-header__visually-hidden {
-		position: absolute;
-		clip: rect(1px, 1px, 1px, 1px);
-	}
-
-	.o-header-services__nav-link,
-	.o-header-services__subnav-link {
-		color: _oHeaderServicesGet('nav-text');
-		text-decoration: none;
 	}
 }

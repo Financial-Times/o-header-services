@@ -45,6 +45,7 @@
 
 		.o-header-services__subnav-link {
 			@include oTypographyBold('sans');
+			color: _oHeaderServicesGet('nav-text');
 			text-transform: uppercase;
 		}
 	}

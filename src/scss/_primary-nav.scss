@@ -52,6 +52,7 @@
 
 	.o-header-services__nav-link {
 		@include oTypographyBold('sans');
+		color: _oHeaderServicesGet('nav-text');
 		text-transform: uppercase;
 		display: block;
 		margin: 0;
