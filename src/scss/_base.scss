@@ -1,3 +1,4 @@
+/// Fundamental styles for header
 @mixin oHeaderServicesBase() {
 	.o-header-services {
 		@include oTypographySans($scale: 0);
@@ -21,6 +22,9 @@
 	}
 }
 
+/// Styles container width
+/// @param {Boolean} $bleed [false]
+
 @mixin oHeaderServicesContainer($bleed: false) {
 	@include oGridContainer($bleed: $bleed);
 
@@ -30,6 +34,8 @@
 	}
 }
 
+/// Outputs full header styles
+/// @param {String} $logo [ft-logo depending on brand (pink or white)]
 @mixin oHeaderServices($logo: $o-header-services-default-logo) {
 	@include oHeaderServicesBase;
 	@include oHeaderServicesTop($logo);

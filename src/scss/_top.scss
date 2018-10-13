@@ -1,3 +1,6 @@
+/// Styling for title section of header
+/// @param {String} $logo [ft-logo depending on brand (pink or white)]
+
 @mixin oHeaderServicesTop($logo: $o-header-services-default-logo) {
 	.o-header-services__top {
 		display: flex;
