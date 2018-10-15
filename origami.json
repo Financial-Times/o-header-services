@@ -50,6 +50,12 @@
 			"description": "For sites with more than a few sections, a secondary navigation is also available"
 		},
 		{
+			"name": "bleed-header",
+			"title": "Header with a primary and secondary navigation, in a bleed container",
+			"template": "demos/src/bleed-header.mustache",
+			"description": "A variation that applies to all versions of the header, which will expand it to bleed to the edges of the page"
+		},
+		{
 			"name": "theme-b2c",
 			"title": "Product theme: B2C",
 			"template": "demos/src/theme-b2c.mustache",

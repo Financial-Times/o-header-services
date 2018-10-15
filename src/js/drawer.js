@@ -31,16 +31,16 @@ function shiftListItems(headerEl, shift) {
 function toggle (nav) {
 	if(nav.classList.contains('o-header-services__primary-nav--hidden')) {
 		//display the nav before animating it
-		nav.classList.toggle('o-header-services__primary-nav--hidden');
+		nav.classList.remove('o-header-services__primary-nav--hidden');
 
 		//give the DOM time to display the nav before animating it, or animations don't work.
 		setTimeout(() => nav.setAttribute('aria-hidden', false) , 100);
 		toggleTabbing(nav, true);
 	} else {
-		//display the nav before animating it
+		//animate the nav before hiding it
 		nav.setAttribute('aria-hidden', true);
-		//give the DOM time to display the nav before animating it, or animations don't work.
-		setTimeout(() => nav.classList.toggle('o-header-services__primary-nav--hidden'), 100);
+		//give the DOM time to animate the nav before hiding it, or animations don't work.
+		setTimeout(() => nav.classList.add('o-header-services__primary-nav--hidden'), 200);
 		toggleTabbing(nav, false);
 	}
 }
@@ -77,19 +77,20 @@ function init (headerEl) {
 		return;
 	}
 
+	let burger = headerEl.querySelector('.o-header-services__hamburger-icon');
+	burger.addEventListener('click', () => toggle(nav));
+
 	const checkViewport = () => {
 		if (window.innerWidth < 740) {
 			shiftListItems(headerEl, true);
 			nav.classList.add('o-header-services__primary-nav--hidden');
 			nav.setAttribute('aria-hidden', true);
 			nav.addEventListener('click', () => toggle(nav));
-
-			let burger = headerEl.querySelector('.o-header-services__hamburger-icon');
-			burger.addEventListener('click', () => toggle(nav));
 		} else {
 			shiftListItems(headerEl, false);
 			nav.classList.remove('o-header-services__primary-nav--hidden');
 			nav.setAttribute('aria-hidden', false);
+			nav.removeEventListener('click', () => toggle(nav));
 		}
 	};
 

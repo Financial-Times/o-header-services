@@ -27,12 +27,6 @@
 		};
 	}
 
-	@include oGridRespondTo($from: M) {
-		.o-header-services__nav-container {
-			@include oHeaderServicesContainer;
-		}
-	};
-
 	.o-header-services__nav-list {
 		background-color: _oHeaderServicesGet('nav-background');
 		min-width: 170px;
