@@ -16,7 +16,7 @@ describe('Header', () => {
 	afterEach(() => {
 		document.body.removeChild(headerEl);
 		headerEl = null;
-		window.resizeTo(window.screen.availHeight, window.screen.availWidth);
+		// window.resizeTo(window.screen.availHeight, window.screen.availWidth);
 	});
 
 	describe('on viewports above 740px', () => {
@@ -60,6 +60,12 @@ describe('Header', () => {
 			click(burgerIcon);
 			proclaim.isFalse(primaryNav.classList.contains('o-header-services__primary-nav--hidden'));
 			proclaim.isTrue(primaryNav.hasAttribute('aria-hidden', false));
+		});
+
+		it('shifts related content to primary nav', () => {
+			let listItems = primaryNav.querySelectorAll('li');
+			console.log(listItems);
+			proclaim.equal(listItems.length, 6);
 		});
 	});
 });
