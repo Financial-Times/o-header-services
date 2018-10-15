@@ -1,4 +1,4 @@
-import * as oUtils from 'o-utils';
+import oViewport from 'o-viewport';
 
 /**
  * Enable scrolling for navigation bars.
@@ -68,7 +68,10 @@ function init(headerEl) {
 		scrollable();
 	}
 
-	list.addEventListener('scroll', oUtils.throttle(scrollable, 100));
+	oViewport.listenTo('scroll');
+	oViewport.setThrottleInterval(100);
+
+	list.addEventListener('oViewport.scroll', scrollable);
 
 	buttons.forEach(button => {
 		button.onclick = scroll;
