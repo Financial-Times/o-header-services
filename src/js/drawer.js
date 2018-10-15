@@ -63,9 +63,9 @@ function init (headerEl) {
 			burger.addEventListener('click', () => toggle(nav));
 		} else {
 			nav.classList.remove('o-header-services__primary-nav--hidden');
-			nav.setAttribute('aria-hidden', false)
+			nav.setAttribute('aria-hidden', false);
 		}
-	}
+	};
 
 	oViewport.listenTo('resize');
 	oViewport.setThrottleInterval('resize', 100);
