@@ -13,13 +13,13 @@ describe('Header', () => {
 		headerEl = document.body.querySelector('.o-header-services');
 	});
 
-	// afterEach(() => {
-	// 	document.body.removeChild(headerEl);
-	// 	headerEl = null;
-	// 	window.resizeTo(window.screen.availHeight, window.screen.availWidth);
-	// });
+	afterEach(() => {
+		document.body.removeChild(headerEl);
+		headerEl = null;
+		window.resizeTo(window.screen.availHeight, window.screen.availWidth);
+	});
 
-	describe.only('on vieports above 740px', () => {
+	describe('on viewports above 740px', () => {
 		beforeEach(() => {
 			new HeaderServices(headerEl);
 			primaryNav = headerEl.querySelector('.o-header-services__primary-nav');
