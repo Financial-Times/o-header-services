@@ -68,10 +68,11 @@ function init(headerEl) {
 		scrollable();
 	}
 
-	oViewport.listenTo('scroll');
+	oViewport.listenTo(['scroll', 'resize']);
 	oViewport.setThrottleInterval(100);
 
 	list.addEventListener('oViewport.scroll', scrollable);
+	window.addEventListener('oViewport.resize', scrollable);
 
 	buttons.forEach(button => {
 		button.onclick = scroll;
