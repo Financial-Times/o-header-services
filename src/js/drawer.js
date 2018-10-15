@@ -1,4 +1,28 @@
 import oViewport from 'o-viewport';
+
+/**
+ * Moves related content list items between top section primary nav depening on viewport
+ * @param {HTMLElement} headerEl The DOM node to interact with
+ * @param {Boolean} shift whether to shift items to nav or back to top
+ * @access private
+ */
+function shiftListItems(headerEl, shift) {
+	let relatedItems = Array.from(headerEl.querySelectorAll('.o-header-services__related-content-list-item'));
+
+	if (!relatedItems) {
+		return;
+	}
+
+	let relatedContentList = headerEl.querySelector('.o-header-services__related-content');
+	let navlist = headerEl.querySelector('.o-header-services__nav-list');
+
+	if (shift) {
+		relatedItems.forEach(item => navlist.appendChild(item));
+	} else {
+		relatedItems.forEach(item => relatedContentList.appendChild(item));
+	}
+}
+
 /**
  * Toggles display state for the drop down nav on viewports below 740px.
  * @param {HTMLElement} nav The DOM node to toggle
@@ -55,6 +79,7 @@ function init (headerEl) {
 
 	const checkViewport = () => {
 		if (window.innerWidth < 740) {
+			shiftListItems(headerEl, true);
 			nav.classList.add('o-header-services__primary-nav--hidden');
 			nav.setAttribute('aria-hidden', true);
 			nav.addEventListener('click', () => toggle(nav));
@@ -62,6 +87,7 @@ function init (headerEl) {
 			let burger = headerEl.querySelector('.o-header-services__hamburger-icon');
 			burger.addEventListener('click', () => toggle(nav));
 		} else {
+			shiftListItems(headerEl, false);
 			nav.classList.remove('o-header-services__primary-nav--hidden');
 			nav.setAttribute('aria-hidden', false);
 		}

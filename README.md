@@ -5,7 +5,7 @@ This header is for tools and services built by the Financial Times.
 ## Index
 - [Design](#design)
 - [Markup](#markup)
-	- [Very simple header](#very-simple-header)
+	- [Title only header](#title-only-header)
 	- [Themes](#themes)
 	- [Related links and the drawer](#related-links-and-the-drawer)
 		- [Core experience of the drawer](#core-experience-of-the-drawer)
@@ -37,11 +37,11 @@ The header has the following features:
 
 ## Markup
 
-### Very simple header
+### Title only header
 The simplest header, appropriate for single page applications with no navigation is available with the following code:
 
 ```
-<header class='o-header-services' data-o-component='o-header'>
+<header class='o-header-services' data-o-component='o-header-services'>
 	<div class='o-header-services__top o-header-services__container'>
 		<div class='o-header-services__ftlogo'></div>
 		<div class='o-header-services__title'>
@@ -51,7 +51,6 @@ The simplest header, appropriate for single page applications with no navigation
 	</div>
 </header>
 ```
-
 
 ### Themes
 `o-header-services` offers theming for B2B or B2C products under FT.com. To add a theme to the header, add the appropriate class to a wrapping element. For example, for b2b that would be:
@@ -63,7 +62,7 @@ The simplest header, appropriate for single page applications with no navigation
 		<div class='o-header-services__ftlogo'></div>
 		<div class='o-header-services__title'>
 			<h1 class='o-header-services__product-name'><a href='/'>Tool or Service name</a></h1>
-			<span class='o-header-subrand__product-tagline '>Tagline to explain the product here</span>
+			<span class='o-header-services__product-tagline '>Tagline to explain the product here</span>
 		</div>
 	</div>
 </header>
@@ -71,7 +70,7 @@ The simplest header, appropriate for single page applications with no navigation
 
 ### Related links and the drawer
 
-o-header-services supports related content (eg Sign in or licence numbers). At large screen widths these appear to the far right of the header. At smaller screens these collapse down to a `drawer` which is behind a hamburger menu.
+o-header-services supports related content (eg Sign in or licence numbers). At large screen widths these appear to the far right of the header.
 
 #### Core experience of the drawer
 
@@ -302,6 +301,9 @@ As previously mentioned, the logo in the header will default to the FT logo. Alt
 ```
 
 ## Migration guide
+
+- o-header-subrand__product-tagline
++ o-header-services__product-tagline
 
 ### Migrating from v1.x.x to v2.x.x
 

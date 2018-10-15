@@ -66,7 +66,7 @@
 		}
 	}
 
-	.o-header-subrand__product-tagline {
+	.o-header-services__product-tagline {
 		@include oTypographySize($scale: 3);
 		margin-left: $_o-header-services-padding-x;
 		text-transform: uppercase;
@@ -79,20 +79,26 @@
 	}
 
 	.o-header-services__related-content {
-		margin-left: auto;
+		margin: 0 0 0 auto;
 		padding: 16px $_o-header-services-padding-x;
+		display: flex;
 
 		@include oGridRespondTo($until: M) {
 			display: none;
 		}
+	}
 
-		> a {
+	.o-header-services__related-content-list-item {
+		background-color: _oHeaderServicesGet('top-background');
+
+		@include oGridRespondTo($until: M) {
+			padding: $_o-header-services-padding-x;
+		}
+
+		.o-header-services__related-content-link {
 			@include oTypographyBold('sans');
 			margin: 0 $_o-header-services-padding-x;
-
-			&:visited {
-				color: inherit;
-			}
+			color: _oHeaderServicesGet('top-text');
 
 			&:hover {
 				text-decoration: underline;
