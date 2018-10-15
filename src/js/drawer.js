@@ -1,3 +1,4 @@
+import oViewport from 'o-viewport';
 /**
  * Toggles display state for the drop down nav on viewports below 740px.
  * @param {HTMLElement} nav The DOM node to toggle
@@ -52,14 +53,26 @@ function init (headerEl) {
 		return;
 	}
 
-	if (window.innerWidth < 740) {
-		nav.classList.add('o-header-services__primary-nav--hidden');
-		nav.setAttribute('aria-hidden', true);
-		nav.addEventListener('click', () => toggle(nav));
+	const checkViewport = () => {
+		if (window.innerWidth < 740) {
+			nav.classList.add('o-header-services__primary-nav--hidden');
+			nav.setAttribute('aria-hidden', true);
+			nav.addEventListener('click', () => toggle(nav));
 
-		let burger = headerEl.querySelector('.o-header-services__hamburger-icon');
-		burger.addEventListener('click', () => toggle(nav));
+			let burger = headerEl.querySelector('.o-header-services__hamburger-icon');
+			burger.addEventListener('click', () => toggle(nav));
+		} else {
+			nav.classList.remove('o-header-services__primary-nav--hidden');
+			nav.setAttribute('aria-hidden', false)
+		}
 	}
+
+	oViewport.listenTo('resize');
+	oViewport.setThrottleInterval('resize', 100);
+
+	window.addEventListener('oViewport.resize', checkViewport);
+
+	checkViewport();
 }
 
 export default { init };
