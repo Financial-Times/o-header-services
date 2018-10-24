@@ -229,14 +229,14 @@ To use the secondary navigation, use the primary navigation and add the followin
 ```
 
 ### Bleed Header
-If your application requires a bleed header, it will be necessary to replace all instances of `o-header-services__container` with `o-header-services__bleed-container`.
+If your application requires a bleed header, you will need to add the `o-header-services--bleed` variant to your header.
 For example, in the case of using both primary and secondary navigation:
 
 ```diff
-<header class='o-header-services' data-o-component='o-header'>
+-<header class='o-header-services' data-o-component='o-header'>
++<header class='o-header-services o-header-services--bleed' data-o-component='o-header'>
 	<div class='o-header-services__top'>
--		<div class='o-header-services__container'>
-+		<div class='o-header-services__bleed-container'>
+		<div class='o-header-services__container'>
 			<div class='o--if-js o-header-services__hamburger'>
 				<a class='o-header-services__hamburger-icon' href="#o-header-drawer"	aria-controls="o-header-drawer"><span class="o-header__visually-hidden">Menu</span></a>
 			</div>
@@ -252,8 +252,7 @@ For example, in the case of using both primary and secondary navigation:
 	</div>
 </header>
 <nav class='o-header-services__primary-nav'>
--	<div class='o-header-services__container'>
-+	<div class='o-header-services__bleed-container'>
+	<div class='o-header-services__container'>
 		<ul class='o-header-services__nav-list'>
 			<li class='o-header-services__nav-item o-header-services__nav-item--selected'>
 				<a href='#'>
@@ -266,8 +265,7 @@ For example, in the case of using both primary and secondary navigation:
 </nav>
 
 <nav class="o-header-services__subnav" role="navigation" aria-label="Sub navigation">
--	<div class="o-header-services__container" data-o-header-services-nav>
-+	<div class="o-header-services__bleed-container" data-o-header-services-nav>
+	<div class="o-header-services__container" data-o-header-services-nav>
 		<div class="o-header-services__subnav-content" data-o-header-services-nav-list>
 			<ol class="o-header-services__subnav-list o-header-services__subnav-list--breadcrumb" aria-label="Breadcrumb">
 				<li class="o-header-services__subnav-item">

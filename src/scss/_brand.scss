@@ -1,18 +1,16 @@
 /// Helper for `o-brand` function.
 /// @access private
 @function _oHeaderServicesGet($variables, $from: null) {
-    @return oBrandGet($component: 'o-header-services', $variables: $variables, $from: $from);
+	@return oBrandGet($component: 'o-header-services', $variables: $variables, $from: $from);
 }
 
 /// Helper for `o-brand` function.
 /// @access private
 @function _oHeaderServicesSupports($variant) {
-    @return oBrandSupportsVariant($component: 'o-header-services', $variant: $variant);
+	@return oBrandSupportsVariant($component: 'o-header-services', $variant: $variant);
 }
 
-$_o-header-services-brand: oBrandGetCurrentBrand();
-
-@if $_o-header-services-brand == 'master' {
+@if oBrandGetCurrentBrand() == 'master' {
 	@include oBrandDefine('o-header-services', 'master', (
 		'variables': (
 			logo: 'brand-ft-logo-square-coloured',
@@ -40,7 +38,7 @@ $_o-header-services-brand: oBrandGetCurrentBrand();
 			'b2c'
 		)
 	));
-} @elseif $_o-header-services-brand == 'internal' {
+} @elseif oBrandGetCurrentBrand() == 'internal' {
 	@include oBrandDefine('o-header-services', 'internal', (
 		'variables': (
 			logo: 'brand-ft-logo-squared-bw',
@@ -53,7 +51,7 @@ $_o-header-services-brand: oBrandGetCurrentBrand();
 		),
 		'supports-variants': ()
 	));
-} @elseif $_o-header-services-brand == 'whitelabel' {
+} @elseif oBrandGetCurrentBrand() == 'whitelabel' {
 	@include oBrandDefine('o-header-services', 'whitelabel', (
 		'variables': (),
 		'supports-variants': ()

@@ -1,5 +1,6 @@
 /// Fundamental styles for header
-@mixin oHeaderServicesBase() {
+/// @param {Boolean} $bleed [whether or not to make the header a bleed header. Defaults to false.]
+@mixin oHeaderServicesBase($bleed: false) {
 	.o-header-services {
 		@include oTypographySans($scale: 0);
 		background-color: _oHeaderServicesGet('top-background');
@@ -19,18 +20,21 @@
 			position: absolute;
 			clip: rect(0 0 0 0);
 		}
+
+		.o-header-services__container {
+			@include oGridContainer;
+		}
 	}
-}
-
-/// Styles container width
-/// @param {Boolean} $bleed [false]
-
-@mixin oHeaderServicesContainer($bleed: false) {
-	@include oGridContainer($bleed: $bleed);
 
 	@if $bleed {
-		max-width: 100%;
-		padding: 0 20px;
+		.o-header-services--bleed {
+			.o-header-services__container {
+				@include oGridContainer($bleed: $bleed)
+				max-width: 100%;
+				padding: 0 20px;
+
+			}
+		}
 	}
 }
 
@@ -43,12 +47,4 @@
 	@include oHeaderServicesSubNav;
 	@include oHeaderServicesTheme($theme: 'b2b');
 	@include oHeaderServicesTheme($theme: 'b2c');
-
-	.o-header-services__container {
-		@include oHeaderServicesContainer;
-	}
-
-	.o-header-services__bleed-container {
-		@include oHeaderServicesContainer($bleed: true);
-	}
 }
