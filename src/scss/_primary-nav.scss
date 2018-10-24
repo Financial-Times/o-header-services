@@ -39,7 +39,6 @@
 			@include oVisualEffectsShadowsElevation('mid');
 			transition: all 0.5s $o-visual-effects-transition-expand;
 			transform: translate3d(0, 0, 0);
-			border: 1px solid _oHeaderServicesGet('nav-border');
 			flex-direction: column;
 			margin: 0;
 		};

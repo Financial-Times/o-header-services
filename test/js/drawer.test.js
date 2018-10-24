@@ -16,7 +16,7 @@ describe('Header', () => {
 	afterEach(() => {
 		document.body.removeChild(headerEl);
 		headerEl = null;
-		// window.resizeTo(window.screen.availHeight, window.screen.availWidth);
+		window.resizeTo(window.screen.availHeight, window.screen.availWidth);
 	});
 
 	describe('on viewports above 740px', () => {
