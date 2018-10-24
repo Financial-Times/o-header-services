@@ -41,8 +41,10 @@ describe('Header', () => {
 		});
 
 		it('primary nav is hidden', () => {
-			proclaim.isTrue(primaryNav.classList.contains('o-header-services__primary-nav--hidden'));
-			proclaim.isTrue(primaryNav.hasAttribute('aria-hidden', true));
+			setTimeout(() => {
+				proclaim.isTrue(primaryNav.classList.contains('o-header-services__primary-nav--hidden'));
+				proclaim.isTrue(primaryNav.hasAttribute('aria-hidden', true));
+			}, 100);
 		});
 
 		it('display primary nav on burger icon click', () => {
@@ -63,9 +65,10 @@ describe('Header', () => {
 		});
 
 		it('shifts related content to primary nav', () => {
-			let listItems = primaryNav.querySelectorAll('li');
-			console.log(listItems);
-			proclaim.equal(listItems.length, 6);
+			setTimeout(() => {
+				let listItems = primaryNav.querySelectorAll('li');
+				proclaim.equal(listItems.length, 6);
+			}, 100);
 		});
 	});
 });
