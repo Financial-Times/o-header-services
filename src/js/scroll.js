@@ -14,8 +14,8 @@ function init(headerEl) {
 	const buttons = Array.from(container.getElementsByTagName('button'));
 	const list = container.querySelector('[data-o-header-services-nav-list]');
 
-	let scrollWidth;
-	let listWidth = list.clientWidth;
+	let listWidth;
+	let containerWidth;
 
 	function checkCurrentPosition() {
 		const currentSelection = list.querySelector('[aria-current]');
@@ -23,15 +23,16 @@ function init(headerEl) {
 			let currentSelectionEnd = currentSelection.getBoundingClientRect().right;
 
 			//if the current selection is wider than the end of the list
-			if (currentSelectionEnd > listWidth) {
+			if (currentSelectionEnd > containerWidth) {
 				// check by how much
-				let diff = currentSelectionEnd - listWidth;
+				let diff = currentSelectionEnd - containerWidth;
 				// if the difference is greater than half of the list, scroll to the end of the current selection.
-				diff = (diff > listWidth / 2) ? currentSelectionEnd : listWidth / 2;
+				diff = (diff > containerWidth / 2) ? currentSelectionEnd : containerWidth / 2;
 
 				list.scrollTo(diff, 0);
 			}
 		}
+
 		scrollable();
 	}
 
@@ -40,14 +41,14 @@ function init(headerEl) {
 	}
 
 	function scrollable() {
-		scrollWidth = list.scrollWidth;
+		listWidth = list.scrollWidth;
+		containerWidth = list.clientWidth;
 
 		buttons.forEach(button => {
 			if (direction(button) === 'left') {
 				button.disabled = list.scrollLeft === 0;
 			} else {
-				const remaining = scrollWidth - listWidth - list.scrollLeft;
-				// Allow a little difference as scrollWidth is fast, not accurate.
+				const remaining = listWidth > containerWidth ? listWidth - containerWidth - list.scrollLeft : 0;
 				button.disabled = remaining <= 1;
 			}
 		});
@@ -59,7 +60,7 @@ function init(headerEl) {
 		if (direction(e.currentTarget) === 'left') {
 			distance = (list.scrollLeft > distance ? distance : list.scrollLeft) * -1;
 		} else {
-			const remaining = scrollWidth - listWidth - list.scrollLeft;
+			const remaining = listWidth - containerWidth - list.scrollLeft;
 			distance = remaining > distance ? distance : remaining;
 		}
 
