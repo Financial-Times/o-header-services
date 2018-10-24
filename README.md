@@ -197,7 +197,7 @@ To use the secondary navigation, use the primary navigation and add the followin
 +					</a>
 +				</li>
 +				<li class="o-header-services__subnav-item">
-+					<a class="o-header-services__subnav-link" href="#" aria-selected="true" aria-label="Current page">
++					<a class="o-header-services__subnav-link" href="#" aria-current="true" aria-label="Current page">
 +						current section
 +					</a>
 +				</li>
@@ -279,7 +279,7 @@ For example, in the case of using both primary and secondary navigation:
 					</a>
 				</li>
 				<li class="o-header-services__subnav-item">
-					<a class="o-header-services__subnav-link" href="#" aria-selected="true" aria-label="Current page">
+					<a class="o-header-services__subnav-link" href="#" aria-current="true" aria-label="Current page">
 						current section
 					</a>
 				</li>
@@ -381,20 +381,12 @@ The markup for a full header has changed in the following way:
 +				<div class="o-header-services__subnav-content" data-o-header-services-nav-list>
 					<ol class="o-header-services__subnav-list o-header-services__subnav-list--breadcrumb" aria-label="Breadcrumb">
 						<li class="o-header-services__subnav-item">
-							<a class="o-header-services__subnav-link" href="#">
-								ancestor section
-							</a>
-						</li>
-						<li class="o-header-services__subnav-item">
-							<a class="o-header-services__subnav-link" href="#">
-								ancestor section
-							</a>
-						</li>
-						<li class="o-header-services__subnav-item">
-							<a class="o-header-services__subnav-link" href="#" aria-selected="true" aria-label="Current page">
+-							<a class="o-header-services__subnav-link" href="#" aria-selected="true" aria-label="Current page">
++							<a class="o-header-services__subnav-link" href="#" aria-current="true" aria-label="Current page">
 								current section
 							</a>
 						</li>
+						<!-- more ancestors -->
 					</ol>
 
 					<ul class="o-header-services__subnav-list o-header-services__subnav-list--children" aria-label="Subsections">
@@ -403,15 +395,7 @@ The markup for a full header has changed in the following way:
 								child page
 							</a>
 						</li>
-						<li class="o-header-services__subnav-item">
-							<a class="o-header-services__subnav-link" href="{{href}}">
-								child page
-							</a>
-						</li>
-						<li class="o-header-services__subnav-item">
-							<a class="o-header-services__subnav-link" href="{{href}}">
-								child page
-							</a>
+						<!-- more children -->
 						</li>
 					</ul>
 				</div>
@@ -425,7 +409,7 @@ The markup for a full header has changed in the following way:
 	</div>
 </nav>
 
-<!-- All drawer markup has been removed! -->
+-<!-- All drawer markup has been removed! -->
 ```
 
 ### Migrating from v1.x.x to v2.x.x
