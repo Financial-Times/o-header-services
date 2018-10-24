@@ -12,7 +12,7 @@ function init(headerEl) {
 	}
 
 	const buttons = Array.from(container.getElementsByTagName('button'));
-	const list = window.l = container.querySelector('[data-o-header-services-nav-list]');
+	const list = container.querySelector('[data-o-header-services-nav-list]');
 
 	let listWidth;
 	let containerWidth;
