@@ -12,13 +12,15 @@ function init(headerEl) {
 	}
 
 	const buttons = Array.from(container.getElementsByTagName('button'));
-	const list = container.querySelector('[data-o-header-services-nav-list]');
+	const list = window.l = container.querySelector('[data-o-header-services-nav-list]');
 
 	let listWidth;
 	let containerWidth;
 
 	function checkCurrentPosition() {
 		const currentSelection = list.querySelector('[aria-current]');
+		containerWidth = list.clientWidth;
+
 		if (currentSelection) {
 			let currentSelectionEnd = currentSelection.getBoundingClientRect().right;
 
@@ -29,7 +31,7 @@ function init(headerEl) {
 				// if the difference is greater than half of the list, scroll to the end of the current selection.
 				diff = (diff > containerWidth / 2) ? currentSelectionEnd : containerWidth / 2;
 
-				list.scrollTo(diff, 0);
+				list.scrollTo({ left: diff, top: 0, behaviour: 'smooth' });
 			}
 		}
 
@@ -42,7 +44,6 @@ function init(headerEl) {
 
 	function scrollable() {
 		listWidth = list.scrollWidth;
-		containerWidth = list.clientWidth;
 
 		buttons.forEach(button => {
 			if (direction(button) === 'left') {

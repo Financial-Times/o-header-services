@@ -54,7 +54,7 @@
 
 		&:hover,
 		&--selected,
-		&[aria-selected=true] {
+		&[aria-current=true] {
 			color: inherit;
 			background-color: _oHeaderServicesGet('nav-hover-background');
 		}
