@@ -17,8 +17,7 @@
 		}
 
 		.o-header-services__visually-hidden {
-			position: absolute;
-			clip: rect(0 0 0 0);
+			@include oNormaliseVisuallyHidden;
 		}
 
 		.o-header-services__container {

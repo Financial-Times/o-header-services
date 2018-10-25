@@ -1,5 +1,3 @@
-import oViewport from 'o-viewport';
-
 /**
  * Enable scrolling for navigation bars.
  * @param {HTMLElement} headerEl - The parent element of the scrollable nav
@@ -11,15 +9,17 @@ function init(headerEl) {
 		return;
 	}
 
-	const buttons = Array.from(container.getElementsByTagName('button'));
 	const list = container.querySelector('[data-o-header-services-nav-list]');
+	const buttons = Array.from(container.getElementsByTagName('button'), button => {
+		button.addEventListener('click', scroll);
+		return button;
+	});
 
 	let listWidth;
 	let containerWidth;
 
 	function checkCurrentPosition() {
 		const currentSelection = list.querySelector('[aria-current]');
-		containerWidth = list.clientWidth;
 
 		if (currentSelection) {
 			let currentSelectionEnd = currentSelection.getBoundingClientRect().right;
@@ -35,18 +35,15 @@ function init(headerEl) {
 			}
 		}
 
-		scrollable();
+		toggleScrollButtons();
 	}
 
-	function direction(button) {
-		return button.className.match(/left|right/).pop();
-	}
-
-	function scrollable() {
+	function toggleScrollButtons() {
 		listWidth = list.scrollWidth;
+		containerWidth = list.clientWidth;
 
 		buttons.forEach(button => {
-			if (direction(button) === 'left') {
+			if (button.className.match('left')) {
 				button.disabled = list.scrollLeft === 0;
 			} else {
 				const remaining = listWidth > containerWidth ? listWidth - containerWidth - list.scrollLeft : 0;
@@ -58,7 +55,7 @@ function init(headerEl) {
 	function scroll(e) {
 		let distance = 100;
 
-		if (direction(e.currentTarget) === 'left') {
+		if (e.currentTarget.className.match('left')) {
 			distance = (list.scrollLeft > distance ? distance : list.scrollLeft) * -1;
 		} else {
 			const remaining = listWidth - containerWidth - list.scrollLeft;
@@ -67,18 +64,12 @@ function init(headerEl) {
 
 		list.scrollLeft = list.scrollLeft + distance;
 
-		scrollable();
+		toggleScrollButtons();
 	}
 
-	oViewport.listenTo(['scroll', 'resize']);
-	oViewport.setThrottleInterval(100);
+	list.addEventListener('scroll', toggleScrollButtons);
+	window.addEventListener('resize', toggleScrollButtons);
 
-	list.addEventListener('oViewport.scroll', scrollable);
-	window.addEventListener('oViewport.resize', scrollable);
-
-	buttons.forEach(button => {
-		button.onclick = scroll;
-	});
 
 	checkCurrentPosition();
 }
