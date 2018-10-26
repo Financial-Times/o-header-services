@@ -32,7 +32,7 @@
 
 				&:hover,
 				&--selected,
-				&[aria-selected=true] {
+				&[aria-current=true] {
 					color: _oHeaderServicesGet('nav-text', $from: $theme);
 					background-color: _oHeaderServicesGet('nav-hover-background', $from: $theme);
 				}
