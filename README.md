@@ -43,7 +43,7 @@ The simplest header, appropriate for single page applications with no navigation
 ```
 <header class='o-header-services' data-o-component='o-header-services'>
 	<div class='o-header-services__top o-header-services__container'>
-		<div class='o-header-services__ftlogo'></div>
+		<div class='o-header-services__logo'></div>
 		<div class='o-header-services__title'>
 			<h1 class='o-header-services__product-name'><a href='/'>Tool or Service name</a></h1>
 			<span class='o-header-subrand__product-tagline '>Tagline to explain the product here</span>
@@ -59,7 +59,7 @@ The simplest header, appropriate for single page applications with no navigation
 +<header class='o-header-services o-header-services--b2b' data-o-component='o-header'>
 -<header class='o-header-services' data-o-component='o-header'>
 	<div class='o-header-services__top o-header-services__container'>
-		<div class='o-header-services__ftlogo'></div>
+		<div class='o-header-services__logo'></div>
 		<div class='o-header-services__title'>
 			<h1 class='o-header-services__product-name'><a href='/'>Tool or Service name</a></h1>
 			<span class='o-header-services__product-tagline '>Tagline to explain the product here</span>
@@ -86,7 +86,7 @@ To add support for related content, add the following to your markup:
 +			<div class='o-header-services__hamburger'>
 +				<a class='o-header-services__hamburger-icon' href="#""><span class="o-header-services__visually-hidden">Menu</span></a>
 +			</div>
-			<div class='o-header-services__ftlogo'></div>
+			<div class='o-header-services__logo'></div>
 			<div class='o-header-services__title'>
 				<h1 class='o-header-services__product-name'><a href=''>Tool or Service name</a></h1><span class='o-header-subrand__product-tagline '>Tagline to explain the product here</span>
 			</div>
@@ -115,7 +115,7 @@ This requires the drawer code, as seen above, and the following addition:
 			<div class='o-header-services__hamburger'>
 				<a class='o-header-services__hamburger-icon' href="#"><span class="o-header-services__visually-hidden">Menu</span></a>
 			</div>
-			<div class='o-header-services__ftlogo'></div>
+			<div class='o-header-services__logo'></div>
 			<div class='o-header-services__title'>
 				<h1 class='o-header-services__product-name'><a href=''>Tool or Service name</a></h1><span class='o-header-services__product-tagline '>Tagline to explain the product here</span>
 			</div>
@@ -158,7 +158,7 @@ To use the secondary navigation, use the primary navigation and add the followin
 			<div class='o-header-services__hamburger'>
 				<a class='o-header-services__hamburger-icon' href="#"><span class="o-header-services__visually-hidden">Menu</span></a>
 			</div>
-			<div class='o-header-services__ftlogo'></div>
+			<div class='o-header-services__logo'></div>
 			<div class='o-header-services__title'>
 				<h1 class='o-header-services__product-name'><a href=''>Tool or Service name</a></h1><span class='o-header-services__product-tagline '>Tagline to explain the product here</span>
 			</div>
@@ -240,7 +240,7 @@ For example, in the case of using both primary and secondary navigation:
 			<div class='o--if-js o-header-services__hamburger'>
 				<a class='o-header-services__hamburger-icon' href="#o-header-drawer"	aria-controls="o-header-drawer"><span class="o-header__visually-hidden">Menu</span></a>
 			</div>
-			<div class='o-header-services__ftlogo'></div>
+			<div class='o-header-services__logo'></div>
 			<div class='o-header-services__title'>
 				<h1 class='o-header-services__product-name'><a href=''>Tool or Service name</a></h1><span class='o-header-subrand__product-tagline '>Tagline to explain the product here</span>
 			</div>
@@ -339,7 +339,7 @@ The markup for a full header has changed in the following way:
 +				<span class="o-header-services__visually-hidden">Menu</span>
 			</a>
 		</div>
-		<div class='o-header-services__ftlogo'></div>
+		<div class='o-header-services__logo'></div>
 		<div class='o-header-services__title'>
 			<h1 class='o-header-services__product-name'><a href=''>Tool or Service name</a></h1>
 -				<span class='o-header-subrand__product-tagline '>Tagline to explain the product here</span>

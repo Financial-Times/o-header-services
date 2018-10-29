@@ -1,7 +1,7 @@
 const	titleOnly = `
 	<header class='o-header-services' data-o-component='o-header'>
 		<div class='o-header-services__top o-header-services__container'>
-			<div class='o-header-services__ftlogo'></div>
+			<div class='o-header-services__logo'></div>
 			<div class='o-header-services__title'>
 				<h1 class='o-header-services__product-name'><a href="/">Tool or Service name</a></h1><span class='o-header-subrand__product-tagline '>Tagline to explain the product here</span>
 			</div>
@@ -15,7 +15,7 @@ const	withPrimaryNav = `
 			<div class="o-header-services__hamburger">
 				<a class="o-header-services__hamburger-icon" href="#" aria-controls="o-header-drawer" role="button" data-o-toggle--js="true" aria-expanded="false"><span class="o-header__visually-hidden">Menu</span></a>
 			</div>
-			<div class='o-header-services__ftlogo'></div>
+			<div class='o-header-services__logo'></div>
 			<div class='o-header-services__title'>
 				<h1 class='o-header-services__product-name'><a href="/">Tool or Service name</a></h1><span class='o-header-subrand__product-tagline'>Tagline to explain the product here</span>
 			</div>
