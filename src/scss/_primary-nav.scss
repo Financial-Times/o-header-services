@@ -50,7 +50,7 @@
 
 		&.o-header-services__primary-nav--hidden {
 			display: none;
-			animate: toggleNav 0.5s $o-visual-effects-transition-fade;
+			animation: toggleNav 0.5s $o-visual-effects-transition-fade;
 		}
 
 		&.o-header-services__primary-nav--open {

@@ -1,6 +1,6 @@
 import oViewport from 'o-viewport';
 
-class DropDown  {
+class DropDown {
 	constructor(headerEl) {
 		this.headerEl = headerEl;
 		this.nav = headerEl.querySelector('.o-header-services__primary-nav');
@@ -8,10 +8,10 @@ class DropDown  {
 			dropdown: 'o-header-services__primary-nav--dropdown',
 			open: 'o-header-services__primary-nav--open',
 			hidden: 'o-header-services__primary-nav--hidden'
-		}
+		};
 
 		if (!this.nav) {
-			return
+			return;
 		}
 
 		let burger = this.headerEl.querySelector('.o-header-services__hamburger-icon');
@@ -22,7 +22,7 @@ class DropDown  {
 
 		window.addEventListener('oViewport.resize', this.render.bind(this));
 
-		this.render.bind(this);
+		this.render();
 	}
 
 	render () {
@@ -56,7 +56,7 @@ class DropDown  {
 		let relatedContentList = this.headerEl.querySelector('.o-header-services__related-content');
 		let navList = this.nav.querySelector('.o-header-services__nav-list');
 
-		relatedContent.forEach(item => shiftItems ? navList.appendChild(item) : relatedContentList.appendChild(item))
+		relatedContent.forEach(item => shiftItems ? navList.appendChild(item) : relatedContentList.appendChild(item));
 	}
 
 	_swapClasses (existingClass, newClass, tabbing) {
