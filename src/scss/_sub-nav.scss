@@ -3,14 +3,17 @@
 	.o-header-services__subnav {
 		background-color: _oHeaderServicesGet('nav-background');
 		border-bottom: 1px solid _oHeaderServicesGet('nav-border');
-		height: oTypographySpacingSize(9);
+		height: $_o-header-services-sub-nav-height;
 		overflow: hidden;
+
+		.o-header-services__container {
+			height: $_o-header-services-sub-nav-height;
+		}
 	}
 
 	.o-header-services__subnav-content {
 		display: flex;
 		white-space: nowrap;
-		overflow: auto;
 	}
 
 	.o-header-services__subnav-list {
@@ -89,26 +92,24 @@
 		}
 	}
 
+	.o-header-services__scroll-button--left {
+		@include oButtonsIconButton('arrow-left', $is-icon-only: true, $theme: $_o-header-services-button-theme);
+		left: 0;
+	}
+
+	.o-header-services__scroll-button--right {
+		@include oButtonsIconButton('arrow-right', $is-icon-only: true, $theme: $_o-header-services-button-theme);
+		right: 0;
+	}
+
 	.o-header-services__scroll-button {
-		$_o-header-services-theme: (background: _oHeaderServicesGet('nav-text'), accent: _oHeaderServicesGet('nav-border'), colorizer: 'primary');
-		@include oButtonsTheme($theme: $_o-header-services-theme);
+		@include oButtonsTheme($theme: $_o-header-services-button-theme);
 		position: absolute;
 		top: 0;
 		height: 100%;
 		transition: opacity 0.5s $o-visual-effects-transition-fade;
 		display: inline-block;
-
-		&--left {
-			@include oButtonsIconButton('arrow-left', $is-icon-only: true, $theme: $_o-header-services-theme);
-			min-width:  oTypographySpacingSize(6); //set after mixin because source order
-			left: 0;
-		}
-
-		&--right {
-			@include oButtonsIconButton('arrow-right', $is-icon-only: true, $theme: $_o-header-services-theme);
-			min-width:  oTypographySpacingSize(6); //set after mixin because source order
-			right: 0;
-		}
+		min-width:  oTypographySpacingSize(6);
 
 		&[disabled] {
 			opacity: 0;

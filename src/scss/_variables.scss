@@ -3,13 +3,18 @@ $o-header-services-is-silent: true !default;
 $_o-header-services-padding-x: oGridGutter();
 $_o-header-services-padding-y: oGridGutter();
 
-$_o-header-services-top-bar-y: oTypographySpacingSize(14);
-$_o-header-services-top-bar-y-small: oTypographySpacingSize(11);
+$_o-header-services-top-bar-short: oTypographySpacingSize(11);
 $_o-header-services-top-bar-z-index: 2;
 
-$_o-header-services-primary-nav-y: oTypographySpacingSize(9);
 $_o-header-services-primary-nav-z-index: 1;
+$_o-header-services-sub-nav-height: oTypographySpacingSize(9);
 
-$_o-header-services-icon-size: 40px;
+$_o-header-services-icon-size: oTypographySpacingSize(10);
+
+$_o-header-services-button-theme: (
+	background: _oHeaderServicesGet('nav-text'),
+	accent: _oHeaderServicesGet('nav-border'),
+	colorizer: 'primary'
+);
 
 $o-header-services-default-logo: _oHeaderServicesGet('logo');
