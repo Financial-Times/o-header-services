@@ -1,77 +1,84 @@
-/**
- * Enable scrolling for navigation bars.
- * @param {HTMLElement} headerEl - The parent element of the scrollable nav
- */
-function init(headerEl) {
-	const container = headerEl.querySelector('[data-o-header-services-nav]');
+class Scroll {
+	constructor (headerEl) {
+		this.headerEl = headerEl;
+		this.container = headerEl.querySelector('[data-o-header-services-nav]');
 
-	if (container === null) {
-		return;
+		if (!this.container) { return; }
+
+		this.list = this.container.querySelector('[data-o-header-services-nav-list]');
+		this.buttons = Array.from(this.container.getElementsByTagName('button'), button => {
+			button.addEventListener('click', this.scroll.bind(this));
+			return button;
+		});
+
+		this.width = {};
+
+		this.list.addEventListener('scroll', this.toggleScrollButtons.bind(this));
+		window.addEventListener('resize', this.toggleScrollButtons.bind(this));
+
+		this.render();
 	}
 
-	const list = container.querySelector('[data-o-header-services-nav-list]');
-	const buttons = Array.from(container.getElementsByTagName('button'), button => {
-		button.addEventListener('click', scroll);
-		return button;
-	});
-
-	let listWidth;
-	let containerWidth;
-
-	function checkCurrentPosition() {
-		const currentSelection = list.querySelector('[aria-current]');
-
-		if (currentSelection) {
-			let currentSelectionEnd = currentSelection.getBoundingClientRect().right;
-
-			//if the current selection is wider than the end of the list
-			if (currentSelectionEnd > containerWidth) {
-				// check by how much
-				let diff = currentSelectionEnd - containerWidth;
-				// if the difference is greater than half of the list, scroll to the end of the current selection.
-				diff = (diff > containerWidth / 2) ? currentSelectionEnd : containerWidth / 2;
-
-				list.scrollTo({ left: diff, top: 0, behaviour: 'smooth' });
-			}
-		}
-
-		toggleScrollButtons();
+	render () {
+		this.showCurrentSelection();
+		this.toggleScrollButtons();
 	}
 
-	function toggleScrollButtons() {
-		listWidth = list.scrollWidth;
-		containerWidth = list.clientWidth;
+	toggleScrollButtons () {
+		this._getWidths();
 
-		buttons.forEach(button => {
+		this.buttons.forEach(button => {
 			if (button.className.match('left')) {
-				button.disabled = list.scrollLeft === 0;
+				button.disabled = this.list.scrollLeft === 0;
 			} else {
-				const remaining = listWidth > containerWidth ? listWidth - containerWidth - list.scrollLeft : 0;
+				const remaining = this.width.list > this.width.container ? this._remaining() : 0;
 				button.disabled = remaining <= 1;
 			}
 		});
 	}
 
-	function scroll(e) {
+	scroll (e) {
 		let distance = 100;
 
-		if (e.currentTarget.className.match('left')) {
-			distance = (list.scrollLeft > distance ? distance : list.scrollLeft) * -1;
+		if(e.currentTarget.className.match('left')) {
+			distance = (this.list.scrollLeft > distance ? distance : this.list.scrollLeft) * -1;
 		} else {
-			const remaining = listWidth - containerWidth - list.scrollLeft;
+			const remaining = this._remaining();
 			distance = remaining > distance ? distance : remaining;
 		}
 
-		list.scrollLeft = list.scrollLeft + distance;
+		this.list.scrollLeft = this.list.scrollLeft + distance;
 
-		toggleScrollButtons();
+		this.toggleScrollButtons();
 	}
 
-	list.addEventListener('scroll', toggleScrollButtons);
-	window.addEventListener('resize', toggleScrollButtons);
+	_remaining () {
+		return this.width.list - this.width.container - this.list.scrollLeft;
+	}
 
+	_getWidths () {
+		this.width.list = this.list.scrollWidth;
+		this.width.container = this.list.clientWidth;
+	}
 
-	checkCurrentPosition();
+	showCurrentSelection () {
+		this._getWidths();
+		const currentSelection = this.list.querySelector('[aria-current]');
+
+		if (!currentSelection) { return; }
+
+		let currentSelectionEnd = currentSelection.getBoundingClientRect().right;
+
+		//if the current selection is wider than the end of the list
+		if (currentSelectionEnd > this.width.container) {
+			// check by how much
+			let diff = currentSelectionEnd - this.width.container;
+			// if the difference is greater than half of the list, scroll to the end of the current selection.
+			diff = (diff > this.width.container / 2) ? currentSelectionEnd : this.width.container / 2;
+
+			this.list.scrollTo({ left: diff, top: 0, behaviour: 'smooth' });
+		}
+	}
 }
 
-export default { init };
+export default Scroll;

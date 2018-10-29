@@ -1,5 +1,5 @@
-import DropDown from './dropdown';
-import scroll from './scroll';
+import DropDown from './drop-down';
+import Scroll from './scroll';
 
 class HeaderServices {
 	/**
@@ -7,11 +7,8 @@ class HeaderServices {
 	 * @param {HTMLElement} [headerEl] - The component element in the DOM
 	 */
 	constructor (headerEl) {
-		this.headerEl = headerEl;
-
 		new DropDown(headerEl);
-		// drawer.init(this.headerEl);
-		scroll.init(this.headerEl);
+		new Scroll(headerEl);
 	}
 
 	/**

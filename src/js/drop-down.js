@@ -10,9 +10,7 @@ class DropDown {
 			hidden: 'o-header-services__primary-nav--hidden'
 		};
 
-		if (!this.nav) {
-			return;
-		}
+		if (!this.nav) { return; }
 
 		let burger = this.headerEl.querySelector('.o-header-services__hamburger-icon');
 		burger.addEventListener('click', this.toggleNav.bind(this));
@@ -49,9 +47,7 @@ class DropDown {
 	_shiftRelatedContentList (shiftItems) {
 		let relatedContent = Array.from(this.headerEl.querySelectorAll('.o-header-services__related-content-list-item'));
 
-		if (!relatedContent) {
-			return;
-		}
+		if (!relatedContent) { return; }
 
 		let relatedContentList = this.headerEl.querySelector('.o-header-services__related-content');
 		let navList = this.nav.querySelector('.o-header-services__nav-list');
