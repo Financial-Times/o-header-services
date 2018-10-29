@@ -52,7 +52,9 @@ describe('Header', () => {
 
 			click(burgerIcon);
 			proclaim.isFalse(primaryNav.classList.contains('o-header-services__primary-nav--hidden'));
-			proclaim.isTrue(primaryNav.hasAttribute('aria-hidden', false));
+			setTimeout(() =>  {
+				proclaim.isTrue(primaryNav.classList.contains('o-header-services__primary-nav--open'))
+			}, 200);
 		});
 
 		it('hides primary nav on second burger icon click', () => {
@@ -60,8 +62,10 @@ describe('Header', () => {
 
 			click(burgerIcon);
 			click(burgerIcon);
-			proclaim.isFalse(primaryNav.classList.contains('o-header-services__primary-nav--hidden'));
-			proclaim.isTrue(primaryNav.hasAttribute('aria-hidden', false));
+			proclaim.isFalse(primaryNav.classList.contains('o-header-services__primary-nav--open'));
+			setTimeout(() => {
+				proclaim.isTrue(primaryNav.classList.contains('o-header-services__primary-nav--hidden'));
+			}, 200);
 		});
 
 		it('shifts related content to primary nav', () => {

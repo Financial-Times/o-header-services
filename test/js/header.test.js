@@ -21,6 +21,5 @@ describe('Header instance', () => {
 	it('constructor', () => {
 		const header = new HeaderServices(headerEl);
 		proclaim.isInstanceOf(header, HeaderServices);
-		proclaim.deepEqual(header.headerEl, headerEl);
 	});
 });
