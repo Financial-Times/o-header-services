@@ -1,4 +1,4 @@
-import drawer from './drawer';
+import DropDown from './dropdown';
 import scroll from './scroll';
 
 class HeaderServices {
@@ -9,7 +9,8 @@ class HeaderServices {
 	constructor (headerEl) {
 		this.headerEl = headerEl;
 
-		drawer.init(this.headerEl);
+		new DropDown(headerEl);
+		// drawer.init(this.headerEl);
 		scroll.init(this.headerEl);
 	}
 
