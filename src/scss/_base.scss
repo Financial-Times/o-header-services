@@ -1,6 +1,9 @@
 /// Fundamental styles for header
 /// @param {Boolean} $bleed [whether or not to make the header a bleed header. Defaults to false.]
 @mixin oHeaderServicesBase($bleed: false) {
+	//Surface layouts for o-grid JavaScript helper https://github.com/Financial-Times/o-grid#getcurrentlayout
+	@include oGridSurfaceCurrentLayout();
+
 	.o-header-services {
 		@include oTypographySans($scale: 0);
 		background-color: _oHeaderServicesGet('top-background');

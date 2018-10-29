@@ -14,6 +14,7 @@
 	.o-header-services__subnav-content {
 		display: flex;
 		white-space: nowrap;
+		overflow: auto;
 	}
 
 	.o-header-services__subnav-list {

@@ -1,3 +1,4 @@
+import oGrid from 'o-grid';
 class DropDown {
 	constructor(headerEl) {
 		this.headerEl = headerEl;
@@ -19,7 +20,9 @@ class DropDown {
 	}
 
 	render () {
-		if (window.innerWidth < 740) {
+		const layout = oGrid.getCurrentLayout();
+
+		if (layout === 'default' || layout === 'S') {
 			this._shiftRelatedContentList(true);
 			this.nav.classList.add(this.class.dropdown, this.class.hidden);
 			this.nav.setAttribute('aria-hidden', true);
