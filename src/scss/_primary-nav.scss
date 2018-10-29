@@ -42,7 +42,7 @@
 
 		.o-header-services__nav-list {
 			@include oVisualEffectsShadowsElevation('mid');
-			transition: all 0.5s $o-visual-effects-transition-expand;
+			transition: transform 0.5s $o-visual-effects-transition-expand;
 			transform: translate3d(0, -100%, 0);
 			flex-direction: column;
 			margin: 0;
@@ -50,7 +50,7 @@
 
 		&.o-header-services__primary-nav--hidden {
 			display: none;
-			animation: toggleNav 0.5s $o-visual-effects-transition-fade;
+			animation: opacity 0.5s $o-visual-effects-transition-fade;
 		}
 
 		&.o-header-services__primary-nav--open {
@@ -60,7 +60,3 @@
 		}
 	}
 };
-
-@keyframes toggleNav {
-	0% { opacity: 0; }
-}

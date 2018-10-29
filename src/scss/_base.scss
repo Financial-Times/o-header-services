@@ -31,7 +31,6 @@
 				@include oGridContainer($bleed: $bleed)
 				max-width: 100%;
 				padding: 0 20px;
-
 			}
 		}
 	}
@@ -39,8 +38,8 @@
 
 /// Outputs full header styles
 /// @param {String} $logo [ft-logo depending on brand (pink or white)]
-@mixin oHeaderServices($logo: $o-header-services-default-logo) {
-	@include oHeaderServicesBase;
+@mixin oHeaderServices($logo: $o-header-services-default-logo, $bleed: true) {
+	@include oHeaderServicesBase($bleed);
 	@include oHeaderServicesTop($logo);
 	@include oHeaderServicesPrimaryNav;
 	@include oHeaderServicesSubNav;

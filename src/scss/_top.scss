@@ -24,14 +24,14 @@
 		background-position: 0;
 		@include oGridRespondTo($until: M) {
 			margin: 0;
-			width: $_o-header-services-top-bar-short;;
-			height: $_o-header-services-top-bar-short;;
+			width: $_o-header-services-top-bar-short;
+			height: $_o-header-services-top-bar-short;
 		}
 	}
 
 	.o-header-services__hamburger {
-		height: $_o-header-services-top-bar-short;;
-		width: $_o-header-services-top-bar-short;;
+		height: $_o-header-services-top-bar-short;
+		width: $_o-header-services-top-bar-short;
 		@include oGridRespondTo(M) {
 			display: none;
 		}
@@ -43,8 +43,8 @@
 			$color: _oHeaderServicesGet('top-text'),
 			$container-width: $_o-header-services-icon-size
 		);
-		height: $_o-header-services-top-bar-short;;
-		width: $_o-header-services-top-bar-short;;
+		height: $_o-header-services-top-bar-short;
+		width: $_o-header-services-top-bar-short;
 	}
 
 	.o-header-services__title {
@@ -90,7 +90,6 @@
 
 	.o-header-services__related-content-list-item {
 		background-color: _oHeaderServicesGet('top-background');
-
 
 		.o-header-services__related-content-link {
 			@include oTypographyBold('sans');
