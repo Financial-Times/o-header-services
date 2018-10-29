@@ -4,27 +4,6 @@
 		position: relative;
 		background-color: _oHeaderServicesGet('nav-background');
 		border-bottom: 1px solid _oHeaderServicesGet('nav-border');
-		width: 100%;
-		height: 100%;
-
-		// &[aria-hidden=true] {
-		// 	opacity: 0;
-		//
-		// 	.o-header-services__nav-list {
-		// 		transform: translate3d(0, -100%, 0);
-		// 	}
-		// }
-
-		// &.o-header-services__primary-nav--hidden {
-		// 	display: none;
-		// }
-
-		// @include oGridRespondTo($until: M) {
-		// 	position: absolute;
-		// 	z-index: $_o-header-services-primary-nav-z-index;
-		// 	background-color: rgba(0, 0, 0, 0.2);
-		// 	transition: opacity 0.5s $o-visual-effects-transition-fade;
-		// };
 	}
 
 	.o-header-services__nav-list {
@@ -34,14 +13,6 @@
 		display: flex;
 		padding: 0;
 		margin: 0 (0 - ($_o-header-services-padding-x * 2));
-
-		// @include oGridRespondTo($until: M) {
-		// 	@include oVisualEffectsShadowsElevation('mid');
-		// 	transition: all 0.5s $o-visual-effects-transition-expand;
-		// 	transform: translate3d(0, 0, 0);
-		// 	flex-direction: column;
-		// 	margin: 0;
-		// };
 	}
 
 	.o-header-services__nav-link {
@@ -64,32 +35,32 @@
 		position: absolute;
 		z-index: $_o-header-services-primary-nav-z-index;
 		background-color: rgba(0, 0, 0, 0.2);
+		top: $_o-header-services-top-bar-y-small;
+		left: 0;
+		right: 0;
+		bottom: 0;
 
 		.o-header-services__nav-list {
 			@include oVisualEffectsShadowsElevation('mid');
 			transition: all 0.5s $o-visual-effects-transition-expand;
+			transform: translate3d(0, -100%, 0);
 			flex-direction: column;
 			margin: 0;
 		}
 
-		&[aria-hidden] {
-			opacity: 0;
-		}
-
 		&.o-header-services__primary-nav--hidden {
 			display: none;
-
-			.o-header-services__nav-list {
-				transform: translate3d(0, -100%, 0);
-			}
+			animate: toggleNav 0.5s $o-visual-effects-transition-fade;
 		}
 
 		&.o-header-services__primary-nav--open {
-			transition: opacity 0.5s $o-visual-effects-transition-fade;
-
 			.o-header-services__nav-list {
 				transform: translate3d(0, 0, 0);
 			}
 		}
 	}
 };
+
+@keyframes toggleNav {
+	0% { opacity: 0; }
+}

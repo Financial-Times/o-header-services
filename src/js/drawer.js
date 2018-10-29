@@ -29,12 +29,19 @@ function shiftListItems(headerEl, shift) {
  * @access private
  */
 function toggle (nav) {
-	nav.classList.toggle('o-header-services__primary-nav--hidden');
-	setTimeout(() => nav.classList.toggle('o-header-services__primary-nav--open'), 50);
+	if (nav.classList.contains('o-header-services__primary-nav--hidden')) {
+		swapClasses(nav, 'o-header-services__primary-nav--hidden', 'o-header-services__primary-nav--open', false);
+	} else {
+		swapClasses(nav, 'o-header-services__primary-nav--open', 'o-header-services__primary-nav--hidden', true);
+	}
 	nav.toggleAttribute('aria-hidden')
-	nav.classList.contains('o-header-services__primary-nav--hidden') ? toggleTabbing(nav, false) : toggleTabbing(nav, true);
 }
 
+function swapClasses(nav, class1, class2, bool) {
+	nav.classList.remove(class1);
+	setTimeout(() => nav.classList.add(class2), 100);
+	toggleTabbing(nav, bool);
+}
 /**
  * Toggles ability to tab depending on drop down menu visibility, primarily for accessibility
  * @param {HTMLElement} nav The DOM node to toggle
@@ -74,12 +81,11 @@ function init (headerEl) {
 		if (window.innerWidth < 740) {
 			shiftListItems(headerEl, true);
 			nav.classList.add('o-header-services__primary-nav--dropdown', 'o-header-services__primary-nav--hidden');
-			nav.setAttribute('aria-hidden', true);
+			nav.setAttribute('aria-hidden');
 			nav.addEventListener('click', () => toggle(nav));
 		} else {
 			shiftListItems(headerEl, false);
 			nav.classList.remove('o-header-services__primary-nav--dropdown', 'o-header-services__primary-nav--hidden');
-			nav.setAttribute('aria-hidden', false);
 			nav.removeEventListener('click', () => toggle(nav));
 		}
 	};
