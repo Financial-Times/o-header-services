@@ -52,8 +52,8 @@ describe('Header', () => {
 
 			click(burgerIcon);
 			proclaim.isFalse(primaryNav.classList.contains('o-header-services__primary-nav--hidden'));
-			setTimeout(() =>  {
-				proclaim.isTrue(primaryNav.classList.contains('o-header-services__primary-nav--open'))
+			setTimeout(() => {
+				proclaim.isTrue(primaryNav.classList.contains('o-header-services__primary-nav--open'));
 			}, 200);
 		});
 
