@@ -1,5 +1,3 @@
-import oViewport from 'o-viewport';
-
 class DropDown {
 	constructor(headerEl) {
 		this.headerEl = headerEl;
@@ -15,10 +13,7 @@ class DropDown {
 		let burger = this.headerEl.querySelector('.o-header-services__hamburger-icon');
 		burger.addEventListener('click', this.toggleNav.bind(this));
 
-		oViewport.listenTo('resize');
-		oViewport.setThrottleInterval('resize', 100);
-
-		window.addEventListener('oViewport.resize', this.render.bind(this));
+		window.addEventListener('resize', this.render.bind(this));
 
 		this.render();
 	}
@@ -28,11 +23,11 @@ class DropDown {
 			this._shiftRelatedContentList(true);
 			this.nav.classList.add(this.class.dropdown, this.class.hidden);
 			this.nav.setAttribute('aria-hidden', true);
-			this.nav.addEventListener('click', this.toggleNav);
+			this.nav.addEventListener('click', this.toggleNav.bind(this));
 		} else {
 			this._shiftRelatedContentList(false);
 			this.nav.classList.remove(this.class.dropdown, this.class.hidden);
-			this.nav.addEventListener('click', this.toggleNav);
+			this.nav.addEventListener('click', this.toggleNav.bind(this));
 		}
 	}
 
