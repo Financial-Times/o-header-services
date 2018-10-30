@@ -8,7 +8,8 @@
     "o-icons": ">=4.4.2 <6",
     "o-typography": "^5.7.5",
     "o-visual-effects": "^2.0.3",
-    "o-normalise": "^1.6.2"
+    "o-normalise": "^1.6.2",
+    "o-utils": "^1.0.5"
   },
   "main": [
     "main.scss",

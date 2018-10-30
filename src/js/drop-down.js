@@ -1,4 +1,6 @@
 import oGrid from 'o-grid';
+import * as oUtils from 'o-utils';
+
 class DropDown {
 	constructor(headerEl) {
 		this.headerEl = headerEl;
@@ -14,14 +16,13 @@ class DropDown {
 		let burger = this.headerEl.querySelector('.o-header-services__hamburger-icon');
 		burger.addEventListener('click', this.toggleNav.bind(this));
 
-		window.addEventListener('resize', this.render.bind(this));
+		window.addEventListener('resize', oUtils.debounce(this.render.bind(this), 100));
 
 		this.render();
 	}
 
 	render () {
 		const layout = oGrid.getCurrentLayout();
-
 		if (layout === 'default' || layout === 'S') {
 			this._shiftRelatedContentList(true);
 			this.nav.classList.add(this.class.dropdown, this.class.hidden);

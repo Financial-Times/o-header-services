@@ -1,3 +1,5 @@
+import * as oUtils from 'o-utils';
+
 class Scroll {
 	constructor (headerEl) {
 		this.headerEl = headerEl;
@@ -13,8 +15,8 @@ class Scroll {
 
 		this.width = {};
 
-		this.list.addEventListener('scroll', this.toggleScrollButtons.bind(this));
-		window.addEventListener('resize', this.toggleScrollButtons.bind(this));
+		this.list.addEventListener('scroll', oUtils.debounce(this.toggleScrollButtons.bind(this), 100));
+		window.addEventListener('resize', oUtils.debounce(this.toggleScrollButtons.bind(this), 500));
 
 		this.render();
 	}
@@ -26,7 +28,6 @@ class Scroll {
 
 	toggleScrollButtons () {
 		this._getWidths();
-
 		this.buttons.forEach(button => {
 			if (button.className.match('left')) {
 				button.disabled = this.list.scrollLeft === 0;
