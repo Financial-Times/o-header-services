@@ -13,8 +13,8 @@ class DropDown {
 
 		if (!this.nav) { return; }
 
-		let burger = this.headerEl.querySelector('.o-header-services__hamburger-icon');
-		burger.addEventListener('click', this.toggleNav.bind(this));
+		this.burger = this.headerEl.querySelector('.o-header-services__hamburger-icon');
+		this.burger.addEventListener('click', this.toggleNav.bind(this));
 
 		window.addEventListener('resize', oUtils.debounce(this.render.bind(this), 100));
 
@@ -31,6 +31,7 @@ class DropDown {
 		} else {
 			this._shiftRelatedContentList(false);
 			this.nav.classList.remove(this.class.dropdown, this.class.hidden);
+			this.nav.setAttribute('aria-hidden', false);
 			this.nav.addEventListener('click', this.toggleNav.bind(this));
 		}
 	}
@@ -54,11 +55,22 @@ class DropDown {
 		relatedContent.forEach(item => shiftItems ? navList.appendChild(item) : relatedContentList.appendChild(item));
 	}
 
-	_swapClasses (existingClass, newClass, tabbing) {
+	_swapClasses (existingClass, newClass, expand) {
 		this.nav.classList.remove(existingClass);
 		// display: none doesn't work with keyframes, so the element needs to be
 		// rendered before animated on open and animated before hidden on close
 		setTimeout(() => this.nav.classList.add(newClass), 100);
+		this._toggleAriaAttributes(expand);
+	}
+
+	_toggleAriaAttributes(expand) {
+		this.nav.setAttribute('aria-hidden', !expand);
+		this.burger.setAttribute('aria-expanded', expand);
+		if (expand) {
+			this.nav.querySelector('.o-header-services__nav-link').focus()
+		} else {
+			this.burger.focus();
+		};
 	}
 }
 

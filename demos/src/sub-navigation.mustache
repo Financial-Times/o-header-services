@@ -1,7 +1,9 @@
 <header class="o-header-services" data-o-component="o-header-services">
 	<div class="o-header-services__top o-header-services__container">
 		<div class="o-header-services__hamburger">
-			<a class="o-header-services__hamburger-icon" href="#" role="button"><span class="o-header-services__visually-hidden">Menu</span></a>
+			<a class="o-header-services__hamburger-icon" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+				<span class="o-header-services__visually-hidden">Show primary navigation</span>
+			</a>
 		</div>
 		<div class="o-header-services__logo"></div>
 		<div class="o-header-services__title">
@@ -17,7 +19,7 @@
 			</li>
 		</ul>
 	</div>
-	<nav class="o-header-services__primary-nav">
+	<nav class="o-header-services__primary-nav" aria-label="Primary">
 		<div class="o-header-services__container">
 			<ul class="o-header-services__nav-list">
 				<li class="o-header-services__nav-item">
@@ -44,7 +46,7 @@
 		</div>
 	</nav>
 <!-- sub nav markup -->
-	<nav class="o-header-services__subnav" role="navigation" aria-label="Sub navigation">
+	<nav class="o-header-services__subnav" aria-label="Sub navigation">
 		<div class="o-header-services__container" data-o-header-services-nav>
 			<div class="o-header-services__subnav-content" data-o-header-services-nav-list>
 				<ol class="o-header-services__subnav-list o-header-services__subnav-list--breadcrumb" aria-label="Breadcrumb">
