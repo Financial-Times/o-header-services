@@ -5,10 +5,10 @@ This header is for tools and services built by the Financial Times.
 ## Index
 - [Design](#design)
 - [Markup](#markup)
-	- [Very simple header](#very-simple-header)
+	- [Title only header](#title-only-header)
 	- [Themes](#themes)
-	- [Related links and the drawer](#related-links-and-the-drawer)
-		- [Core experience of the drawer](#core-experience-of-the-drawer)
+	- [Related links and the drop down navigation](#related-links-and-the-drop-down-navigation)
+		- [Core experience of the drop down navigation](#core-experience-of-the-drop-down-navigation)
 	- [Primary navigation](#primary-navigation)
 	- [Secondary navigation](#secondary-navigation)
 	- [Bleed header](#bleed-header)
@@ -24,7 +24,7 @@ It has themes for B2B and B2C products under FT.com. If you're building somethin
 The header has the following features:
 
 **Required**
-- A product logo. This will default to the FT logo, but is customisable through Sass mixins.
+- A product logo. This will default to the FT logo, but is customisable through a [Sass mixin](#mixins), meaning that this can only be changed if you are using the manual build process.
 - The product title. This should be present and the same on all of your pages
 
 **Optional**
@@ -37,13 +37,13 @@ The header has the following features:
 
 ## Markup
 
-### Very simple header
+### Title only header
 The simplest header, appropriate for single page applications with no navigation is available with the following code:
 
 ```
-<header class='o-header-services' data-o-component='o-header'>
+<header class='o-header-services' data-o-component='o-header-services'>
 	<div class='o-header-services__top o-header-services__container'>
-		<div class='o-header-services__ftlogo'></div>
+		<div class='o-header-services__logo'></div>
 		<div class='o-header-services__title'>
 			<h1 class='o-header-services__product-name'><a href='/'>Tool or Service name</a></h1>
 			<span class='o-header-subrand__product-tagline '>Tagline to explain the product here</span>
@@ -51,7 +51,6 @@ The simplest header, appropriate for single page applications with no navigation
 	</div>
 </header>
 ```
-
 
 ### Themes
 `o-header-services` offers theming for B2B or B2C products under FT.com. To add a theme to the header, add the appropriate class to a wrapping element. For example, for b2b that would be:
@@ -60,22 +59,23 @@ The simplest header, appropriate for single page applications with no navigation
 +<header class='o-header-services o-header-services--b2b' data-o-component='o-header'>
 -<header class='o-header-services' data-o-component='o-header'>
 	<div class='o-header-services__top o-header-services__container'>
-		<div class='o-header-services__ftlogo'></div>
+		<div class='o-header-services__logo'></div>
 		<div class='o-header-services__title'>
 			<h1 class='o-header-services__product-name'><a href='/'>Tool or Service name</a></h1>
-			<span class='o-header-subrand__product-tagline '>Tagline to explain the product here</span>
+			<span class='o-header-services__product-tagline '>Tagline to explain the product here</span>
 		</div>
 	</div>
 </header>
 ```
 
-### Related links and the drawer
+### Related links and the drop down navigation
 
-o-header-services supports related content (eg Sign in or licence numbers). At large screen widths these appear to the far right of the header. At smaller screens these collapse down to a `drawer` which is behind a hamburger menu.
+o-header-services supports related content (eg Sign in or licence numbers). At large screen widths these appear to the far right of the header.
+At smaller screen widths this will be included in the drop down navigation.
 
 #### Core experience of the drawer
 
-Small screen users should still be able to access the contents of the drawer even if their browser doesn't cut the mustard or the JavaScript has failed to load. In this case we recommend you have the contents of the drawer at the bottom of the page in a footer that is only visible if the body has a `.core` class. In core experience the hamburger menu links to an anchor at the bottom of the page.
+Small screen users should still be able to access the contents of the drop down navigation even if their browser doesn't cut the mustard or the JavaScript has failed to load. This does is not part of `o-header-services`, but we recommend you have the contents of the drop down navigation at the bottom of the page in a footer that is only visible if the body has a `.core` class. In core experience the hamburger menu should link to an anchor at the bottom of the page.
 
 To add support for related content, add the following to your markup:
 
@@ -83,30 +83,24 @@ To add support for related content, add the following to your markup:
 <header class='o-header-services' data-o-component='o-header'>
 	<div class='o-header-services__top'>
 		<div class='o-header-services__container'>
-+			<div class='o--if-js o-header-services__hamburger'>
-+				<a class='o-header-services__hamburger-icon' href="#o-header-drawer"	aria-controls="o-header-drawer"><span class="o-header__visually-hidden">Menu</span></a>
++			<div class='o-header-services__hamburger'>
++				<a class='o-header-services__hamburger-icon' href="#""><span class="o-header-services__visually-hidden">Menu</span></a>
 +			</div>
-			<div class='o-header-services__ftlogo'></div>
+			<div class='o-header-services__logo'></div>
 			<div class='o-header-services__title'>
 				<h1 class='o-header-services__product-name'><a href=''>Tool or Service name</a></h1><span class='o-header-subrand__product-tagline '>Tagline to explain the product here</span>
 			</div>
-			<div class='o-header-services__related-content'>
-				<a href='#'>XXXX</a>
-				<a href='#'>Sign in</a>
-			</div>
++			<ul class="o-header-services__related-content">
++				<li class="o-header-services__related-content-list-item">
++					<a class="o-header-services__related-content-link" href="#">XXXX</a>
++				</li>
++				<li class="o-header-services__related-content-list-item">
++					<a class="o-header-services__related-content-link" href="#">Sign in</a>
++				</li>
++			</ul>
 		</div>
 	</div>
 </header>
-<!-- Drawer HTML from o-header which should include the links from related content. -->
-```
-
-Related content also needs some JavaScript to operate the drawer. If you are using the Build Service this will just work. If you're using a manual build process you should have the following somewhere in your code ([what's this?](http://origami.ft.com/docs/developer-guide/modules/initialising-modules/)):
-
-```
-document.addEventListener("DOMContentLoaded", function() {
-	document.documentElement.className = document.documentElement.className.replace('core', 'enhanced');
-	document.dispatchEvent(new CustomEvent('o.DOMContentLoaded'));
-});
 ```
 
 ### Primary navigation
@@ -115,28 +109,32 @@ If your application has more than one page you may want to add the primary navig
 This requires the drawer code, as seen above, and the following addition:
 
 ```diff
-<header class='o-header-services' data-o-component='o-header'>
+<header class='o-header-services' data-o-component='o-header-services'>
 	<div class='o-header-services__top'>
 		<div class='o-header-services__container'>
-			<div class='o--if-js o-header-services__hamburger'>
-				<a class='o-header-services__hamburger-icon' href="#o-header-drawer"	aria-controls="o-header-drawer"><span class="o-header__visually-hidden">Menu</span></a>
+			<div class='o-header-services__hamburger'>
+				<a class='o-header-services__hamburger-icon' href="#"><span class="o-header-services__visually-hidden">Menu</span></a>
 			</div>
-			<div class='o-header-services__ftlogo'></div>
+			<div class='o-header-services__logo'></div>
 			<div class='o-header-services__title'>
-				<h1 class='o-header-services__product-name'><a href=''>Tool or Service name</a></h1><span class='o-header-subrand__product-tagline '>Tagline to explain the product here</span>
+				<h1 class='o-header-services__product-name'><a href=''>Tool or Service name</a></h1><span class='o-header-services__product-tagline '>Tagline to explain the product here</span>
 			</div>
-			<div class='o-header-services__related-content'>
-				<a href='#'>XXXX</a>
-				<a href='#'>Sign in</a>
-			</div>
+			<ul class="o-header-services__related-content">
+				<li class="o-header-services__related-content-list-item">
+					<a class="o-header-services__related-content-link" href="#">XXXX</a>
+				</li>
+				<li class="o-header-services__related-content-list-item">
+					<a class="o-header-services__related-content-link" href="#">Sign in</a>
+				</li>
+			</ul>
 		</div>
 	</div>
 </header>
 +<nav class='o-header-services__primary-nav'>
 + <div class='o-header-services__container'>
 +	 <ul class='o-header-services__nav-list'>
-+		 <li class='o-header-services__nav-item o-header-services__nav-item--selected'>
-+			 <a href='#'>
++		 <li class='o-header-services__nav-item'>
++			 <a class="o-header-services__nav-link  o-header-services__nav-link--selected" href='#'>
 +				 Nav item title
 +			 </a>
 +			</li>
@@ -144,7 +142,6 @@ This requires the drawer code, as seen above, and the following addition:
 +		</ul>
 +	</div>
 +</nav>
-<!-- Drawer HTML as above this should include related content links (if any) and nav items-->
 ```
 
 ### Secondary navigation
@@ -152,18 +149,18 @@ This requires the drawer code, as seen above, and the following addition:
 If your application is more complicated still, you may want to use a secondary navigation.
 The secondary nav allows for breadcrumbs for many addition levels of navigation.
 
-To use the secondary navigation, use the primary navigation (with the drawer) and add the following code:
+To use the secondary navigation, use the primary navigation and add the following code:
 
 ```diff
-<header class='o-header-services' data-o-component='o-header'>
+<header class='o-header-services' data-o-component='o-header-services'>
 	<div class='o-header-services__top'>
 		<div class='o-header-services__container'>
-			<div class='o--if-js o-header-services__hamburger'>
-				<a class='o-header-services__hamburger-icon' href="#o-header-drawer"	aria-controls="o-header-drawer"><span class="o-header__visually-hidden">Menu</span></a>
+			<div class='o-header-services__hamburger'>
+				<a class='o-header-services__hamburger-icon' href="#"><span class="o-header-services__visually-hidden">Menu</span></a>
 			</div>
-			<div class='o-header-services__ftlogo'></div>
+			<div class='o-header-services__logo'></div>
 			<div class='o-header-services__title'>
-				<h1 class='o-header-services__product-name'><a href=''>Tool or Service name</a></h1><span class='o-header-subrand__product-tagline '>Tagline to explain the product here</span>
+				<h1 class='o-header-services__product-name'><a href=''>Tool or Service name</a></h1><span class='o-header-services__product-tagline '>Tagline to explain the product here</span>
 			</div>
 			<div class='o-header-services__related-content'>
 				<a href='#'>XXXX</a>
@@ -184,54 +181,66 @@ To use the secondary navigation, use the primary navigation (with the drawer) an
 		</ul>
 	</div>
 </nav>
-<!-- note that these are o-header classes, because this component inherits directly from o-header and overrides a few styles -->
-+<nav class="o-header__subnav" role="navigation" aria-label="Sub navigation" data-o-header-subnav>
-+	<div class="o-header-services__container">
-+		<div class="o-header__subnav-wrap-outside">
-+			<div class="o-header__subnav-wrap-inside" data-o-header-subnav-wrapper>
-+				<div class="o-header__subnav-content">
-+					<ol class="o-header__subnav-list o-header__subnav-list--breadcrumb" aria-label="Breadcrumb">
-+						<li class="o-header__subnav-item">
-+							<a class="o-header__subnav-link" href="#">
-+								ancestor section
-+							</a>
-+						</li>
-+						<!-- other breadcrumb links -->
-+					</ol>
-+					<ul class="o-header__subnav-list o-header__subnav-list--children" aria-label="Subsections">
-+						<li class="o-header__subnav-item">
-+							<a class="o-header__subnav-link" href="{{href}}">
-+								child page
-+							</a>
-+						</li>
-+						<!-- More links to child pages -->
-+					</ul>
-+				</div>
-+			</div>
-+			<button class="o-header__subnav-button o-header__subnav-button--left" title="scroll left" aria-hidden="true" disabled></button>
-+			<button class="o-header__subnav-button o-header__subnav-button--right" title="scroll right" aria-hidden="true" disabled></button>
+
++<nav class="o-header-services__subnav" role="navigation" aria-label="Sub navigation">
++	<div class="o-header-services__container" data-o-header-services-nav>
++		<div class="o-header-services__subnav-content" data-o-header-services-nav-list>
++			<ol class="o-header-services__subnav-list o-header-services__subnav-list--breadcrumb" aria-label="Breadcrumb">
++				<li class="o-header-services__subnav-item">
++					<a class="o-header-services__subnav-link" href="#">
++						ancestor section
++					</a>
++				</li>
++				<li class="o-header-services__subnav-item">
++					<a class="o-header-services__subnav-link" href="#">
++						ancestor section
++					</a>
++				</li>
++				<li class="o-header-services__subnav-item">
++					<a class="o-header-services__subnav-link" href="#" aria-current="true" aria-label="Current page">
++						current section
++					</a>
++				</li>
++			</ol>
+
++			<ul class="o-header-services__subnav-list o-header-services__subnav-list--children" aria-label="Subsections">
++				<li class="o-header-services__subnav-item">
++					<a class="o-header-services__subnav-link" href="{{href}}">
++						child page
++					</a>
++				</li>
++				<li class="o-header-services__subnav-item">
++					<a class="o-header-services__subnav-link" href="{{href}}">
++						child page
++					</a>
++				</li>
++				<li class="o-header-services__subnav-item">
++					<a class="o-header-services__subnav-link" href="{{href}}">
++						child page
++					</a>
++				</li>
++			</ul>
 +		</div>
++		<button class="o-header-services__scroll-button o-header-services__scroll-button--left" title="scroll left" aria-hidden="true" disabled></button>
++		<button class="o-header-services__scroll-button o-header-services__scroll-button--right" title="scroll right" aria-hidden="true" disabled></button>
 +	</div>
 +</nav>
 
-<!-- Drawer HTML as above this should include related content links (if any) and nav items-->
-
 ```
 
-
 ### Bleed Header
-If your application requires a bleed header, it will be necessary to replace all instances of `o-header-services__container` with `o-header-services__bleed-container`.
+If your application requires a bleed header, you will need to add the `o-header-services--bleed` variant to your header.
 For example, in the case of using both primary and secondary navigation:
 
 ```diff
-<header class='o-header-services' data-o-component='o-header'>
+-<header class='o-header-services' data-o-component='o-header'>
++<header class='o-header-services o-header-services--bleed' data-o-component='o-header'>
 	<div class='o-header-services__top'>
--		<div class='o-header-services__container'>
-+		<div class='o-header-services__bleed-container'>
+		<div class='o-header-services__container'>
 			<div class='o--if-js o-header-services__hamburger'>
 				<a class='o-header-services__hamburger-icon' href="#o-header-drawer"	aria-controls="o-header-drawer"><span class="o-header__visually-hidden">Menu</span></a>
 			</div>
-			<div class='o-header-services__ftlogo'></div>
+			<div class='o-header-services__logo'></div>
 			<div class='o-header-services__title'>
 				<h1 class='o-header-services__product-name'><a href=''>Tool or Service name</a></h1><span class='o-header-subrand__product-tagline '>Tagline to explain the product here</span>
 			</div>
@@ -243,8 +252,7 @@ For example, in the case of using both primary and secondary navigation:
 	</div>
 </header>
 <nav class='o-header-services__primary-nav'>
--	<div class='o-header-services__container'>
-+	<div class='o-header-services__bleed-container'>
+	<div class='o-header-services__container'>
 		<ul class='o-header-services__nav-list'>
 			<li class='o-header-services__nav-item o-header-services__nav-item--selected'>
 				<a href='#'>
@@ -255,53 +263,154 @@ For example, in the case of using both primary and secondary navigation:
 		</ul>
 	</div>
 </nav>
-<!-- note that these are o-header classes, because this component inherits directly from o-header and overrides a few styles -->
-<nav class="o-header__subnav" role="navigation" aria-label="Sub navigation" data-o-header-subnav>
--	<div class="o-header-services__container">
-+	<div class="o-header-services__bleed-container">
-		<div class="o-header__subnav-wrap-outside">
-			<div class="o-header__subnav-wrap-inside" data-o-header-subnav-wrapper>
-				<div class="o-header__subnav-content">
-					<ol class="o-header__subnav-list o-header__subnav-list--breadcrumb" aria-label="Breadcrumb">
-						<li class="o-header__subnav-item">
-							<a class="o-header__subnav-link" href="#">
-								ancestor section
-							</a>
-						</li>
-						<!-- other breadcrumb links -->
-					</ol>
-					<ul class="o-header__subnav-list o-header__subnav-list--children" aria-label="Subsections">
-						<li class="o-header__subnav-item">
-							<a class="o-header__subnav-link" href="{{href}}">
-								child page
-							</a>
-						</li>
-						<!-- More links to child pages -->
-					</ul>
-				</div>
-			</div>
-			<button class="o-header__subnav-button o-header__subnav-button--left" title="scroll left" aria-hidden="true" disabled></button>
-			<button class="o-header__subnav-button o-header__subnav-button--right" title="scroll right" aria-hidden="true" disabled></button>
+
+<nav class="o-header-services__subnav" role="navigation" aria-label="Sub navigation">
+	<div class="o-header-services__container" data-o-header-services-nav>
+		<div class="o-header-services__subnav-content" data-o-header-services-nav-list>
+			<ol class="o-header-services__subnav-list o-header-services__subnav-list--breadcrumb" aria-label="Breadcrumb">
+				<li class="o-header-services__subnav-item">
+					<a class="o-header-services__subnav-link" href="#">
+						ancestor section
+					</a>
+				</li>
+				<li class="o-header-services__subnav-item">
+					<a class="o-header-services__subnav-link" href="#">
+						ancestor section
+					</a>
+				</li>
+				<li class="o-header-services__subnav-item">
+					<a class="o-header-services__subnav-link" href="#" aria-current="true" aria-label="Current page">
+						current section
+					</a>
+				</li>
+			</ol>
+
+			<ul class="o-header-services__subnav-list o-header-services__subnav-list--children" aria-label="Subsections">
+				<li class="o-header-services__subnav-item">
+					<a class="o-header-services__subnav-link" href="{{href}}">
+						child page
+					</a>
+				</li>
+				<li class="o-header-services__subnav-item">
+					<a class="o-header-services__subnav-link" href="{{href}}">
+						child page
+					</a>
+				</li>
+				<li class="o-header-services__subnav-item">
+					<a class="o-header-services__subnav-link" href="{{href}}">
+						child page
+					</a>
+				</li>
+			</ul>
 		</div>
+		<button class="o-header-services__scroll-button o-header-services__scroll-button--left" title="scroll left" aria-hidden="true" disabled></button>
+		<button class="o-header-services__scroll-button o-header-services__scroll-button--right" title="scroll right" aria-hidden="true" disabled></button>
 	</div>
 </nav>
-
-<!-- Drawer HTML as above this should include related content links (if any) and nav items-->
 ```
 
 ## Sass
 
 As with all Origami components, o-header-services has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). To use its compiled CSS (rather than using its mixins with your own Sass) set `$o-header-services-is-silent : false;` in your Sass before you import the o-header-services Sass.
 
-As previously mentioned, the logo in the header will default to the FT logo. Although it is customisable, that is currently only available through the use of mixins. Within your main Sass file, include the following, along with your products' logo, preferably as a png or an svg.
+As previously mentioned, the logo in the header will default to the FT logo. Although it is customisable, that is currently only available through the use of mixins.
+You can use any of the logos within the [logo-images](https://registry.origami.ft.com/components/logo-images) image set.
 
 ```sass
 @import 'o-header-services/main';
 
-@include oHeaderServices($class: 'my-product-header', $logo: 'my-product-logo');
+@include oHeaderServices($logo: 'origami');
 ```
 
 ## Migration guide
+
+### Migrating from v2.x.x to v3.x.x
+
+V2 introduces many new changes to o-header-services. It sees the drawer removed, and now uses the primary nav as a drop down menu on smaller viewports. It removes a large dependency on o-header, and changes multiple class names and markup.
+
+The markup for a full header has changed in the following way:
+```diff
+-<header class="o-header-services" data-o-component="o-header">
++<header class='o-header-services' data-o-component='o-header-services'>
+	<div class="o-header-services__top o-header-services__container">
+		<div class='o-header-services__hamburger'>
+			<a class='o-header-services__hamburger-icon' href="#">
+-				<span class="o-header__visually-hidden">Menu</span>
++				<span class="o-header-services__visually-hidden">Menu</span>
+			</a>
+		</div>
+		<div class='o-header-services__logo'></div>
+		<div class='o-header-services__title'>
+			<h1 class='o-header-services__product-name'><a href=''>Tool or Service name</a></h1>
+-				<span class='o-header-subrand__product-tagline '>Tagline to explain the product here</span>
++				<span class='o-header-services__product-tagline '>Tagline to explain the product here</span>
+		</div>
+-		<div class='o-header-services__related-content'>
+-			<a href='#'>XXXX</a>
+-			<a href='#'>Sign in</a>
+-		</div>
++		<ul class="o-header-services__related-content">
++			<li class="o-header-services__related-content-list-item">
++				<a class="o-header-services__related-content-link" href="#">XXXX</a>
++			</li>
++			<li class="o-header-services__related-content-list-item">
++				<a class="o-header-services__related-content-link" href="#">Sign in</a>
++			</li>
++		</ul>
+	</div>
+</header>
+<nav class="o-header-services__primary-nav">
+	<div class="o-header-services__container">
+		<ul class="o-header-services__nav-list">
+			<li class="o-header-services__nav-item">
+				<a class="o-header-services__nav-link o-header-services__nav-link--selected" href="#item-1">
+					Nav item 1
+				</a>
+			</li>
+			<!-- more nav items -->
+		</ul>
+	</div>
+</nav>
+
+<nav class="o-header-services__subnav" role="navigation" aria-label="Sub navigation">
+-	<div class="o-header-services__container">
++	<div class="o-header-services__container" data-o-header-services-nav>
+-		<div class="o-header__subnav-wrap-outside">
+-			<div class="o-header__subnav-wrap-inside">
+-				<div class="o-header-services__subnav-content">
++				<div class="o-header-services__subnav-content" data-o-header-services-nav-list>
+					<ol class="o-header-services__subnav-list o-header-services__subnav-list--breadcrumb" aria-label="Breadcrumb">
+						<li class="o-header-services__subnav-item">
+-							<a class="o-header-services__subnav-link" href="#" aria-selected="true" aria-label="Current page">
++							<a class="o-header-services__subnav-link" href="#" aria-current="true" aria-label="Current page">
+								current section
+							</a>
+						</li>
+						<!-- more ancestors -->
+					</ol>
+
+					<ul class="o-header-services__subnav-list o-header-services__subnav-list--children" aria-label="Subsections">
+						<li class="o-header-services__subnav-item">
+							<a class="o-header-services__subnav-link" href="{{href}}">
+								child page
+							</a>
+						</li>
+						<!-- more children -->
+						</li>
+					</ul>
+				</div>
++		<button class="o-header__subnav-button o-header__subnav-button--left" title="scroll left" aria-hidden="true" disabled></button>
++		<button class="o-header__subnav-button o-header__subnav-button--right" title="scroll right" aria-hidden="true" disabled></button>
+
++		<button class="o-header-services__scroll-button o-header-services__scroll-button--left" title="scroll left" aria-hidden="true" disabled></button>
++		<button class="o-header-services__scroll-button o-header-services__scroll-button--right" title="scroll right" aria-hidden="true" disabled></button>
+-			</div>
+-		</div>
+	</div>
+</nav>
+
+-<!-- All drawer markup has been removed! -->
+```
 
 ### Migrating from v1.x.x to v2.x.x
 

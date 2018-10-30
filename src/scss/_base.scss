@@ -1,38 +1,51 @@
-@mixin oHeaderServicesContainer($bleed: false) {
-	@include oGridContainer($bleed: $bleed);
+/// Fundamental styles for header
+/// @param {Boolean} $bleed [whether or not to make the header a bleed header. Defaults to false.]
+@mixin oHeaderServicesBase($bleed: false) {
+	//Surface layouts for o-grid JavaScript helper https://github.com/Financial-Times/o-grid#getcurrentlayout
+	@include oGridSurfaceCurrentLayout();
+
+	.o-header-services {
+		@include oTypographySans($scale: 0);
+		background-color: _oHeaderServicesGet('top-background');
+		-webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+
+		a {
+			text-decoration: none;
+		}
+
+		ol,
+		ul {
+			list-style-type: none;
+			white-space: nowrap;
+		}
+
+		.o-header-services__visually-hidden {
+			@include oNormaliseVisuallyHidden;
+		}
+
+		.o-header-services__container {
+			@include oGridContainer;
+		}
+	}
 
 	@if $bleed {
-		max-width: 100%;
-		padding: 0 20px;
-	}
-
-	&:before,
-	&:after {
-		content: '';
-	}
-
-	&:after {
-		clear: both;
+		.o-header-services--bleed {
+			.o-header-services__container {
+				@include oGridContainer($bleed: $bleed)
+				max-width: 100%;
+				padding: 0 20px;
+			}
+		}
 	}
 }
 
-@mixin oHeaderServices($logo: $o-header-services-default-logo) {
+/// Outputs full header styles
+/// @param {String} $logo [ft-logo depending on brand (pink or white)]
+@mixin oHeaderServices($logo: $o-header-services-default-logo, $bleed: true) {
+	@include oHeaderServicesBase($bleed);
 	@include oHeaderServicesTop($logo);
-	@include oHeaderServicesDrawer;
 	@include oHeaderServicesPrimaryNav;
 	@include oHeaderServicesSubNav;
 	@include oHeaderServicesTheme($theme: 'b2b');
 	@include oHeaderServicesTheme($theme: 'b2c');
-
-	.o-header-services {
-		background-color: _oHeaderServicesGet('top-background');
-	}
-
-	.o-header-services__container {
-		@include oHeaderServicesContainer;
-	}
-
-	.o-header-services__bleed-container {
-		@include oHeaderServicesContainer($bleed: true);
-	}
 }

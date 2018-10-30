@@ -1,0 +1,62 @@
+/// Styling for primary nav
+@mixin oHeaderServicesPrimaryNav() {
+	.o-header-services__primary-nav {
+		position: relative;
+		background-color: _oHeaderServicesGet('nav-background');
+		border-bottom: 1px solid _oHeaderServicesGet('nav-border');
+	}
+
+	.o-header-services__nav-list {
+		background-color: _oHeaderServicesGet('nav-background');
+		min-width: 170px;
+		max-width: max-content;
+		display: flex;
+		padding: 0;
+		margin: 0 (0 - ($_o-header-services-padding-x * 2));
+	}
+
+	.o-header-services__nav-link {
+		@include oTypographyBold('sans');
+		color: _oHeaderServicesGet('nav-text');
+		text-transform: uppercase;
+		display: block;
+		margin: 0;
+		padding: $_o-header-services-padding-y $_o-header-services-padding-x*2;
+
+		&:hover,
+		&--selected,
+		&[aria-current=true] {
+			color: inherit;
+			background-color: _oHeaderServicesGet('nav-hover-background');
+		}
+	}
+
+	.o-header-services__primary-nav--dropdown {
+		position: absolute;
+		z-index: $_o-header-services-primary-nav-z-index;
+		background-color: rgba(0, 0, 0, 0.2);
+		top: $_o-header-services-top-bar-short;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		.o-header-services__nav-list {
+			@include oVisualEffectsShadowsElevation('mid');
+			transition: transform 0.5s $o-visual-effects-transition-expand;
+			transform: translate3d(0, -100%, 0);
+			flex-direction: column;
+			margin: 0;
+		}
+
+		&.o-header-services__primary-nav--hidden {
+			display: none;
+			animation: opacity 0.5s $o-visual-effects-transition-fade;
+		}
+
+		&.o-header-services__primary-nav--open {
+			.o-header-services__nav-list {
+				transform: translate3d(0, 0, 0);
+			}
+		}
+	}
+};

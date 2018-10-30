@@ -1,3 +1,6 @@
+/// @brand master
+/// @param {String} $theme either b2b or b2c
+/// @outputs Changes navigation colours based on $theme
 @mixin oHeaderServicesTheme($theme) {
 	@if type-of($theme) != 'string' {
 		@error 'oHeaderServicesTheme `$theme` must be a string but "#{$theme}" is of type "#{type-of($theme)}".';
@@ -17,12 +20,20 @@
 				background-color: _oHeaderServicesGet('nav-background', $from: $theme);
 			}
 
+			.o-header-services__primary-nav--dropdown {
+				background-color: rgba(0, 0, 0, 0.2);
+			}
+
+			.o-header-services__nav-list {
+				background-color: _oHeaderServicesGet('nav-background', $from: $theme);
+			}
+
 			.o-header-services__nav-link {
 				color: _oHeaderServicesGet('nav-text', $from: $theme);
 
 				&:hover,
 				&--selected,
-				&[aria-selected=true] {
+				&[aria-current=true] {
 					color: _oHeaderServicesGet('nav-text', $from: $theme);
 					background-color: _oHeaderServicesGet('nav-hover-background', $from: $theme);
 				}

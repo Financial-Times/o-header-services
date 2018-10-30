@@ -1,92 +1,77 @@
+/// Styling for title section of header
+/// @param {String} $logo [ft-logo depending on brand (pink or white)]
+
 @mixin oHeaderServicesTop($logo: $o-header-services-default-logo) {
 	.o-header-services__top {
-		@include oTypographySans($scale: 0);
+		display: flex;
 		color: _oHeaderServicesGet('top-text');
 		background-color: _oHeaderServicesGet('top-background');
 		overflow: hidden;
-		display: block;
+		z-index: $_o-header-services-top-bar-z-index;
+
+		a {
+			color: inherit;
+		}
 	}
 
-	.o-header-services__ftlogo {
-		width: 40px;
-		height: 40px;
+	.o-header-services__logo {
+		width: $_o-header-services-icon-size;
+		height: $_o-header-services-icon-size;
 		margin: 8px 8px 8px 0;
-		float: left;
-		display: inline-block;
 		background-image: url('https://www.ft.com/__origami/service/image/v2/images/raw/ftlogo-v1:#{$logo}?source=o-header-services&format=svg&width=55');
 		background-repeat: no-repeat;
 		background-size: contain;
 		background-position: 0;
 		@include oGridRespondTo($until: M) {
 			margin: 0;
-			width: $_o-header-services-top-bar-y-small;
-			height: $_o-header-services-top-bar-y-small;
+			width: $_o-header-services-top-bar-short;
+			height: $_o-header-services-top-bar-short;
 		}
 	}
 
-
 	.o-header-services__hamburger {
-		height: $_o-header-services-top-bar-y-small;
-		width: $_o-header-services-top-bar-y-small;
-		float: left;
-		display: inline-block;
-
+		height: $_o-header-services-top-bar-short;
+		width: $_o-header-services-top-bar-short;
 		@include oGridRespondTo(M) {
 			display: none;
 		}
 	}
 
 	.o-header-services__hamburger-icon {
-		@include oIconsGetIcon('hamburger', white, 40, $apply-base-styles: false, $apply-width-height: false, $iconset-version: 1);
-		display: block;
-		background-size: 40px 40px;
-		background-position: 50% 50%;
-		background-repeat: no-repeat;
-		height: $_o-header-services-top-bar-y-small;
-		width: $_o-header-services-top-bar-y-small;
+		@include oIconsGetIcon(
+			$icon-name: 'hamburger',
+			$color: _oHeaderServicesGet('top-text'),
+			$container-width: $_o-header-services-icon-size
+		);
+		height: $_o-header-services-top-bar-short;
+		width: $_o-header-services-top-bar-short;
 	}
 
 	.o-header-services__title {
 		padding: $_o-header-services-padding-y $_o-header-services-padding-x;
-		display: inline-block;
-		float: left;
-
 		@include oGridRespondTo($until: M) {
 			margin: 0;
 		}
 	}
 
 	.o-header-services__product-name {
-		@include oTypographySansBold($scale: 4);
-		text-overflow: ellipsis;
-		color: _oHeaderServicesGet('top-text');
-		margin: 0;
-		-webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+		@include oTypographySize($scale: 4);
+		@include oTypographyBold('sans');
 		display: inline;
-		// this is so that when this element is a link it does not inherit default link styles
-		text-decoration: none;
+		text-overflow: ellipsis;
+		margin: 0;
 
 		@include oGridRespondTo($until: M) {
-			@include oTypographySansBold($scale: 2);
-		}
-
-		a {
-			color: inherit;
-			text-decoration: none;
+			@include oTypographySize($scale: 2);
 		}
 	}
 
-	.o-header-subrand__product-tagline {
-		@include oTypographySans($scale: 3);
-		text-transform: uppercase;
+	.o-header-services__product-tagline {
+		@include oTypographySize($scale: 3);
 		margin-left: $_o-header-services-padding-x;
-		-webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
-
-		// Default behaviour for when there's not enough space because we don't know the
-		// width of the tagline
+		text-transform: uppercase;
 		text-overflow: ellipsis;
 		overflow: hidden;
-		display: inline;
 
 		@include oGridRespondTo($until: L) {
 			display: none;
@@ -94,23 +79,27 @@
 	}
 
 	.o-header-services__related-content {
-		float: right;
+		margin: 0 0 0 auto;
 		padding: 16px $_o-header-services-padding-x;
-		-webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+		display: flex;
 
 		@include oGridRespondTo($until: M) {
 			display: none;
 		}
+	}
 
-		> a {
-			text-decoration: none;
-			display: inline-block;
-			color: _oHeaderServicesGet('top-text');
+	.o-header-services__related-content-list-item {
+		background-color: _oHeaderServicesGet('top-background');
+
+		.o-header-services__related-content-link {
+			@include oTypographyBold('sans');
 			margin: 0 $_o-header-services-padding-x;
-			font-weight: 600;
+			color: _oHeaderServicesGet('top-text');
 
-			&:visited {
-				color: _oHeaderServicesGet('top-text');
+			@include oGridRespondTo($until: M) {
+				display: block;
+				padding: $_o-header-services-padding-x $_o-header-services-padding-x*2;
+				margin: 0;
 			}
 
 			&:hover {
