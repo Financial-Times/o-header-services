@@ -59,13 +59,6 @@ class DropDown {
 		// display: none doesn't work with keyframes, so the element needs to be
 		// rendered before animated on open and animated before hidden on close
 		setTimeout(() => this.nav.classList.add(newClass), 100);
-		this._toggleNavTabbing(tabbing);
-	}
-
-
-	_toggleNavTabbing (isEnabled) {
-		const allFocusable = Array.from(this.nav.querySelectorAll('a, button, input, select'));
-		allFocusable.forEach(el => isEnabled ? el.removeAttribute('tabindex'): el.setAttribute('tabindex', '-1'));
 	}
 }
 
