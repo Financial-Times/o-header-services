@@ -22,15 +22,12 @@
 		.o-header-services__visually-hidden {
 			@include oNormaliseVisuallyHidden;
 		}
-
-		.o-header-services__container {
-			@include oGridContainer;
-		}
 	}
 
 	@if $bleed {
 		.o-header-services--bleed {
-			.o-header-services__container {
+			.o-header-services__top,
+			.o-header-services__primary-nav {
 				@include oGridContainer($bleed: $bleed)
 				max-width: 100%;
 				padding: 0 20px;

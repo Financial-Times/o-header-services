@@ -3,6 +3,7 @@
 
 @mixin oHeaderServicesTop($logo: $o-header-services-default-logo) {
 	.o-header-services__top {
+		@include oGridContainer;
 		display: flex;
 		color: _oHeaderServicesGet('top-text');
 		background-color: _oHeaderServicesGet('top-background');

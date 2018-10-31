@@ -67,8 +67,11 @@ class DropDown {
 		this.nav.setAttribute('aria-hidden', !expand);
 		this.burger.setAttribute('aria-expanded', expand);
 		if (expand) {
+			this.burger.querySelector('span').innerText = 'Close primary navigation';
+			// this.burger.focus()
 			this.nav.querySelector('.o-header-services__nav-link').focus()
 		} else {
+			this.burger.querySelector('span').innerText = 'Open primary navigation';
 			this.burger.focus();
 		};
 	}
