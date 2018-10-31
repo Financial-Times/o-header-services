@@ -19,7 +19,7 @@ class DropDown {
 		window.addEventListener('resize', oUtils.debounce(this.render.bind(this), 100));
 		window.addEventListener('keydown', (e) => {
 			if (e.key === 'Escape' && !this.nav.classList.contains(this.class.hidden)) {
-				this._swapClasses(this.class.open, this.class.hidden, false)
+				this._swapClasses(this.class.open, this.class.hidden, false);
 			}
 		});
 
@@ -36,8 +36,8 @@ class DropDown {
 		}
 
 		this._shiftRelatedContentList(enableDropdown);
-		this.nav.classList.toggle(this.class.dropdown, enableDropdown)
-		this.nav.classList.toggle(this.class.hidden, enableDropdown)
+		this.nav.classList.toggle(this.class.dropdown, enableDropdown);
+		this.nav.classList.toggle(this.class.hidden, enableDropdown);
 		this.nav.setAttribute('aria-hidden', enableDropdown);
 	}
 
@@ -75,11 +75,11 @@ class DropDown {
 		if (expand) {
 			this.burger.querySelector('span').innerText = 'Close primary navigation';
 			this.nav.querySelector('.o-header-services__nav-link').focus();
-			this.nav.lastElementChild.addEventListener('focusout', () => this._swapClasses(this.class.open, this.class.hidden, false))
+			this.nav.lastElementChild.addEventListener('focusout', () => this._swapClasses(this.class.open, this.class.hidden, false));
 		} else {
 			this.burger.querySelector('span').innerText = 'Open primary navigation';
 			this.nav.lastElementChild.removeEventListener('focusout', this._swapClasses);
-		};
+		}
 	}
 }
 
