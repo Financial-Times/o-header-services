@@ -17,23 +17,28 @@ class DropDown {
 		this.burger.addEventListener('click', this.toggleNav.bind(this));
 
 		window.addEventListener('resize', oUtils.debounce(this.render.bind(this), 100));
+		window.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && !this.nav.classList.contains(this.class.hidden)) {
+				this._swapClasses(this.class.open, this.class.hidden, false)
+			}
+		});
 
 		this.render();
 	}
 
 	render () {
-		const layout = oGrid.getCurrentLayout();
-		if (layout === 'default' || layout === 'S') {
-			this._shiftRelatedContentList(true);
-			this.nav.classList.add(this.class.dropdown, this.class.hidden);
-			this.nav.setAttribute('aria-hidden', true);
+		const enableDropdown = oGrid.getCurrentLayout() === 'default' || oGrid.getCurrentLayout() === 'S';
+
+		if (enableDropdown) {
 			this.nav.addEventListener('click', this.toggleNav.bind(this));
 		} else {
-			this._shiftRelatedContentList(false);
-			this.nav.classList.remove(this.class.dropdown, this.class.hidden);
-			this.nav.setAttribute('aria-hidden', false);
-			this.nav.addEventListener('click', this.toggleNav.bind(this));
+			this.nav.removeEventListener('click', this.toggleNav);
 		}
+
+		this._shiftRelatedContentList(enableDropdown);
+		this.nav.classList.toggle(this.class.dropdown, enableDropdown)
+		this.nav.classList.toggle(this.class.hidden, enableDropdown)
+		this.nav.setAttribute('aria-hidden', enableDropdown);
 	}
 
 	toggleNav () {
@@ -65,14 +70,15 @@ class DropDown {
 
 	_toggleAriaAttributes(expand) {
 		this.nav.setAttribute('aria-hidden', !expand);
+		this.nav.lastElementChild.setAttribute('aria-hidden', !expand);
 		this.burger.setAttribute('aria-expanded', expand);
 		if (expand) {
 			this.burger.querySelector('span').innerText = 'Close primary navigation';
-			// this.burger.focus()
-			this.nav.querySelector('.o-header-services__nav-link').focus()
+			this.nav.querySelector('.o-header-services__nav-link').focus();
+			this.nav.lastElementChild.addEventListener('focusout', () => this._swapClasses(this.class.open, this.class.hidden, false))
 		} else {
 			this.burger.querySelector('span').innerText = 'Open primary navigation';
-			this.burger.focus();
+			this.nav.lastElementChild.removeEventListener('focusout', this._swapClasses);
 		};
 	}
 }
