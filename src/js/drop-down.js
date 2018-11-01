@@ -14,12 +14,12 @@ class DropDown {
 		if (!this.nav) { return; }
 
 		this.burger = this.headerEl.querySelector('.o-header-services__hamburger-icon');
-		this.burger.addEventListener('click', this.toggleNav.bind(this));
+		this.burger.addEventListener('click', this.toggleDropdown.bind(this));
 
 		window.addEventListener('resize', oUtils.debounce(this.render.bind(this), 100));
 		window.addEventListener('keydown', (e) => {
 			if (e.key === 'Escape' && !this.nav.classList.contains(this.class.hidden)) {
-				this._swapClasses(this.class.open, this.class.hidden, false);
+				this._dropNav(this.class.open, this.class.hidden, false);
 			}
 		});
 
@@ -30,9 +30,9 @@ class DropDown {
 		const enableDropdown = oGrid.getCurrentLayout() === 'default' || oGrid.getCurrentLayout() === 'S';
 
 		if (enableDropdown) {
-			this.nav.addEventListener('click', this.toggleNav.bind(this));
+			this.nav.addEventListener('click', this.toggleDropdown.bind(this));
 		} else {
-			this.nav.removeEventListener('click', this.toggleNav);
+			this.nav.removeEventListener('click', this.toggleDropdown);
 		}
 
 		this._shiftRelatedContentList(enableDropdown);
@@ -41,11 +41,11 @@ class DropDown {
 		this.nav.setAttribute('aria-hidden', enableDropdown);
 	}
 
-	toggleNav () {
+	toggleDropdown () {
 		if (this.nav.classList.contains(this.class.hidden)) {
-			this._swapClasses(this.class.hidden, this.class.open, true);
+			this._dropNav(this.class.hidden, this.class.open, true);
 		} else {
-			this._swapClasses(this.class.open, this.class.hidden, false);
+			this._dropNav(this.class.open, this.class.hidden, false);
 		}
 	}
 
@@ -60,7 +60,7 @@ class DropDown {
 		relatedContent.forEach(item => shiftItems ? navList.appendChild(item) : relatedContentList.appendChild(item));
 	}
 
-	_swapClasses (existingClass, newClass, expand) {
+	_dropNav (existingClass, newClass, expand) {
 		this.nav.classList.remove(existingClass);
 		// display: none doesn't work with keyframes, so the element needs to be
 		// rendered before animated on open and animated before hidden on close
@@ -75,10 +75,10 @@ class DropDown {
 		if (expand) {
 			this.burger.querySelector('span').innerText = 'Close primary navigation';
 			this.nav.querySelector('.o-header-services__nav-link').focus();
-			this.nav.lastElementChild.addEventListener('focusout', () => this._swapClasses(this.class.open, this.class.hidden, false));
+			this.nav.lastElementChild.addEventListener('focusout', () => this._dropNav(this.class.open, this.class.hidden, false));
 		} else {
 			this.burger.querySelector('span').innerText = 'Open primary navigation';
-			this.nav.lastElementChild.removeEventListener('focusout', this._swapClasses);
+			this.nav.lastElementChild.removeEventListener('focusout', this._dropNav);
 		}
 	}
 }
