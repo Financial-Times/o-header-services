@@ -19,7 +19,8 @@ class DropDown {
 		window.addEventListener('resize', oUtils.debounce(this.render.bind(this), 100));
 		window.addEventListener('keydown', (e) => {
 			if (e.key === 'Escape' && !this.nav.classList.contains(this.class.hidden)) {
-				this._dropNav(this.class.open, this.class.hidden, false);
+				this.toggleDropdown();
+				this.burger.focus();
 			}
 		});
 
@@ -42,10 +43,19 @@ class DropDown {
 	}
 
 	toggleDropdown () {
-		if (this.nav.classList.contains(this.class.hidden)) {
-			this._dropNav(this.class.hidden, this.class.open, true);
+		const toggle = this.nav.classList.contains(this.class.hidden);
+		if (toggle) {
+			this.nav.classList.remove(this.class.hidden);
+			// display: none doesn't work with keyframes,
+			// so the element needs to be rendered before animated on open
+			setTimeout(() => this.nav.classList.add(this.class.open), 100);
+			this._toggleAriaAttributes(toggle);
 		} else {
-			this._dropNav(this.class.open, this.class.hidden, false);
+			this.nav.classList.remove(this.class.open);
+			// display: none doesn't work with keyframes,
+			// so the element needs to be animated before hidden on close
+			setTimeout(() => this.nav.classList.add(this.class.hidden), 100);
+			this._toggleAriaAttributes(!toggle);
 		}
 	}
 
@@ -60,14 +70,6 @@ class DropDown {
 		relatedContent.forEach(item => shiftItems ? navList.appendChild(item) : relatedContentList.appendChild(item));
 	}
 
-	_dropNav (existingClass, newClass, expand) {
-		this.nav.classList.remove(existingClass);
-		// display: none doesn't work with keyframes, so the element needs to be
-		// rendered before animated on open and animated before hidden on close
-		setTimeout(() => this.nav.classList.add(newClass), 100);
-		this._toggleAriaAttributes(expand);
-	}
-
 	_toggleAriaAttributes(expand) {
 		this.nav.setAttribute('aria-hidden', !expand);
 		this.nav.lastElementChild.setAttribute('aria-hidden', !expand);
@@ -75,10 +77,10 @@ class DropDown {
 		if (expand) {
 			this.burger.querySelector('span').innerText = 'Close primary navigation';
 			this.nav.querySelector('.o-header-services__nav-link').focus();
-			this.nav.lastElementChild.addEventListener('focusout', () => this._dropNav(this.class.open, this.class.hidden, false));
+			this.nav.lastElementChild.addEventListener('focusout', () => this.toggleDropdown.bind(this));
 		} else {
 			this.burger.querySelector('span').innerText = 'Open primary navigation';
-			this.nav.lastElementChild.removeEventListener('focusout', this._dropNav);
+			this.nav.lastElementChild.removeEventListener('focusout', this.toggleDropdown);
 		}
 	}
 }
