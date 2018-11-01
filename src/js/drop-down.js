@@ -13,33 +13,49 @@ class DropDown {
 
 		if (!this.nav) { return; }
 
-		let burger = this.headerEl.querySelector('.o-header-services__hamburger-icon');
-		burger.addEventListener('click', this.toggleNav.bind(this));
+		this.burger = this.headerEl.querySelector('.o-header-services__hamburger-icon');
+		this.burger.addEventListener('click', this.toggleDropdown.bind(this));
 
 		window.addEventListener('resize', oUtils.debounce(this.render.bind(this), 100));
+		window.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && !this.nav.classList.contains(this.class.hidden)) {
+				this.toggleDropdown();
+				this.burger.focus();
+			}
+		});
 
 		this.render();
 	}
 
 	render () {
-		const layout = oGrid.getCurrentLayout();
-		if (layout === 'default' || layout === 'S') {
-			this._shiftRelatedContentList(true);
-			this.nav.classList.add(this.class.dropdown, this.class.hidden);
-			this.nav.setAttribute('aria-hidden', true);
-			this.nav.addEventListener('click', this.toggleNav.bind(this));
+		const enableDropdown = oGrid.getCurrentLayout() === 'default' || oGrid.getCurrentLayout() === 'S';
+
+		if (enableDropdown) {
+			this.nav.addEventListener('click', this.toggleDropdown.bind(this));
 		} else {
-			this._shiftRelatedContentList(false);
-			this.nav.classList.remove(this.class.dropdown, this.class.hidden);
-			this.nav.addEventListener('click', this.toggleNav.bind(this));
+			this.nav.removeEventListener('click', this.toggleDropdown);
 		}
+
+		this._shiftRelatedContentList(enableDropdown);
+		this.nav.classList.toggle(this.class.dropdown, enableDropdown);
+		this.nav.classList.toggle(this.class.hidden, enableDropdown);
+		this.nav.setAttribute('aria-hidden', enableDropdown);
 	}
 
-	toggleNav () {
-		if (this.nav.classList.contains(this.class.hidden)) {
-			this._swapClasses(this.class.hidden, this.class.open, true);
+	toggleDropdown () {
+		const toggle = this.nav.classList.contains(this.class.hidden);
+		if (toggle) {
+			this.nav.classList.remove(this.class.hidden);
+			// display: none doesn't work with keyframes,
+			// so the element needs to be rendered before animated on open
+			setTimeout(() => this.nav.classList.add(this.class.open), 100);
+			this._toggleAriaAttributes(toggle);
 		} else {
-			this._swapClasses(this.class.open, this.class.hidden, false);
+			this.nav.classList.remove(this.class.open);
+			// display: none doesn't work with keyframes,
+			// so the element needs to be animated before hidden on close
+			setTimeout(() => this.nav.classList.add(this.class.hidden), 100);
+			this._toggleAriaAttributes(!toggle);
 		}
 	}
 
@@ -54,18 +70,18 @@ class DropDown {
 		relatedContent.forEach(item => shiftItems ? navList.appendChild(item) : relatedContentList.appendChild(item));
 	}
 
-	_swapClasses (existingClass, newClass, tabbing) {
-		this.nav.classList.remove(existingClass);
-		// display: none doesn't work with keyframes, so the element needs to be
-		// rendered before animated on open and animated before hidden on close
-		setTimeout(() => this.nav.classList.add(newClass), 100);
-		this._toggleNavTabbing(tabbing);
-	}
-
-
-	_toggleNavTabbing (isEnabled) {
-		const allFocusable = Array.from(this.nav.querySelectorAll('a, button, input, select'));
-		allFocusable.forEach(el => isEnabled ? el.removeAttribute('tabindex'): el.setAttribute('tabindex', '-1'));
+	_toggleAriaAttributes(expand) {
+		this.nav.setAttribute('aria-hidden', !expand);
+		this.nav.lastElementChild.setAttribute('aria-hidden', !expand);
+		this.burger.setAttribute('aria-expanded', expand);
+		if (expand) {
+			this.burger.querySelector('span').innerText = 'Close primary navigation';
+			this.nav.querySelector('.o-header-services__nav-link').focus();
+			this.nav.lastElementChild.addEventListener('focusout', () => this.toggleDropdown.bind(this));
+		} else {
+			this.burger.querySelector('span').innerText = 'Open primary navigation';
+			this.nav.lastElementChild.removeEventListener('focusout', this.toggleDropdown);
+		}
 	}
 }
 

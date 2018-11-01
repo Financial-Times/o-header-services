@@ -1,20 +1,19 @@
 /// Styling for sub nav
 @mixin oHeaderServicesSubNav() {
 	.o-header-services__subnav {
+		position: relative;
 		background-color: _oHeaderServicesGet('nav-background');
 		border-bottom: 1px solid _oHeaderServicesGet('nav-border');
-		height: $_o-header-services-sub-nav-height;
 		overflow: hidden;
-
-		.o-header-services__container {
-			height: $_o-header-services-sub-nav-height;
-		}
+		height: $_o-header-services-sub-nav-height;
 	}
 
 	.o-header-services__subnav-content {
+		@include oGridContainer;
 		display: flex;
 		white-space: nowrap;
 		overflow: auto;
+		padding: 0 20px;
 	}
 
 	.o-header-services__subnav-list {
@@ -107,7 +106,7 @@
 		@include oButtonsTheme($theme: $_o-header-services-button-theme);
 		position: absolute;
 		top: 0;
-		height: 100%;
+		bottom: 0;
 		transition: opacity 0.5s $o-visual-effects-transition-fade;
 		display: inline-block;
 		min-width:  oTypographySpacingSize(6);
