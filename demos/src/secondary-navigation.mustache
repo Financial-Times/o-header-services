@@ -1,0 +1,89 @@
+<header class="o-header-services {{#modifier}}o-header-services--{{modifier}}{{/modifier}}" data-o-component="o-header-services">
+	<div class="o-header-services__top">
+		<div class="o-header-services__hamburger">
+			<a class="o-header-services__hamburger-icon" href="#" role="button">
+				<span class="o-header-services__visually-hidden">Open primary navigation</span>
+			</a>
+		</div>
+		<div class="o-header-services__logo"></div>
+		<div class="o-header-services__title">
+			<h1 class="o-header-services__product-name"><a href="/">Tool or Service name</a></h1>
+			<span class="o-header-services__product-tagline">Tagline to explain the product here</span>
+		</div>
+		<ul class="o-header-services__related-content">
+			<li class="o-header-services__related-content-list-item">
+				<a class="o-header-services__related-content-link" href="#">XXXX</a>
+			</li>
+			<li class="o-header-services__related-content-list-item">
+				<a class="o-header-services__related-content-link" href="#">Sign in</a>
+			</li>
+		</ul>
+	</div>
+	<nav class="o-header-services__primary-nav" aria-label="primary">
+		<ul class="o-header-services__primary-nav-list">
+			<li class="o-header-services__primary-nav-item">
+				<a class="o-header-services__primary-nav-link o-header-services__primary-nav-link--selected" href="#">
+					Nav item 1
+				</a>
+			</li>
+			<li class="o-header-services__primary-nav-item">
+				<a class="o-header-services__primary-nav-link" href="#">
+					Nav item 2
+				</a>
+			</li>
+			<li class="o-header-services__primary-nav-item">
+				<a class="o-header-services__primary-nav-link" href="#">
+					Nav item 3
+				</a>
+			</li>
+			<li class="o-header-services__primary-nav-item">
+				<a class="o-header-services__primary-nav-link" href="#">
+					Nav item 4
+				</a>
+			</li>
+		</ul>
+		<button class="o-header-services__visually-hidden" title="close primary navigation"></button>
+	</nav>
+<!-- sub nav markup -->
+	<nav class="o-header-services__secondary-nav" aria-label="secondary"  data-o-header-services-nav>
+		<div class="o-header-services__secondary-nav-content" data-o-header-services-nav-list>
+			<ol class="o-header-services__secondary-nav-list o-header-services__secondary-nav-list--ancestors" aria-label="Ancestor sections">
+				<li class="o-header-services__secondary-nav-item">
+					<a class="o-header-services__secondary-nav-link" href="#">
+						ancestor section
+					</a>
+				</li>
+				<li class="o-header-services__secondary-nav-item">
+					<a class="o-header-services__secondary-nav-link" href="#">
+						ancestor section
+					</a>
+				</li>
+				<li class="o-header-services__secondary-nav-item">
+					<a class="o-header-services__secondary-nav-link" href="#" >
+						current section
+					</a>
+				</li>
+			</ol>
+
+			<ul class="o-header-services__secondary-nav-list o-header-services__secondary-nav-list--children" aria-label="Child sections">
+				<li class="o-header-services__secondary-nav-item">
+					<a class="o-header-services__secondary-nav-link" href="{{href}}">
+						child page
+					</a>
+				</li>
+				<li class="o-header-services__secondary-nav-item">
+					<a class="o-header-services__secondary-nav-link" href="{{href}}">
+						child page
+					</a>
+				</li>
+				<li class="o-header-services__secondary-nav-item">
+					<a class="o-header-services__secondary-nav-link" href="{{href}}" aria-current="true" aria-label="Current page">
+						child page
+					</a>
+				</li>
+			</ul>
+		</div>
+		<button class="o-header-services__scroll-button o-header-services__scroll-button--left" title="scroll left" aria-hidden="true" disabled></button>
+		<button class="o-header-services__scroll-button o-header-services__scroll-button--right" title="scroll right" aria-hidden="true" disabled></button>
+	</nav>
+</header>

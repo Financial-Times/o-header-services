@@ -65,7 +65,7 @@ class DropDown {
 		if (!relatedContent) { return; }
 
 		let relatedContentList = this.headerEl.querySelector('.o-header-services__related-content');
-		let navList = this.nav.querySelector('.o-header-services__nav-list');
+		let navList = this.nav.querySelector('.o-header-services__primary-nav-list');
 
 		relatedContent.forEach(item => shiftItems ? navList.appendChild(item) : relatedContentList.appendChild(item));
 	}
@@ -76,7 +76,7 @@ class DropDown {
 		this.burger.setAttribute('aria-expanded', expand);
 		if (expand) {
 			this.burger.querySelector('span').innerText = 'Close primary navigation';
-			this.nav.querySelector('.o-header-services__nav-link').focus();
+			this.nav.querySelector('.o-header-services__primary-nav-link').focus();
 			this.nav.lastElementChild.addEventListener('focusout', () => this.toggleDropdown.bind(this));
 		} else {
 			this.burger.querySelector('span').innerText = 'Open primary navigation';
