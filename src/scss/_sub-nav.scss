@@ -1,5 +1,6 @@
 /// Styling for sub nav
-@mixin oHeaderServicesSubNav() {
+/// @access private
+@mixin _oHeaderServicesSubNav() {
 	.o-header-services__subnav {
 		position: relative;
 		background-color: _oHeaderServicesGet('nav-background');

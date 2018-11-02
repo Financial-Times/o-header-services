@@ -15,8 +15,10 @@
 @import 'src/scss/sub-nav';
 
 
-/// Outputs full header styles
-/// @param {String} $logo [ft-logo depending on brand (pink or white)]
+/// Outputs all features and styles available to o-header-services
+/// @param {List} $opts ['primary-nav', 'sub-nav', 'bleed', 'b2b', 'b2c']
+/// @param {String} $logo [default to ft-logo depending on brand (pink or white)]
+/// @access public
 @mixin oHeaderServices($opts: (
 	primary-nav,
 	sub-nav,
@@ -31,26 +33,26 @@
 	$b2b: index($opts, 'b2b');
 	$b2c: index($opts, 'b2c');
 	/// Base styles for a header
-	@include oHeaderServicesBase($bleed);
+	@include _oHeaderServicesBase($bleed);
 
 	/// Required because there would be no header without the title
 	/// if other features aren't added.
-	@include oHeaderServicesTop($logo);
+	@include _oHeaderServicesTop($logo);
 
 	@if $primary-nav {
-		@include oHeaderServicesPrimaryNav;
+		@include _oHeaderServicesPrimaryNav;
 	}
 
 	@if $sub-nav {
-		@include oHeaderServicesSubNav;
+		@include _oHeaderServicesSubNav;
 	}
 
 	@if $b2b and _oHeaderSupports('b2b') {
-		@include oHeaderServicesTheme($theme: 'b2b');
+		@include _oHeaderServicesTheme($theme: 'b2b');
 	}
 
 	@if $b2c and _oHeaderSupports('b2b') {
-		@include oHeaderServicesTheme($theme: 'b2c');
+		@include _oHeaderServicesTheme($theme: 'b2c');
 	}
 }
 

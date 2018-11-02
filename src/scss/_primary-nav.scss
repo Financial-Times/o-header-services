@@ -1,5 +1,6 @@
 /// Styling for primary nav
-@mixin oHeaderServicesPrimaryNav() {
+/// @access private
+@mixin _oHeaderServicesPrimaryNav() {
 	.o-header-services__primary-nav {
 		position: relative;
 		background-color: _oHeaderServicesGet('nav-background');

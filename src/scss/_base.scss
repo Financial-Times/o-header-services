@@ -1,6 +1,7 @@
 /// Fundamental styles for header
 /// @param {Boolean} $bleed [whether or not to make the header a bleed header. Defaults to false.]
-@mixin oHeaderServicesBase($bleed: false) {
+/// @access private
+@mixin _oHeaderServicesBase($bleed: false) {
 	//Surface layouts for o-grid JavaScript helper https://github.com/Financial-Times/o-grid#getcurrentlayout
 	@include oGridSurfaceCurrentLayout();
 
@@ -27,50 +28,12 @@
 	@if $bleed {
 		.o-header-services--bleed {
 			.o-header-services__top,
-			.o-header-services__primary-nav {
+			.o-header-services__primary-nav,
+			.o-header-services__subnav-content {
 				@include oGridContainer($bleed: $bleed)
 				max-width: 100%;
 				padding: 0 20px;
 			}
 		}
-	}
-}
-
-/// Outputs full header styles
-/// @param {String} $logo [ft-logo depending on brand (pink or white)]
-@mixin oHeaderServices($opts: (
-	primary-nav,
-	sub-nav,
-	bleed,
-	b2b,
-	b2c
-), $logo: $o-header-services-default-logo) {
-
-	$primary-nav: index($opts, 'primary-nav');
-	$sub-nav: index($opts, 'sub-nav');
-	$bleed: index($opts, 'bleed');
-	$b2b: index($opts, 'b2b');
-	$b2c: index($opts, 'b2c');
-	/// Base styles for a header
-	@include oHeaderServicesBase($bleed);
-
-	/// Required because there would be no header without the title
-	/// if other features aren't added.
-	@include oHeaderServicesTop($logo);
-
-	@if $primary-nav {
-		@include oHeaderServicesPrimaryNav;
-	}
-
-	@if $sub-nav {
-		@include oHeaderServicesSubNav;
-	}
-
-	@if $b2b and _oHeaderSupports('b2b') {
-		@include oHeaderServicesTheme($theme: 'b2b');
-	}
-
-	@if $b2c and _oHeaderSupports('b2b') {
-		@include oHeaderServicesTheme($theme: 'b2c');
 	}
 }
