@@ -52,7 +52,10 @@
 		{
 			"name": "theme-b2c",
 			"title": "Product theme: B2C",
-			"template": "demos/src/theme-b2c.mustache",
+			"template": "demos/src/secondary-navigation.mustache",
+			"data": {
+				"modifier": "b2c"
+			},
 			"brands": [
 				"master"
 			],
@@ -61,7 +64,10 @@
 		{
 			"name": "theme-b2b",
 			"title": "Product theme: B2B",
-			"template": "demos/src/theme-b2b.mustache",
+			"template": "demos/src/secondary-navigation.mustache",
+			"data": {
+				"modifier": "b2b"
+			},
 			"brands": [
 				"master"
 			],
