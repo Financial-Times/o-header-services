@@ -180,7 +180,7 @@ To use the secondary navigation, use the primary navigation and add the followin
 
 +<nav class="o-header-services__secondary-nav" aria-label="secondary" data-o-header-services-nav>
 +	<div class="o-header-services__secondary-nav-content" data-o-header-services-nav-list>
-+		<ol class="o-header-services__secondary-nav-list o-header-services__secondary-nav-list--breadcrumb" aria-label="Breadcrumb">
++		<ol class="o-header-services__secondary-nav-list o-header-services__secondary-nav-list--ancestors" aria-label="Ancestor section">
 +			<li class="o-header-services__secondary-nav-item">
 +				<a class="o-header-services__secondary-nav-link" href="#">
 +					ancestor section
@@ -198,7 +198,7 @@ To use the secondary navigation, use the primary navigation and add the followin
 +			</li>
 +		</ol>
 
-+		<ul class="o-header-services__secondary-nav-list o-header-services__secondary-nav-list--children" aria-label="Subsections">
++		<ul class="o-header-services__secondary-nav-list o-header-services__secondary-nav-list--children" aria-label="Child sections">
 +			<li class="o-header-services__secondary-nav-item">
 +				<a class="o-header-services__secondary-nav-link" href="{{href}}">
 +					child page
@@ -310,7 +310,7 @@ The markup for a full header has changed in the following way:
 -				<div class="o-header-services__subnav-content">
 +				<div class="o-header-services__secondary-nav-content" data-o-header-services-nav-list>
 -					<ol class="o-header-services__subnav-list o-header-services__subnav-list--breadcrumb" aria-label="Breadcrumb">
-+					<ol class="o-header-services__secondary-nav-list o-header-services__secondary-nav-list--breadcrumb" aria-label="Breadcrumb">
++					<ol class="o-header-services__secondary-nav-list o-header-services__secondary-nav-list--ancestors" aria-label="Ancestor sections">
 -						<li class="o-header-services__subnav-item">
 +						<li class="o-header-services__secondary-navigation-item">
 -							<a class="o-header-services__subnav-link" href="#" aria-selected="true" aria-label="Current page">
@@ -322,7 +322,7 @@ The markup for a full header has changed in the following way:
 					</ol>
 
 -					<ul class="o-header-services__subnav-list o-header-services__subnav-list--children" aria-label="Subsections">
-+					<ul class="o-header-services__secondary-nav-list o-header-services__secondary-nav-list--children" aria-label="Subsections">
++					<ul class="o-header-services__secondary-nav-list o-header-services__secondary-nav-list--children" aria-label="Child sections">
 -						<li class="o-header-services__subnav-item">
 +						<li class="o-header-services__secondary-nav-item">
 -							<a class="o-header-services__subnav-link" href="{{href}}">
