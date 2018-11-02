@@ -25,11 +25,11 @@
 				background-color: rgba(0, 0, 0, 0.2);
 			}
 
-			.o-header-services__nav-list {
+			.o-header-services__primary-nav-list {
 				background-color: _oHeaderServicesGet('nav-background', $from: $theme);
 			}
 
-			.o-header-services__nav-link {
+			.o-header-services__primary-nav-link {
 				color: _oHeaderServicesGet('nav-text', $from: $theme);
 
 				&:hover,

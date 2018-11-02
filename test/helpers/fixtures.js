@@ -30,24 +30,24 @@ const	withPrimaryNav = `
 		</div>
 		<nav class='o-header-services__primary-nav'>
 			<div class='o-header-services__nav-container'>
-				<ul class='o-header-services__nav-list'>
-					<li class='o-header-services__nav-item'>
-						<a class='o-header-services__nav-link o-header-services__nav-link--selected' href='#item-1'>
+				<ul class='o-header-services__primary-nav-list'>
+					<li class='o-header-services__primary-nav-item'>
+						<a class='o-header-services__primary-nav-link o-header-services__primary-nav-link--selected' href='#item-1'>
 							Nav item 1
 						</a>
 					</li>
-					<li class='o-header-services__nav-item'>
-						<a class='o-header-services__nav-link' href='#'>
+					<li class='o-header-services__primary-nav-item'>
+						<a class='o-header-services__primary-nav-link' href='#'>
 							Nav item 2
 						</a>
 					</li>
-					<li class='o-header-services__nav-item'>
-						<a class='o-header-services__nav-link' href='#'>
+					<li class='o-header-services__primary-nav-item'>
+						<a class='o-header-services__primary-nav-link' href='#'>
 							Nav item 3
 						</a>
 					</li>
-					<li class='o-header-services__nav-item'>
-						<a class='o-header-services__nav-link' href='#'>
+					<li class='o-header-services__primary-nav-item'>
+						<a class='o-header-services__primary-nav-link' href='#'>
 							Nav item 4
 						</a>
 					</li>
