@@ -58,11 +58,7 @@ const	withPrimaryNav = `
 		</nav>
 	</header>
 `;
-
-const withSubNav = '';
-
 export {
 	titleOnly,
-	withPrimaryNav,
-	withSubNav
+	withPrimaryNav
 };

@@ -12,23 +12,23 @@
 @import 'src/scss/top';
 @import 'src/scss/theme';
 @import 'src/scss/primary-nav';
-@import 'src/scss/sub-nav';
+@import 'src/scss/secondary-nav';
 
 
 /// Outputs all features and styles available to o-header-services
-/// @param {List} $opts ['primary-nav', 'sub-nav', 'bleed', 'b2b', 'b2c']
+/// @param {List} $opts ['primary-nav', 'secondary-nav', 'bleed', 'b2b', 'b2c']
 /// @param {String} $logo [default to ft-logo depending on brand (pink or white)]
 /// @access public
 @mixin oHeaderServices($opts: (
 	primary-nav,
-	sub-nav,
+	secondary-nav,
 	bleed,
 	b2b,
 	b2c
 ), $logo: $o-header-services-default-logo) {
 
 	$primary-nav: index($opts, 'primary-nav');
-	$sub-nav: index($opts, 'sub-nav');
+	$secondary-nav: index($opts, 'secondary-nav');
 	$bleed: index($opts, 'bleed');
 	$b2b: index($opts, 'b2b');
 	$b2c: index($opts, 'b2c');
@@ -43,8 +43,8 @@
 		@include _oHeaderServicesPrimaryNav;
 	}
 
-	@if $sub-nav {
-		@include _oHeaderServicesSubNav;
+	@if $secondary-nav {
+		@include _oHeaderServicesSecondaryNav;
 	}
 
 	@if $b2b and _oHeaderSupports('b2b') {
