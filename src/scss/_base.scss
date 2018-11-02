@@ -38,11 +38,39 @@
 
 /// Outputs full header styles
 /// @param {String} $logo [ft-logo depending on brand (pink or white)]
-@mixin oHeaderServices($logo: $o-header-services-default-logo, $bleed: true) {
+@mixin oHeaderServices($opts: (
+	primary-nav,
+	sub-nav,
+	bleed,
+	b2b,
+	b2c
+), $logo: $o-header-services-default-logo) {
+
+	$primary-nav: index($opts, 'primary-nav');
+	$sub-nav: index($opts, 'sub-nav');
+	$bleed: index($opts, 'bleed');
+	$b2b: index($opts, 'b2b');
+	$b2c: index($opts, 'b2c');
+	/// Base styles for a header
 	@include oHeaderServicesBase($bleed);
+
+	/// Required because there would be no header without the title
+	/// if other features aren't added.
 	@include oHeaderServicesTop($logo);
-	@include oHeaderServicesPrimaryNav;
-	@include oHeaderServicesSubNav;
-	@include oHeaderServicesTheme($theme: 'b2b');
-	@include oHeaderServicesTheme($theme: 'b2c');
+
+	@if $primary-nav {
+		@include oHeaderServicesPrimaryNav;
+	}
+
+	@if $sub-nav {
+		@include oHeaderServicesSubNav;
+	}
+
+	@if $b2b and _oHeaderSupports('b2b') {
+		@include oHeaderServicesTheme($theme: 'b2b');
+	}
+
+	@if $b2c and _oHeaderSupports('b2b') {
+		@include oHeaderServicesTheme($theme: 'b2c');
+	}
 }
