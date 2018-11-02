@@ -1,0 +1,120 @@
+/// Styling for sub nav
+/// @access private
+@mixin _oHeaderServicesSecondaryNav() {
+	.o-header-services__secondary-nav {
+		position: relative;
+		background-color: _oHeaderServicesGet('nav-background');
+		border-bottom: 1px solid _oHeaderServicesGet('nav-border');
+		overflow: hidden;
+		height: $_o-header-services-sub-nav-height;
+	}
+
+	.o-header-services__secondary-nav-content {
+		@include oGridContainer;
+		display: flex;
+		white-space: nowrap;
+		overflow: auto;
+		padding: 0 20px;
+	}
+
+	.o-header-services__secondary-nav-list {
+		display: flex;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.o-header-services__secondary-nav-item {
+		position: relative;
+	}
+
+	.o-header-services__secondary-nav-list--breadcrumb {
+		.o-header-services__secondary-nav-item {
+			padding-left: oTypographySpacingSize(2);
+
+			&:first-child {
+				padding-left: 0;
+			}
+
+			&:first-child:before {
+				content: none;
+			}
+
+			&:before {
+				@include oIconsGetIcon('arrow-right', _oHeaderServicesGet('nav-text'),  oTypographySpacingSize(4));
+				content: '';
+				position: relative;
+				top: 0.125em;
+			}
+		}
+
+		.o-header-services__secondary-nav-link {
+			@include oTypographyBold('sans');
+			color: _oHeaderServicesGet('nav-text');
+			text-transform: uppercase;
+		}
+	}
+
+	.o-header-services__secondary-nav-list--children {
+		.o-header-services__secondary-nav-item {
+			padding-left:  oTypographySpacingSize(4);
+
+			&:first-child {
+				margin-left:  oTypographySpacingSize(3);
+				padding-left:  oTypographySpacingSize(3);
+			}
+
+			&:first-child:before {
+				content: '';
+				position: absolute;
+				top: 15%;
+				left: 0;
+				height: 70%;
+				border-left: 1px solid _oHeaderServicesGet('nav-border');
+			}
+		}
+	}
+
+	.o-header-services__secondary-nav-link {
+		display: inline-block;
+		position: relative;
+		color: _oHeaderServicesGet('nav-text');
+		padding: 8px 0;
+
+		&:hover:after,
+		&[aria-current=true]:after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: oTypographySpacingSize(1);
+			background-color: _oHeaderServicesGet('nav-text');
+		}
+	}
+
+	.o-header-services__scroll-button--left {
+		@include oButtonsIconButton('arrow-left', $is-icon-only: true, $theme: $_o-header-services-button-theme);
+		left: 0;
+	}
+
+	.o-header-services__scroll-button--right {
+		@include oButtonsIconButton('arrow-right', $is-icon-only: true, $theme: $_o-header-services-button-theme);
+		right: 0;
+	}
+
+	.o-header-services__scroll-button {
+		@include oButtonsTheme($theme: $_o-header-services-button-theme);
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		transition: opacity 0.5s $o-visual-effects-transition-fade;
+		display: inline-block;
+		min-width:  oTypographySpacingSize(6);
+
+		&[disabled] {
+			opacity: 0;
+			pointer-events: none;
+		}
+	}
+}
