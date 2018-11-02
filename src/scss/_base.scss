@@ -28,11 +28,15 @@
 	@if $bleed {
 		.o-header-services--bleed {
 			.o-header-services__top,
-			.o-header-services__primary-nav,
+			.o-header-services__primary-nav-list,
 			.o-header-services__secondary-nav-content {
 				@include oGridContainer($bleed: $bleed)
 				max-width: 100%;
 				padding: 0 20px;
+			}
+
+			.o-header-services__primary-nav-list  {
+				padding: 0;
 			}
 		}
 	}
