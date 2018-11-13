@@ -14,24 +14,22 @@ class DropDown {
 		if (!this.nav) { return; }
 
 		this.burger = this.headerEl.querySelector('.o-header-services__hamburger-icon');
-		this.burger.addEventListener('click', { handleEvent: (e) => this.delegateEvent(e.type) });
+		this.burger.addEventListener('click', this);
 
-		window.addEventListener('resize',  { handleEvent: (e) => this.delegateEvent(e.type) });
-		window.addEventListener('keydown', { handleEvent: (e) => {
-			if (e.key === 'Escape' && !this.nav.classList.contains(this.class.hidden)) {
-				this.delegateEvent(e.type);
-			}
-		}});
+		window.addEventListener('resize',  this);
+		window.addEventListener('keydown', this);
 
 		this.render();
 	}
 
-	delegateEvent (type) {
-		if (type === 'resize') {
+	handleEvent(e) {
+		if (e.type === 'resize') {
 			oUtils.debounce(this.render, 100)
-		} else if (type === 'keydown') {
-			this.toggleDropdown();
-			this.buger.focus();
+		} else if (e.type === 'keydown') {
+			if (e.key === 'Escape' && !this.nav.classList.contains(this.class.hidden)) {
+				this.toggleDropdown();
+				this.buger.focus();
+			}
 		} else {
 			this.toggleDropdown();
 		}
@@ -41,9 +39,9 @@ class DropDown {
 		const enableDropdown = oGrid.getCurrentLayout() === 'default' || oGrid.getCurrentLayout() === 'S';
 
 		if (enableDropdown) {
-			this.nav.addEventListener('click',  { handleEvent: (e) => this.delegateEvent(e.type) });
+			this.nav.addEventListener('click', this);
 		} else {
-			this.nav.removeEventListener('click', this.toggleDropdown);
+			this.nav.removeEventListener('click', this);
 		}
 
 		this._shiftRelatedContentList(enableDropdown);
@@ -87,10 +85,10 @@ class DropDown {
 		if (expand) {
 			this.burger.querySelector('span').innerText = 'Close primary navigation';
 			this.nav.querySelector('.o-header-services__primary-nav-link').focus();
-			this.nav.lastElementChild.addEventListener('focusout',  { handleEvent: (e) => this.delegateEvent(e.type) });
+			this.nav.lastElementChild.addEventListener('focusout', this);
 		} else {
 			this.burger.querySelector('span').innerText = 'Open primary navigation';
-			this.nav.lastElementChild.removeEventListener('focusout', this.toggleDropdown);
+			this.nav.lastElementChild.removeEventListener('focusout', this);
 		}
 	}
 }
