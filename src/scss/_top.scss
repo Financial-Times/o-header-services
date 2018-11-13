@@ -49,27 +49,22 @@
 	}
 
 	.o-header-services__title {
-		padding: $_o-header-services-padding-y $_o-header-services-padding-x;
-		@include oGridRespondTo($until: M) {
-			margin: 0;
-		}
-	}
-
-	.o-header-services__product-name {
 		@include oTypographySize($scale: 4);
 		@include oTypographyBold('sans');
-		display: inline;
+		display: flex;
+		align-items: center;
 		text-overflow: ellipsis;
-		margin: 0;
 
 		@include oGridRespondTo($until: M) {
-			@include oTypographySize($scale: 2);
+			@include oTypographySize($scale: 4);
+			margin: 0;
 		}
 	}
 
 	.o-header-services__product-tagline {
 		@include oTypographySize($scale: 3);
 		margin-left: $_o-header-services-padding-x;
+		font-weight: 400;
 		text-transform: uppercase;
 		text-overflow: ellipsis;
 		overflow: hidden;
