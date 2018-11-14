@@ -13,6 +13,7 @@ class DropDown {
 
 		if (!this.nav) { return; }
 
+		this.debouncedRender = oUtils.debounce(() => this.render(), 100);
 		this.burger = this.headerEl.querySelector('.o-header-services__hamburger-icon');
 		this.burger.addEventListener('click', this);
 		window.addEventListener('resize', this);
@@ -21,9 +22,10 @@ class DropDown {
 		this.render();
 	}
 
+
 	handleEvent(e) {
 		if (e.type === 'resize') {
-			oUtils.debounce(this.render(), 100);
+			this.debouncedRender();
 		} else if (e.type === 'keydown') {
 			if (e.key === 'Escape' && !this.nav.classList.contains(this.class.hidden)) {
 				this.toggleDropdown();
