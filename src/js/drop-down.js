@@ -31,7 +31,7 @@ class DropDown {
 				this.toggleDropdown();
 				this.burger.focus();
 			}
-		} else if (e.type === 'click') {
+		} else if (e.type === 'click' || e.type === 'focusout') {
 			this.toggleDropdown();
 		}
 	}
