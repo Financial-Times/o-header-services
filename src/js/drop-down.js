@@ -13,27 +13,36 @@ class DropDown {
 
 		if (!this.nav) { return; }
 
+		this.debouncedRender = oUtils.debounce(() => this.render(), 100);
 		this.burger = this.headerEl.querySelector('.o-header-services__hamburger-icon');
-		this.burger.addEventListener('click', this.toggleDropdown.bind(this));
+		this.burger.addEventListener('click', this);
+		window.addEventListener('resize', this);
+		window.addEventListener('keydown', this);
 
-		window.addEventListener('resize', oUtils.debounce(this.render.bind(this), 100));
-		window.addEventListener('keydown', (e) => {
+		this.render();
+	}
+
+
+	handleEvent(e) {
+		if (e.type === 'resize') {
+			this.debouncedRender();
+		} else if (e.type === 'keydown') {
 			if (e.key === 'Escape' && !this.nav.classList.contains(this.class.hidden)) {
 				this.toggleDropdown();
 				this.burger.focus();
 			}
-		});
-
-		this.render();
+		} else if (e.type === 'click') {
+			this.toggleDropdown();
+		}
 	}
 
 	render () {
 		const enableDropdown = oGrid.getCurrentLayout() === 'default' || oGrid.getCurrentLayout() === 'S';
 
 		if (enableDropdown) {
-			this.nav.addEventListener('click', this.toggleDropdown.bind(this));
+			this.nav.addEventListener('click', this);
 		} else {
-			this.nav.removeEventListener('click', this.toggleDropdown);
+			this.nav.removeEventListener('click', this);
 		}
 
 		this._shiftRelatedContentList(enableDropdown);
@@ -77,10 +86,10 @@ class DropDown {
 		if (expand) {
 			this.burger.querySelector('span').innerText = 'Close primary navigation';
 			this.nav.querySelector('.o-header-services__primary-nav-link').focus();
-			this.nav.lastElementChild.addEventListener('focusout', () => this.toggleDropdown.bind(this));
+			this.nav.lastElementChild.addEventListener('focusout', this);
 		} else {
 			this.burger.querySelector('span').innerText = 'Open primary navigation';
-			this.nav.lastElementChild.removeEventListener('focusout', this.toggleDropdown);
+			this.nav.lastElementChild.removeEventListener('focusout', this);
 		}
 	}
 }
