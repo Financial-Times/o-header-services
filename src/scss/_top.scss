@@ -49,22 +49,24 @@
 	}
 
 	.o-header-services__title {
-		@include oTypographySize($scale: 4);
-		@include oTypographyBold('sans');
 		display: flex;
 		align-items: center;
+		padding-left: 10px;
+	}
+
+	.o-header-services__product-name {
+		@include oTypographySize($scale: 4);
+		@include oTypographyBold('sans');
 		text-overflow: ellipsis;
 
 		@include oGridRespondTo($until: M) {
-			@include oTypographySize($scale: 4);
-			margin: 0;
+			@include oTypographySize($scale: 2);
 		}
 	}
 
 	.o-header-services__product-tagline {
 		@include oTypographySize($scale: 3);
 		margin-left: $_o-header-services-padding-x;
-		font-weight: 400;
 		text-transform: uppercase;
 		text-overflow: ellipsis;
 		overflow: hidden;
