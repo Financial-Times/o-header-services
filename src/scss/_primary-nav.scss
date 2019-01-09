@@ -44,13 +44,14 @@
 
 		.o-header-services__primary-nav-list {
 			@include oVisualEffectsShadowsElevation('mid');
-			transition: transform 0.5s $o-visual-effects-transition-expand;
-			transform: translate3d(0, -100%, 0);
 			flex-direction: column;
-			margin: 0 0 0 10px;
-			padding: 0;
-			min-width: 170px;
+			transition: transform 0.5s $o-visual-effects-transition-expand;
+			transform: translate3d(-100%, 0, 0);
+			height: 100%;
+			min-width: 200px;
 			max-width: max-content;
+			margin: 0;
+			padding: 0;
 		}
 
 		&.o-header-services__primary-nav--hidden {
