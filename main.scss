@@ -20,24 +20,21 @@
 /// @param {String} $logo [default to ft-logo depending on brand (pink or white)]
 /// @access public
 @mixin oHeaderServices($opts: (
-	primary-nav,
-	secondary-nav,
-	bleed,
-	b2b,
-	b2c
-), $logo: $o-header-services-default-logo) {
-
-	$primary-nav: index($opts, 'primary-nav');
-	$secondary-nav: index($opts, 'secondary-nav');
-	$bleed: index($opts, 'bleed');
-	$b2b: index($opts, 'b2b');
-	$b2c: index($opts, 'b2c');
+	'types': ('primary-nav', 'secondary-nav', 'bleed', 'b2b', 'b2c'),
+	'logo': $o-header-services-default-logo
+	)) {
+		$types: map-get($opts, 'types');
+		$primary-nav: index($types, 'primary-nav');
+		$secondary-nav: index($types, 'secondary-nav');
+		$bleed: index($types, 'bleed');
+		$b2b: index($types, 'b2b');
+		$b2c: index($types, 'b2c');
 	/// Base styles for a header
 	@include _oHeaderServicesBase($bleed);
 
 	/// Required because there would be no header without the title
 	/// if other features aren't added.
-	@include _oHeaderServicesTop($logo);
+	@include _oHeaderServicesTop(map-get($opts, 'logo'));
 
 	@if $primary-nav {
 		@include _oHeaderServicesPrimaryNav;
