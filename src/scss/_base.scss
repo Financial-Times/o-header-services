@@ -17,7 +17,10 @@
 		ol,
 		ul {
 			list-style-type: none;
-			white-space: nowrap;
+
+			@include oGridRespondTo(S) {
+				white-space: nowrap;
+			};
 		}
 
 		.o-header-services__visually-hidden {
