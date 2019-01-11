@@ -34,13 +34,14 @@
 	}
 
 	.o-header-services__primary-nav--dropdown {
-		position: absolute;
-		z-index: $_o-header-services-primary-nav-z-index;
 		background-color: rgba(0, 0, 0, 0.2);
+		position: absolute;
 		top: $_o-header-services-top-bar-short;
 		left: 0;
 		right: 0;
 		bottom: 0;
+		overflow-y: auto;
+		z-index: $_o-header-services-primary-nav-z-index;
 
 		.o-header-services__primary-nav-list {
 			@include oVisualEffectsShadowsElevation('mid');
@@ -48,10 +49,18 @@
 			transition: transform 0.5s $o-visual-effects-transition-expand;
 			transform: translate3d(-100%, 0, 0);
 			height: 100%;
-			min-width: 220px;
-			max-width: max-content;
+			width: calc(100% - 80px);
 			margin: 0;
 			padding: 0;
+		}
+
+		.o-header-services__related-content-list-item {
+			background-color: _oHeaderServicesGet('nav-background');
+
+			.o-header-services__related-content-link {
+				font-weight: unset;
+				color: inherit;
+			}
 		}
 
 		&.o-header-services__primary-nav--hidden {

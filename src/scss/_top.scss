@@ -4,11 +4,12 @@
 @mixin _oHeaderServicesTop($logo: $o-header-services-default-logo) {
 	.o-header-services__top {
 		@include oGridContainer;
-		display: flex;
-		color: _oHeaderServicesGet('top-text');
 		background-color: _oHeaderServicesGet('top-background');
+		color: _oHeaderServicesGet('top-text');
+		display: flex;
 		overflow: hidden;
 		z-index: $_o-header-services-top-bar-z-index;
+		padding: 0;
 
 		a {
 			color: inherit;
@@ -16,17 +17,18 @@
 	}
 
 	.o-header-services__logo {
-		width: $_o-header-services-icon-size;
-		height: $_o-header-services-icon-size;
-		margin: 8px 8px 8px 0;
 		background-image: url('https://www.ft.com/__origami/service/image/v2/images/raw/ftlogo-v1:#{$logo}?source=o-header-services&format=svg&width=55');
 		background-repeat: no-repeat;
 		background-size: contain;
 		background-position: 0;
-		@include oGridRespondTo($until: M) {
-			margin: 0;
-			width: $_o-header-services-top-bar-short;
-			height: $_o-header-services-top-bar-short;
+		margin: 0;
+		height: $_o-header-services-top-bar-short;
+		width: $_o-header-services-top-bar-short;
+
+		@include oGridRespondTo(M) {
+			margin: 8px 8px 8px 0;
+			height: $_o-header-services-icon-size;
+			width: $_o-header-services-icon-size;
 		}
 	}
 
@@ -46,6 +48,11 @@
 		);
 		height: $_o-header-services-top-bar-short;
 		width: $_o-header-services-top-bar-short;
+		transition: transform 0.2s ease;
+
+		&.o-header-services__hambuger--open {
+			transform: rotate(90deg);
+		}
 	}
 
 	.o-header-services__title {

@@ -55,12 +55,14 @@ class DropDown {
 		const toggle = this.nav.classList.contains(this.class.hidden);
 		if (toggle) {
 			this.nav.classList.remove(this.class.hidden);
+			this.burger.classList.add('o-header-services__hambuger--open')
 			// display: none doesn't work with keyframes,
 			// so the element needs to be rendered before animated on open
 			setTimeout(() => this.nav.classList.add(this.class.open), 100);
 			this._toggleAriaAttributes(toggle);
 		} else {
 			this.nav.classList.remove(this.class.open);
+			this.burger.classList.remove('o-header-services__hambuger--open');
 			// display: none doesn't work with keyframes,
 			// so the element needs to be animated before hidden on close
 			setTimeout(() => this.nav.classList.add(this.class.hidden), 100);
