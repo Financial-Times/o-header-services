@@ -27,8 +27,8 @@
 
 		@include oGridRespondTo(M) {
 			margin: 8px 8px 8px 0;
-			height: $_o-header-services-icon-size;
-			width: $_o-header-services-icon-size;
+			height: $_o-header-services-top-icon-size;
+			width: $_o-header-services-top-icon-size;
 		}
 	}
 
@@ -44,7 +44,7 @@
 		@include oIconsGetIcon(
 			$icon-name: 'hamburger',
 			$color: _oHeaderServicesGet('top-text'),
-			$container-width: $_o-header-services-icon-size
+			$container-width: $_o-header-services-top-icon-size
 		);
 		height: $_o-header-services-top-bar-short;
 		width: $_o-header-services-top-bar-short;
@@ -74,7 +74,6 @@
 	.o-header-services__product-tagline {
 		@include oTypographySize($scale: 3);
 		margin-left: $_o-header-services-padding-x;
-		text-transform: uppercase;
 		text-overflow: ellipsis;
 		overflow: hidden;
 
@@ -88,28 +87,25 @@
 		padding: 16px $_o-header-services-padding-x;
 		display: flex;
 
-		@include oGridRespondTo($until: M) {
-			display: none;
-		}
-	}
+		li {
+			background-color: _oHeaderServicesGet('top-background');
 
-	.o-header-services__related-content-list-item {
-		background-color: _oHeaderServicesGet('top-background');
+			a {
+				@include oTypographyBold('sans');
+				margin: 0 $_o-header-services-padding-x;
+				color: _oHeaderServicesGet('top-text');
 
-		.o-header-services__related-content-link {
-			@include oTypographyBold('sans');
-			margin: 0 $_o-header-services-padding-x;
-			color: _oHeaderServicesGet('top-text');
+				@include oGridRespondTo($until: M) {
+					display: block;
+					padding: $_o-header-services-padding-x $_o-header-services-padding-x*2;
+					margin: 0;
+				}
 
-			@include oGridRespondTo($until: M) {
-				display: block;
-				padding: $_o-header-services-padding-x $_o-header-services-padding-x*2;
-				margin: 0;
-			}
-
-			&:hover {
-				text-decoration: underline;
+				&:hover {
+					text-decoration: underline;
+				}
 			}
 		}
 	}
+
 };

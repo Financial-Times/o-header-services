@@ -1,12 +1,12 @@
 import oGrid from 'o-grid';
 import * as oUtils from 'o-utils';
 
-class DropDown {
+class Drawer {
 	constructor(headerEl) {
 		this.headerEl = headerEl;
 		this.nav = headerEl.querySelector('.o-header-services__primary-nav');
 		this.class = {
-			dropdown: 'o-header-services__primary-nav--dropdown',
+			drawer: 'o-header-services__primary-nav--drawer',
 			open: 'o-header-services__primary-nav--open',
 			hidden: 'o-header-services__primary-nav--hidden'
 		};
@@ -37,18 +37,18 @@ class DropDown {
 	}
 
 	render () {
-		const enableDropdown = oGrid.getCurrentLayout() === 'default' || oGrid.getCurrentLayout() === 'S';
+		const enableDrawer = oGrid.getCurrentLayout() === 'default' || oGrid.getCurrentLayout() === 'S';
 
-		if (enableDropdown) {
+		if (enableDrawer) {
 			this.nav.addEventListener('click', this);
 		} else {
 			this.nav.removeEventListener('click', this);
 		}
 
-		this._shiftRelatedContentList(enableDropdown);
-		this.nav.classList.toggle(this.class.dropdown, enableDropdown);
-		this.nav.classList.toggle(this.class.hidden, enableDropdown);
-		this.nav.setAttribute('aria-hidden', enableDropdown);
+		this._shiftRelatedContentList(enableDrawer);
+		this.nav.classList.toggle(this.class.drawer, enableDrawer);
+		this.nav.classList.toggle(this.class.hidden, enableDrawer);
+		this.nav.setAttribute('aria-hidden', enableDrawer);
 	}
 
 	toggleDropdown () {
@@ -71,14 +71,14 @@ class DropDown {
 	}
 
 	_shiftRelatedContentList (shiftItems) {
-		let relatedContent = Array.from(this.headerEl.querySelectorAll('.o-header-services__related-content-list-item'));
+		let relatedContent = window.rc = this.headerEl.querySelector('.o-header-services__related-content');
 
 		if (!relatedContent) { return; }
 
-		let relatedContentList = this.headerEl.querySelector('.o-header-services__related-content');
-		let navList = this.nav.querySelector('.o-header-services__primary-nav-list');
+		let headerTop = window.ht = this.headerEl.querySelector('.o-header-services__top');
+		let navList = window.nl = this.nav.querySelector('.o-header-services__primary-nav-list');
 
-		relatedContent.forEach(item => shiftItems ? navList.appendChild(item) : relatedContentList.appendChild(item));
+		shiftItems ? navList.appendChild(relatedContent) : headerTop.appendChild(relatedContent);
 	}
 
 	_toggleAriaAttributes(expand) {
@@ -96,4 +96,4 @@ class DropDown {
 	}
 }
 
-export default DropDown;
+export default Drawer;
