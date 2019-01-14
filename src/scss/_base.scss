@@ -44,3 +44,35 @@
 		}
 	}
 }
+
+@mixin _oHeaderServicesHover($underline) {
+	color: _oHeaderServicesGet('nav-text');
+	position: relative;
+
+	@if $underline {
+		display: inline-block;
+		margin: 0 20px;
+		padding: 10px 0;
+
+		&:hover:after,
+		&[aria-current=true]:after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: oTypographySpacingSize(1);
+			background-color: _oHeaderServicesGet('nav-text');
+		}
+	} @else {
+		display: block;
+		margin: 0;
+		padding: $_o-header-services-padding-y $_o-header-services-padding-x*2;
+
+		&:hover,
+		&[aria-current=true] {
+			color: inherit;
+			background-color: _oHeaderServicesGet('nav-hover-background');
+		}
+	}
+}

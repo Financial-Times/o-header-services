@@ -16,19 +16,30 @@
 		}
 	}
 
-	.o-header-services__logo {
-		background-image: url('https://www.ft.com/__origami/service/image/v2/images/raw/ftlogo-v1:#{$logo}?source=o-header-services&format=svg&width=55');
-		background-repeat: no-repeat;
-		background-size: contain;
-		background-position: 0;
-		margin: 0;
-		height: $_o-header-services-top-bar-short;
-		width: $_o-header-services-top-bar-short;
+	.o-header-services__title {
+		display: flex;
+		align-items: center;
+	}
 
-		@include oGridRespondTo(M) {
-			margin: 8px 8px 8px 0;
-			height: $_o-header-services-top-icon-size;
-			width: $_o-header-services-top-icon-size;
+	@if _oHeaderServicesGet('logo') {
+		.o-header-services__logo {
+			background-image: url('https://www.ft.com/__origami/service/image/v2/images/raw/ftlogo-v1:#{$logo}?source=o-header-services&format=svg&width=55');
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: 0;
+			margin: 0;
+			height: $_o-header-services-top-bar-short;
+			width: $_o-header-services-top-bar-short;
+
+			@include oGridRespondTo(M) {
+				margin: 8px 8px 8px 0;
+				height: $_o-header-services-top-icon-size;
+				width: $_o-header-services-top-icon-size;
+			}
+		}
+
+		.o-header-services__title {
+			padding-left: 10px;
 		}
 	}
 
@@ -55,11 +66,7 @@
 		}
 	}
 
-	.o-header-services__title {
-		display: flex;
-		align-items: center;
-		padding-left: 10px;
-	}
+
 
 	.o-header-services__product-name {
 		@include oTypographySize($scale: 4);
@@ -94,6 +101,12 @@
 				@include oTypographyBold('sans');
 				margin: 0 $_o-header-services-padding-x;
 				color: _oHeaderServicesGet('top-text');
+
+				@if _oHeaderServicesGet('underline-hover') {
+					&:hover:after {
+						content: unset;
+					}
+				}
 
 				@include oGridRespondTo($until: M) {
 					display: block;
