@@ -55,7 +55,7 @@ class Drawer {
 		const toggle = this.nav.classList.contains(this.class.hidden);
 		if (toggle) {
 			this.nav.classList.remove(this.class.hidden);
-			this.burger.classList.add('o-header-services__hambuger--open')
+			this.burger.classList.add('o-header-services__hambuger--open');
 			// display: none doesn't work with keyframes,
 			// so the element needs to be rendered before animated on open
 			setTimeout(() => this.nav.classList.add(this.class.open), 100);
@@ -71,14 +71,14 @@ class Drawer {
 	}
 
 	_shiftRelatedContentList (shiftItems) {
-		let relatedContent = window.rc = this.headerEl.querySelector('.o-header-services__related-content');
+		let relatedContent = this.headerEl.querySelector('.o-header-services__related-content');
 
 		if (!relatedContent) { return; }
 
-		let headerTop = window.ht = this.headerEl.querySelector('.o-header-services__top');
-		let navList = window.nl = this.nav.querySelector('.o-header-services__primary-nav-list');
+		let headerTop = this.headerEl.querySelector('.o-header-services__top');
+		let navList = this.nav.querySelector('.o-header-services__primary-nav-list');
 
-		shiftItems ? navList.appendChild(relatedContent) : headerTop.appendChild(relatedContent);
+		return shiftItems ? navList.appendChild(relatedContent) : headerTop.appendChild(relatedContent);
 	}
 
 	_toggleAriaAttributes(expand) {
@@ -87,7 +87,7 @@ class Drawer {
 		this.burger.setAttribute('aria-expanded', expand);
 		if (expand) {
 			this.burger.querySelector('span').innerText = 'Close primary navigation';
-			this.nav.querySelector('.o-header-services__primary-nav-link').focus();
+			this.nav.querySelector('.o-header-services__primary-nav-list li a').focus();
 			this.nav.lastElementChild.addEventListener('focusout', this);
 		} else {
 			this.burger.querySelector('span').innerText = 'Open primary navigation';
