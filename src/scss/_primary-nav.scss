@@ -15,47 +15,67 @@
 		@include oGridRespondTo(S) {
 			padding: 0;
 		};
-	}
 
-	.o-header-services__primary-nav-link {
-		@include oTypographyBold('sans');
-		color: _oHeaderServicesGet('nav-text');
-		text-transform: uppercase;
-		display: block;
-		margin: 0;
-		padding: $_o-header-services-padding-y $_o-header-services-padding-x*2;
+		a {
+			@include oTypographyBold('sans');
+			color: _oHeaderServicesGet('nav-text');
+			text-transform: uppercase;
+			display: block;
+			margin: 0;
+			padding: $_o-header-services-padding-y $_o-header-services-padding-x*2;
 
-		&:hover,
-		&--selected,
-		&[aria-current=true] {
-			color: inherit;
-			background-color: _oHeaderServicesGet('nav-hover-background');
+			&:hover,
+			&[aria-current=true] {
+				color: inherit;
+				background-color: _oHeaderServicesGet('nav-hover-background');
+			}
 		}
 	}
 
-	.o-header-services__primary-nav--dropdown {
-		position: absolute;
-		z-index: $_o-header-services-primary-nav-z-index;
+	.o-header-services__primary-nav--drawer {
 		background-color: rgba(0, 0, 0, 0.2);
+		position: absolute;
 		top: $_o-header-services-top-bar-short;
 		left: 0;
 		right: 0;
 		bottom: 0;
+		overflow-y: auto;
+		z-index: $_o-header-services-primary-nav-z-index;
 
 		.o-header-services__primary-nav-list {
 			@include oVisualEffectsShadowsElevation('mid');
-			transition: transform 0.5s $o-visual-effects-transition-expand;
-			transform: translate3d(0, -100%, 0);
 			flex-direction: column;
-			margin: 0 0 0 10px;
+			margin: 0;
 			padding: 0;
-			min-width: 170px;
-			max-width: max-content;
+			transition: transform 0.5s $o-visual-effects-transition-expand;
+			transform: translate3d(-100%, 0, 0);
+			height: 100%;
+			width: calc(100% - 80px);
+		}
+
+		.o-header-services__related-content {
+			display: block;
+			margin: 20px 0 0;
+			padding: 0;
+
+			li {
+				background-color: _oHeaderServicesGet('nav-background');
+
+				a {
+					color: inherit;
+					font-weight: unset;
+					text-transform: none;
+				}
+
+				a:hover {
+					background-color: unset;
+				}
+			}
 		}
 
 		&.o-header-services__primary-nav--hidden {
-			display: none;
 			animation: opacity 0.5s $o-visual-effects-transition-fade;
+			display: none;
 		}
 
 		&.o-header-services__primary-nav--open {

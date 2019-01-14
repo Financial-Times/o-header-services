@@ -26,52 +26,59 @@
 			"o-fonts@^3.0.0",
 			"o-normalise@^1.0.0"
 		],
+		"documentClasses": "core",
 		"sass": "demos/src/main.scss",
-		"js": "demos/src/main.js",
-		"documentClasses": "core"
+		"template": "demos/src/header.mustache",
+		"js": "demos/src/main.js"
 	},
 	"demos": [
 		{
 			"name": "site-title",
 			"title": "Site title only",
-			"template": "demos/src/site-title.mustache",
 			"description": "If your site has no navigation you can use this top bar only."
 		},
 		{
 			"name": "primary-navigation",
 			"title": "Header with navigation add-on",
-			"template": "demos/src/primary-navigation.mustache",
-			"description": "For sites with a few pages, there is a navigation style available. These nav items collapse into a drawer at narrow screen widths."
+			"description": "For sites with a few pages, there is a navigation style available. These nav items collapse into a drawer at narrow screen widths.",
+			"data": {
+				"primary-navigation": true
+			}
 		},
 		{
 			"name": "secondary-navigation",
 			"title": "Header with a primary and secondary navigation",
-			"template": "demos/src/secondary-navigation.mustache",
-			"description": "For sites with more than a few sections, a secondary navigation is also available"
+			"description": "For sites with more than a few sections, a secondary navigation is also available",
+			"data": {
+				"primary-navigation": true,
+				"sub-navigation": true
+			}
 		},
 		{
 			"name": "theme-b2c",
 			"title": "Product theme: B2C",
-			"template": "demos/src/secondary-navigation.mustache",
+			"description": "B2C theme for this header component. If you're creating a product that isn't within B2B or B2C please contact Origami.",
 			"data": {
-				"modifier": "b2c"
+				"modifier": "b2c",
+				"primary-navigation": true,
+				"sub-navigation": true
 			},
 			"brands": [
 				"master"
-			],
-			"description": "B2C theme for this header component. If you're creating a product that isn't within B2B or B2C please contact Origami."
+			]
 		},
 		{
 			"name": "theme-b2b",
 			"title": "Product theme: B2B",
-			"template": "demos/src/secondary-navigation.mustache",
+			"description": "B2B theme for this header component. If you're creating a product that isn't within B2B or B2C please contact Origami.",
 			"data": {
-				"modifier": "b2b"
+				"modifier": "b2b",
+				"primary-navigation": true,
+				"sub-navigation": true
 			},
 			"brands": [
 				"master"
-			],
-			"description": "B2B theme for this header component. If you're creating a product that isn't within B2B or B2C please contact Origami."
+			]
 		},
 		{
 			"title": "Pa11y",

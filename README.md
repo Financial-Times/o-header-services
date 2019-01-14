@@ -76,7 +76,7 @@ To add support for related content, add the following to your markup:
 <header class='o-header-services' data-o-component='o-header'>
 	<div class='o-header-services__top'>
 +		<div class="o-header-services__hamburger">
-+			<a class="o-header-services__hamburger-icon" href="#" role="button">
++			<a class="o-header-services__hamburger-icon" href={{href}} role="button">
 +				<span class="o-header-services__visually-hidden">Open primary navigation</span>
 +			</a>
 +		</div>
@@ -85,11 +85,11 @@ To add support for related content, add the following to your markup:
 			<h1 class='o-header-services__product-name'><a href=''>Tool or Service name</a></h1><span class='o-header-subrand__product-tagline '>Tagline to explain the product here</span>
 		</div>
 +		<ul class="o-header-services__related-content">
-+			<li class="o-header-services__related-content-list-item">
-+				<a class="o-header-services__related-content-link" href="#">XXXX</a>
++			<li>
++				<a href={{href}}>XXXX</a>
 +			</li>
-+			<li class="o-header-services__related-content-list-item">
-+				<a class="o-header-services__related-content-link" href="#">Sign in</a>
++			<li >
++				<a href={{href}}>Sign in</a>
 +			</li>
 +		</ul>
 	</div>
@@ -105,7 +105,7 @@ This requires the drawer code, as seen above, and the following addition:
 <header class='o-header-services' data-o-component='o-header-services'>
 	<div class='o-header-services__top'>
 		<div class="o-header-services__hamburger">
-			<a class="o-header-services__hamburger-icon" href="#" role="button">
+			<a class="o-header-services__hamburger-icon" href={{href}} role="button">
 				<span class="o-header-services__visually-hidden">Open primary navigation</span>
 			</a>
 		</div>
@@ -114,19 +114,19 @@ This requires the drawer code, as seen above, and the following addition:
 			<h1 class='o-header-services__product-name'><a href=''>Tool or Service name</a></h1><span class='o-header-services__product-tagline '>Tagline to explain the product here</span>
 		</div>
 		<ul class="o-header-services__related-content">
-			<li class="o-header-services__related-content-list-item">
-				<a class="o-header-services__related-content-link" href="#">XXXX</a>
+			<li>
+				<a href={{href}}>XXXX</a>
 			</li>
-			<li class="o-header-services__related-content-list-item">
-				<a class="o-header-services__related-content-link" href="#">Sign in</a>
+			<li>
+				<a href={{href}}>Sign in</a>
 			</li>
 		</ul>
 	</div>
 </header>
 +<nav class='o-header-services__primary-nav'>
 +	<ul class='o-header-services__primary-nav-list'>
-+	 <li class='o-header-services__primary-nav-item'>
-+		 <a class="o-header-services__primary-nav-link  o-header-services__primary-nav-link--selected" href='#'>
++	 <li>
++		 <a aria-current="true" href='#'>
 +			 Nav item title
 +		 </a>
 +		</li>
@@ -146,7 +146,7 @@ To use the secondary navigation, use the primary navigation and add the followin
 <header class='o-header-services' data-o-component='o-header-services'>
 	<div class='o-header-services__top'>
 		<div class="o-header-services__hamburger">
-			<a class="o-header-services__hamburger-icon" href="#" role="button">
+			<a class="o-header-services__hamburger-icon" href={{href}} role="button">
 				<span class="o-header-services__visually-hidden">Open primary navigation</span>
 			</a>
 		</div>
@@ -162,7 +162,7 @@ To use the secondary navigation, use the primary navigation and add the followin
 </header>
 <nav class='o-header-services__primary-nav' aria-label="primary">
  <ul class='o-header-services__primary-nav-list'>
-	 <li class='o-header-services__primary-nav-item o-header-services__primary-nav-item--selected'>
+	 <li aria-current="true">
 		 <a href='#'>
 			 Nav item title
 		 </a>
@@ -174,36 +174,36 @@ To use the secondary navigation, use the primary navigation and add the followin
 +<nav class="o-header-services__secondary-nav" aria-label="secondary" data-o-header-services-nav>
 +	<div class="o-header-services__secondary-nav-content" data-o-header-services-nav-list>
 +		<ol class="o-header-services__secondary-nav-list o-header-services__secondary-nav-list--ancestors" aria-label="Ancestor section">
-+			<li class="o-header-services__secondary-nav-item">
-+				<a class="o-header-services__secondary-nav-link" href="#">
++			<li>
++				<a href={{href}}>
 +					ancestor section
 +				</a>
 +			</li>
-+			<li class="o-header-services__secondary-nav-item">
-+				<a class="o-header-services__secondary-nav-link" href="#">
++			<li>
++				<a href={{href}}>
 +					ancestor section
 +				</a>
 +			</li>
-+			<li class="o-header-services__secondary-nav-item">
-+				<a class="o-header-services__secondary-nav-link" href="#" aria-current="true" aria-label="Current page">
++			<li>
++				<a href={{href}} aria-current="true" aria-label="Current page">
 +					current section
 +				</a>
 +			</li>
 +		</ol>
 
 +		<ul class="o-header-services__secondary-nav-list o-header-services__secondary-nav-list--children" aria-label="Child sections">
-+			<li class="o-header-services__secondary-nav-item">
-+				<a class="o-header-services__secondary-nav-link" href="{{href}}">
++			<li>
++				<a href="{{href}}">
 +					child page
 +				</a>
 +			</li>
-+			<li class="o-header-services__secondary-nav-item">
-+				<a class="o-header-services__secondary-nav-link" href="{{href}}">
++			<li>
++				<a href="{{href}}">
 +					child page
 +				</a>
 +			</li>
-+			<li class="o-header-services__secondary-nav-item">
-+				<a class="o-header-services__secondary-nav-link" href="{{href}}">
++			<li>
++				<a href="{{href}}">
 +					child page
 +				</a>
 +			</li>
@@ -256,7 +256,7 @@ The `oHeaderServices` mixin accepts two arguments. The first, `$opts`, is a list
 
 ### Migrating from v2.x.x to v3.x.x
 
-V2 introduces many new changes to o-header-services. It sees the drawer removed, and now uses the primary nav as a drop down menu on smaller viewports. It removes a large dependency on o-header, and changes multiple class names and markup.
+V2 introduces many new changes to o-header-services. It now uses the primary nav as a drawer menu on smaller viewports. It removes a large dependency on o-header, and changes multiple class names and markup.
 It also removes most public mixins, and introduces a single public mixin, `oHeaderServices`;
 <!-- private mixins here -->
 The markup for a full header has changed in the following way:
@@ -266,7 +266,7 @@ The markup for a full header has changed in the following way:
 -	<div class="o-header-services__top o-header-services__container">
 +	<div class="o-header-services__top">
 	<div class="o-header-services__hamburger">
-		<a class="o-header-services__hamburger-icon" href="#" role="button">
+		<a class="o-header-services__hamburger-icon" href={{href}} role="button">
 -				<span class="o-header__visually-hidden">Menu</span>
 +				<span class="o-header-services__visually-hidden">Menu</span>
 			</a>
@@ -274,19 +274,19 @@ The markup for a full header has changed in the following way:
 		<div class='o-header-services__logo'></div>
 		<div class='o-header-services__title'>
 			<h1 class='o-header-services__product-name'><a href=''>Tool or Service name</a></h1>
--				<span class='o-header-subrand__product-tagline '>Tagline to explain the product here</span>
-+				<span class='o-header-services__product-tagline '>Tagline to explain the product here</span>
+-				<span class='o-header-subrand__product-tagline'>Tagline to explain the product here</span>
++				<span class='o-header-services__product-tagline'>Tagline to explain the product here</span>
 		</div>
 -		<div class='o-header-services__related-content'>
 -			<a href='#'>XXXX</a>
 -			<a href='#'>Sign in</a>
 -		</div>
 +		<ul class="o-header-services__related-content">
-+			<li class="o-header-services__related-content-list-item">
-+				<a class="o-header-services__related-content-link" href="#">XXXX</a>
++			<li>
++				<a href={{href}}>XXXX</a>
 +			</li>
-+			<li class="o-header-services__related-content-list-item">
-+				<a class="o-header-services__related-content-link" href="#">Sign in</a>
++			<li>
++				<a href={{href}}>Sign in</a>
 +			</li>
 +		</ul>
 	</div>
@@ -296,9 +296,9 @@ The markup for a full header has changed in the following way:
 -		<ul class="o-header-services__nav-list">
 +		<ul class="o-header-services__primary-nav-list">
 -			<li class="o-header-services__nav-item">
-+			<li class="o-header-services__primary-nav-item">
++			<li>
 -				<a class="o-header-services__nav-link o-header-services__nav-link--selected" href="#item-1">
-+				<a class="o-header-services__primary-nav-link o-header-services__primary-nav-link--selected" href="#item-1">
++				<a aria-current="true" aria-label="Current page" href="#item-1">
 					Nav item 1
 				</a>
 			</li>
@@ -317,9 +317,9 @@ The markup for a full header has changed in the following way:
 -					<ol class="o-header-services__subnav-list o-header-services__subnav-list--breadcrumb" aria-label="Breadcrumb">
 +					<ol class="o-header-services__secondary-nav-list o-header-services__secondary-nav-list--ancestors" aria-label="Ancestor sections">
 -						<li class="o-header-services__subnav-item">
-+						<li class="o-header-services__secondary-navigation-item">
--							<a class="o-header-services__subnav-link" href="#" aria-selected="true" aria-label="Current page">
-+							<a class="o-header-services__secondary-link" href="#" aria-current="true" aria-label="Current page">
++						<li>
+-							<a class="o-header-services__subnav-link" href={{href}} aria-selected="true" aria-label="Current page">
++							<a href={{href}} aria-current="true" aria-label="Current page">
 								current section
 							</a>
 						</li>
@@ -329,9 +329,9 @@ The markup for a full header has changed in the following way:
 -					<ul class="o-header-services__subnav-list o-header-services__subnav-list--children" aria-label="Subsections">
 +					<ul class="o-header-services__secondary-nav-list o-header-services__secondary-nav-list--children" aria-label="Child sections">
 -						<li class="o-header-services__subnav-item">
-+						<li class="o-header-services__secondary-nav-item">
++						<li>
 -							<a class="o-header-services__subnav-link" href="{{href}}">
-+							<a class="o-header-services__secondary-nav-link" href="{{href}}">
++							<a href="{{href}}">
 								child page
 							</a>
 						</li>
