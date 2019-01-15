@@ -104,7 +104,7 @@
 
 				@if _oHeaderServicesGet('underline-hover') {
 					&:hover:after {
-						content: unset;
+						content: none;
 					}
 				}
 

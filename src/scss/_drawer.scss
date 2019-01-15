@@ -30,12 +30,12 @@
 
 				a {
 					color: inherit;
-					font-weight: unset;
+					font-weight: oFontsWeight('regular');
 					text-transform: none;
 				}
 
 				a:hover {
-					background-color: unset;
+					background-color: none;
 				}
 			}
 		}
