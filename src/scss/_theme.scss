@@ -1,7 +1,7 @@
 /// @brand master
+/// @access private
 /// @param {String} $theme either b2b or b2c
 /// @outputs Changes navigation colours based on $theme
-/// @access private
 @mixin _oHeaderServicesTheme($theme) {
 	@if type-of($theme) != 'string' {
 		@error 'oHeaderServicesTheme `$theme` must be a string but "#{$theme}" is of type "#{type-of($theme)}".';

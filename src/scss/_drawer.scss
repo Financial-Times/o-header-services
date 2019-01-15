@@ -1,0 +1,56 @@
+/// @access private
+/// @outputs styling for the drawer
+@mixin _oHeaderServicesDrawer {
+	.o-header-services__primary-nav--drawer {
+		background-color: rgba(0, 0, 0, 0.2);
+		position: absolute;
+		top: $_o-header-services-top-bar-short;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		overflow-y: auto;
+		z-index: $_o-header-services-primary-nav-z-index;
+
+		.o-header-services__primary-nav-list {
+			@include oVisualEffectsShadowsElevation('mid');
+			flex-direction: column;
+			margin: 0;
+			padding: 0;
+			transition: transform 0.5s $o-visual-effects-transition-expand;
+			transform: translate3d(-100%, 0, 0);
+			height: 100%;
+			width: calc(100% - 120px);
+		}
+
+		.o-header-services__related-content {
+			display: block;
+			margin: 20px 0 0;
+			padding: 0;
+
+			li {
+				background-color: _oHeaderServicesGet('nav-background');
+
+				a {
+					color: inherit;
+					font-weight: oFontsWeight('regular');
+					text-transform: none;
+				}
+
+				a:hover {
+					background-color: none;
+				}
+			}
+		}
+
+		&.o-header-services__primary-nav--hidden {
+			animation: opacity 0.5s $o-visual-effects-transition-fade;
+			display: none;
+		}
+
+		&.o-header-services__primary-nav--open {
+			.o-header-services__primary-nav-list {
+				transform: translate3d(0, 0, 0);
+			}
+		}
+	}
+}

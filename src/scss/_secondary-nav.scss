@@ -1,5 +1,5 @@
-/// Styling for sub nav
 /// @access private
+/// @outputs styling for sub nav
 @mixin _oHeaderServicesSecondaryNav() {
 	.o-header-services__secondary-nav {
 		position: relative;
@@ -27,21 +27,9 @@
 			position: relative;
 
 			a {
-				color: _oHeaderServicesGet('nav-text');
-				display: inline-block;
+				@include _oHeaderServicesHover($underline: true);
 				padding: 8px 0;
-				position: relative;
-
-				&:hover:after,
-				&[aria-current=true]:after {
-					content: '';
-					position: absolute;
-					bottom: 0;
-					left: 0;
-					width: 100%;
-					height: oTypographySpacingSize(1);
-					background-color: _oHeaderServicesGet('nav-text');
-				}
+				margin: 0;
 			}
 		}
 	}
@@ -88,6 +76,7 @@
 			border-left: 1px solid _oHeaderServicesGet('nav-border');
 		}
 	}
+
 	.o-header-services__scroll-button {
 		@include oButtonsTheme($theme: $_o-header-services-button-theme);
 		border: 1px solid _oHeaderServicesGet('nav-border');

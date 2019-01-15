@@ -30,7 +30,7 @@
 				product-title: oColorsGetPaletteColor('org-b2c-light'),
 				nav-text: oColorsGetPaletteColor('white'),
 				nav-background: oColorsGetPaletteColor('org-b2c'),
-				nav-hover-background: oColorsGetPaletteColor('org-b2c-dark')
+				nav-hover-background: oColorsGetPaletteColor('org-b2c-dark'),
 			)
 		),
 		'supports-variants': (
@@ -47,13 +47,21 @@
 			nav-text: oColorsGetPaletteColor('black'),
 			nav-background: oColorsGetPaletteColor('slate-white-5'),
 			nav-border: oColorsGetPaletteColor('black-20'),
-			nav-hover-background: oColorsGetPaletteColor('slate-white-15')
+			nav-hover-background: oColorsGetPaletteColor('slate-white-15'),
 		),
 		'supports-variants': ()
 	));
 } @elseif oBrandGetCurrentBrand() == 'whitelabel' {
 	@include oBrandDefine('o-header-services', 'whitelabel', (
-		'variables': (),
+		'variables': (
+			logo: null,
+			top-text: oColorsGetPaletteColor('white'),
+			top-background: oColorsGetPaletteColor('black'),
+			nav-text: oColorsGetPaletteColor('black'),
+			nav-background: oColorsGetPaletteColor('white'),
+			nav-border: oColorsGetPaletteColor('black'),
+			nav-hover-background: oColorsGetPaletteColor('white')
+		),
 		'supports-variants': ()
 	));
 }
