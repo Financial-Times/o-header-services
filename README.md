@@ -68,7 +68,7 @@ At smaller screen widths this will be included in the drop down navigation.
 
 #### Core experience of the drawer
 
-Small screen users should still be able to access the contents of the drop down navigation even if their browser doesn't cut the mustard or the JavaScript has failed to load. This does is not part of `o-header-services`, but we recommend you have the contents of the drop down navigation at the bottom of the page in a footer that is only visible if the body has a `.core` class. In core experience the hamburger menu should link to an anchor at the bottom of the page.
+Small screen users should still be able to access the contents of the drop down navigation even if their browser doesn't cut the mustard or the JavaScript has failed to load. This is not part of `o-header-services`, but we recommend you have the contents of the drop down navigation at the bottom of the page in a footer that is only visible if the body has a `.core` class. In core experience the hamburger menu should link to an anchor at the bottom of the page.
 
 To add support for related content, add the following to your markup:
 
