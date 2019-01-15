@@ -1,3 +1,5 @@
+/// @access private
+/// @outputs styling for the drawer
 @mixin _oHeaderServicesDrawer {
 	.o-header-services__primary-nav--drawer {
 		background-color: rgba(0, 0, 0, 0.2);

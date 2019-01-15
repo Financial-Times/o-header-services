@@ -1,6 +1,6 @@
-/// Fundamental styles for header
-/// @param {Boolean} $bleed [whether or not to make the header a bleed header. Defaults to false.]
 /// @access private
+/// @param {Boolean} $bleed [whether or not to make the header a bleed header. Defaults to false.]
+/// @outputs base styles for full header
 @mixin _oHeaderServicesBase($bleed: false) {
 	//Surface layouts for o-grid JavaScript helper https://github.com/Financial-Times/o-grid#getcurrentlayout
 	@include oGridSurfaceCurrentLayout();
@@ -45,6 +45,9 @@
 	}
 }
 
+/// @access private
+/// @param {Boolean} $underline [whether or not to make the hover an underline or a background change]
+/// @outputs hover styles
 @mixin _oHeaderServicesHover($underline) {
 	color: _oHeaderServicesGet('nav-text');
 	position: relative;
@@ -67,7 +70,7 @@
 	} @else {
 		display: block;
 		margin: 0;
-		padding: $_o-header-services-padding-y $_o-header-services-padding-x*2;
+		padding: $_o-header-services-padding $_o-header-services-padding*2;
 
 		&:hover,
 		&[aria-current=true] {

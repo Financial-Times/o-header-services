@@ -1,6 +1,6 @@
-/// Styling for title section of header
-/// @param {String} $logo [ft-logo depending on brand (pink or white)]
 /// @access private
+/// @param {String} $logo [ft-logo depending on brand (pink or white)]
+/// @outputs styling for title section of header
 @mixin _oHeaderServicesTop($logo: $o-header-services-default-logo) {
 	.o-header-services__top {
 		@include oGridContainer;
@@ -66,8 +66,6 @@
 		}
 	}
 
-
-
 	.o-header-services__product-name {
 		@include oTypographySize($scale: 4);
 		@include oTypographyBold('sans');
@@ -80,7 +78,7 @@
 
 	.o-header-services__product-tagline {
 		@include oTypographySize($scale: 3);
-		margin-left: $_o-header-services-padding-x;
+		margin-left: $_o-header-services-padding;
 		text-overflow: ellipsis;
 		overflow: hidden;
 
@@ -91,7 +89,7 @@
 
 	.o-header-services__related-content {
 		margin: 0 0 0 auto;
-		padding: 16px $_o-header-services-padding-x;
+		padding: 16px $_o-header-services-padding;
 		display: flex;
 
 		li {
@@ -99,7 +97,7 @@
 
 			a {
 				@include oTypographyBold('sans');
-				margin: 0 $_o-header-services-padding-x;
+				margin: 0 $_o-header-services-padding;
 				color: _oHeaderServicesGet('top-text');
 
 				@if _oHeaderServicesGet('underline-hover') {
@@ -110,7 +108,7 @@
 
 				@include oGridRespondTo($until: M) {
 					display: block;
-					padding: $_o-header-services-padding-x $_o-header-services-padding-x*2;
+					padding: $_o-header-services-padding $_o-header-services-padding*2;
 					margin: 0;
 				}
 
@@ -120,5 +118,4 @@
 			}
 		}
 	}
-
 };
