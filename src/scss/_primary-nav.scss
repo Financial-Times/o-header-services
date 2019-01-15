@@ -17,7 +17,7 @@
 		};
 
 		a {
-			$underline: _oHeaderServicesGet('underline-hover');
+			$underline: _oHeaderServicesGet('nav-background') == _oHeaderServicesGet('nav-hover-background');
 			@include _oHeaderServicesHover($underline);
 			@include oTypographyBold('sans');
 			text-transform: uppercase;
