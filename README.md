@@ -74,8 +74,8 @@ You can see what B2B and B2C headers look like on the [Origami Registry](https:/
 ### Bleed Header
 If your application requires a bleed header, you'll need to add the `o-header-services--bleed` variant to your header.
 ```diff
--<header class='o-header-services' data-o-component='o-header'>
 +<header class='o-header-services o-header-services--bleed' data-o-component='o-header'>
+-<header class='o-header-services' data-o-component='o-header'>
 	<!-- Your header markup -->
 </header>
 ```
