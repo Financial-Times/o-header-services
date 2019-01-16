@@ -16,7 +16,7 @@ This header is for tools and services built by the Financial Times.
 
 ## Markup
 
-An `o-header-services` header is divided into three main parts: title section, primary navigation and secondary navigation. In every case, this is the base of the variations in markup:
+An `o-header-services` header is divided into three main parts: title section **(required)**, primary navigation **(optional)**, and secondary navigation **(optional)**. Each section is placed within a `header` element:
 
 ```html
 <header class='o-header-services' data-o-component='o-header-services'>
