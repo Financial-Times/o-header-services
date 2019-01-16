@@ -33,7 +33,7 @@ You can choose to include a product tagline to describe your product concisely, 
 
 _Note: If there is a 'Sign in' option, it should be consistent with other FT products by aligning itself to the right and avoiding different wording such as 'Log in' or 'Login'._
 
-You can see an example of a title section-only header and the markup for it in the [Origami Registry](https://registry.origami.ft.com/components/o-header-services#demo-title-section).
+For an example and markup, see the [title-only header in the Origami Registry](https://registry.origami.ft.com/components/o-header-services#demo-title-section).
 
 ### Primary Navigation
 
@@ -43,7 +43,7 @@ This section of the header has specific behaviour, as it turns into a drawer at 
 
 If you are using extra content (such as a 'Sign in' link), that will be pulled into the drawer, as well.
 
-You can see an example of the primary navigation and its markup in the [Origami Registry](https://registry.origami.ft.com/components/o-header-services#demo-primary-navigation).
+You can see an example, with markup, of the [primary navigation in the Origami Registry](https://registry.origami.ft.com/components/o-header-services#demo-primary-navigation).
 
 ### Secondary Navigation
 
@@ -54,11 +54,11 @@ The 'ancestor' section  works in the form of a breadcrumb, and the children are 
 
 At smaller viewports, it does _not_ collapse into the drawer, but becomes scrollable, instead.
 
-You can see an example of the secondary navigation and its markup in the [Origami Registry](https://registry.origami.ft.com/components/o-header-services#demo-secondary-navigation).
+You can see an example, with markup, of the [secondary navigation in the Origami Registry](https://registry.origami.ft.com/components/o-header-services#demo-secondary-navigation).
 
 ### Themes
 
-`o-header-services` offers theming for B2B or B2C products under FT.com. They are designed to affect the title section and the primary navigation.
+`o-header-services` offers theming for B2B or B2C products for FT.com products who use the master brand. They are designed to affect the title section and the primary navigation.
 
 To add a theme to the header, add the appropriate class to the header element. For example, for B2B that would be:
 
@@ -69,7 +69,7 @@ To add a theme to the header, add the appropriate class to the header element. F
 </header>
 ```
 
-You can see what B2B and B2C headers look like on the [Origami Registry](https://registry.origami.ft.com/components/o-header-services#demo-theme-b2c).
+You can preview [B2B and B2C headers in the Origami Registry](https://registry.origami.ft.com/components/o-header-services#demo-theme-b2c).
 
 ### Bleed Header
 If your application requires a bleed header, you'll need to add the `o-header-services--bleed` variant to your header.
@@ -89,7 +89,7 @@ In order to output every type of `o-header-services` style, you'll need to inclu
 	@include oHeaderServices();
 ```
 
-You can be more selective about which types you would like to output, by using an `$opts` map. It accepts the following lists:
+You can be more selective about which types you would like to output, by using an `$opts` map. It accepts the following options:
 
 **types**
 - `'primary-nav'`
@@ -101,7 +101,7 @@ You can be more selective about which types you would like to output, by using a
 **logo**
 - the name of a logo from the [logos image set](https://registry.origami.ft.com/components/logo-images@1.8.0). Defaults to the FT logo.
 
-If you are looking for specific `o-header-services` features you can request them in the following way:
+In this example we include only the styles for a [primary navigation](#primary-navigation) with the [bleed modifier](#bleed-header). We opt to use the Origami logo from the [logo image set](https://registry.origami.ft.com/components/logo-images@1.8.0).
 ```scss
 	@import 'o-header-services/main';
 
