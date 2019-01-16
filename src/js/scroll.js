@@ -1,6 +1,10 @@
 import * as oUtils from 'o-utils';
 
 class Scroll {
+	/**
+	 * Class constructor
+	 * @param {HTMLElement} [headerEl] - The component element in the DOM
+	 */
 	constructor (headerEl) {
 		this.headerEl = headerEl;
 		this.container = headerEl.querySelector('[data-o-header-services-nav]');
@@ -21,11 +25,17 @@ class Scroll {
 		this.render();
 	}
 
+	/**
+	 * Scroll functionality rendering
+	 */
 	render () {
 		this.showCurrentSelection();
 		this.toggleScrollButtons();
 	}
 
+	/**
+	 * Hide/show scroll buttons
+	 */
 	toggleScrollButtons () {
 		this._getWidths();
 		this.buttons.forEach(button => {
@@ -38,6 +48,9 @@ class Scroll {
 		});
 	}
 
+	/**
+	 * Scrolling functionality
+	 */
 	scroll (e) {
 		let distance = 100;
 
@@ -62,6 +75,9 @@ class Scroll {
 		this.width.container = this.list.clientWidth;
 	}
 
+	/**
+	 * Scroll secondary nav to 'current selection'
+	 */
 	showCurrentSelection () {
 		this._getWidths();
 		const currentSelection = this.list.querySelector('[aria-current]');
