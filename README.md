@@ -2,7 +2,6 @@
 
 This header is for tools and services built by the Financial Times.
 
-## Index
 - [Markup](#markup)
 	- [Title Section](#title-section)
 	- [Primary navigation](#primary-navigation)
