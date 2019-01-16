@@ -2,6 +2,10 @@ import oGrid from 'o-grid';
 import * as oUtils from 'o-utils';
 
 class Drawer {
+	/**
+	 * Class constructor.
+	 * @param {HTMLElement} [headerEl] - The component element in the DOM
+	 */
 	constructor(headerEl) {
 		this.headerEl = headerEl;
 		this.nav = headerEl.querySelector('.o-header-services__primary-nav');
@@ -22,20 +26,27 @@ class Drawer {
 		this.render();
 	}
 
-
+	/**
+	 * Event Handler
+	 * @param {Object} event - The revent emitted by element/window interactions
+	 */
 	handleEvent(e) {
 		if (e.type === 'resize') {
 			this.debouncedRender();
 		} else if (e.type === 'keydown') {
 			if (e.key === 'Escape' && !this.nav.classList.contains(this.class.hidden)) {
-				this.toggleDropdown();
+				this.toggleDrawer();
 				this.burger.focus();
 			}
 		} else if (e.type === 'click' || e.type === 'focusout') {
-			this.toggleDropdown();
+			this.toggleDrawer();
 		}
 	}
 
+
+	/**
+	 * Drawer rendering
+	 */
 	render () {
 		const enableDrawer = oGrid.getCurrentLayout() === 'default' || oGrid.getCurrentLayout() === 'S';
 
@@ -51,7 +62,10 @@ class Drawer {
 		this.nav.setAttribute('aria-hidden', enableDrawer);
 	}
 
-	toggleDropdown () {
+	/**
+	 * Drawer hide/show functionality
+	 */
+	toggleDrawer () {
 		const toggle = this.nav.classList.contains(this.class.hidden);
 		if (toggle) {
 			this.nav.classList.remove(this.class.hidden);
@@ -70,6 +84,9 @@ class Drawer {
 		}
 	}
 
+	/**
+	 * Shift related content (sign in, etc) between drawer and header title section
+	 */
 	_shiftRelatedContentList (shiftItems) {
 		let relatedContent = this.headerEl.querySelector('.o-header-services__related-content');
 
@@ -81,6 +98,9 @@ class Drawer {
 		return shiftItems ? navList.appendChild(relatedContent) : headerTop.appendChild(relatedContent);
 	}
 
+	/**
+	 * Set aria attributes specific to presence of drawer
+	 */
 	_toggleAriaAttributes(expand) {
 		this.nav.setAttribute('aria-hidden', !expand);
 		this.nav.lastElementChild.setAttribute('aria-hidden', !expand);
