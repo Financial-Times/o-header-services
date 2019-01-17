@@ -33,6 +33,12 @@
 	},
 	"demos": [
 		{
+			"name": "hierarchical-header",
+			"title": "Header with title section",
+			"template": "demos/src/hierarchical-header.mustache",
+			"description": "If your site has no navigation you can use this top bar on its own."
+		},
+		{
 			"name": "title-section",
 			"title": "Header with title section",
 			"description": "If your site has no navigation you can use this top bar on its own."

@@ -7,8 +7,17 @@ class HeaderServices {
 	 * @param {HTMLElement} [headerEl] - The component element in the DOM
 	 */
 	constructor (headerEl) {
-		new Drawer(headerEl);
+		// new Drawer(headerEl);
 		new Scroll(headerEl);
+
+		Array.from(document.querySelectorAll('li[data-o-header-services-level="1"]'), item => {
+			item.addEventListener('click', (e) => {
+				console.log(item);
+				e.preventDefault();
+				item.toggleAttribute('aria-expanded');
+			})
+		});
+
 	}
 
 	/**
