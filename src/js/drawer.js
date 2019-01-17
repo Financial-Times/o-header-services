@@ -11,7 +11,6 @@ class Drawer {
 		this.nav = headerEl.querySelector('.o-header-services__primary-nav');
 		this.class = {
 			drawer: 'o-header-services__primary-nav--drawer',
-			open: 'o-header-services__primary-nav--open',
 			hidden: 'o-header-services__primary-nav--hidden'
 		};
 
@@ -43,7 +42,6 @@ class Drawer {
 		}
 	}
 
-
 	/**
 	 * Drawer rendering
 	 */
@@ -66,22 +64,10 @@ class Drawer {
 	 * Drawer hide/show functionality
 	 */
 	toggleDrawer () {
-		const toggle = this.nav.classList.contains(this.class.hidden);
-		if (toggle) {
-			this.nav.classList.remove(this.class.hidden);
-			this.burger.classList.add('o-header-services__hambuger--open');
-			// display: none doesn't work with keyframes,
-			// so the element needs to be rendered before animated on open
-			setTimeout(() => this.nav.classList.add(this.class.open), 100);
-			this._toggleAriaAttributes(toggle);
-		} else {
-			this.nav.classList.remove(this.class.open);
-			this.burger.classList.remove('o-header-services__hambuger--open');
-			// display: none doesn't work with keyframes,
-			// so the element needs to be animated before hidden on close
-			setTimeout(() => this.nav.classList.add(this.class.hidden), 100);
-			this._toggleAriaAttributes(!toggle);
-		}
+		this.nav.classList.toggle(this.class.hidden);
+		this.burger.classList.toggle('o-header-services__hambuger--open');
+		this._toggleAriaAttributes(!this.nav.classList.contains(this.class.hidden));
+		this.nav.style.display = none;
 	}
 
 	/**
