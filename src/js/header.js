@@ -1,4 +1,5 @@
 import Drawer from './drawer';
+import DropDown from './drop-down';
 import Scroll from './scroll';
 
 class HeaderServices {
@@ -8,17 +9,12 @@ class HeaderServices {
 	 */
 	constructor (headerEl) {
 		// new Drawer(headerEl);
+		new DropDown(headerEl);
 		new Scroll(headerEl);
-
-		Array.from(document.querySelectorAll('li[data-o-header-services-level="1"]'), item => {
-			item.addEventListener('click', (e) => {
-				console.log(item);
-				e.preventDefault();
-				item.toggleAttribute('aria-expanded');
-			})
-		});
-
 	}
+
+
+
 
 	/**
 	 * Initialise header component

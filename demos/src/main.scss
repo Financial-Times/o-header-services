@@ -23,7 +23,7 @@ ul[data-o-header-services-level] {
 	font-size: 14px;
 
 	position: absolute;
-	width: 100%;
+	min-width: auto;
 
 	background: _oHeaderServicesGet('nav-background');
 	border-top: 1px solid _oHeaderServicesGet('nav-border');
@@ -35,7 +35,7 @@ ul[data-o-header-services-level] {
 }
 
 
-li[aria-expanded] {
+li[aria-expanded=true] {
 	a:after {
 		transform: rotate(-180deg);
 	}
