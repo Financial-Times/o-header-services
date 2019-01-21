@@ -57,8 +57,8 @@
 		margin: 0 20px;
 		padding: 10px 0;
 
-		&:hover:after,
-		&[aria-current=true]:after {
+		&:hover:before,
+		&[aria-current=true]:before {
 			content: '';
 			position: absolute;
 			bottom: 0;

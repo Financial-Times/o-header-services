@@ -95,16 +95,17 @@
 		li {
 			background-color: _oHeaderServicesGet('top-background');
 
+			@if _oHeaderServicesGet('nav-background') == _oHeaderServicesGet('nav-hover-background') {
+				&:hover:before {
+					content: none;
+				}
+			}
+
 			a {
 				@include oTypographyBold('sans');
 				margin: 0 $_o-header-services-padding;
 				color: _oHeaderServicesGet('top-text');
 
-				@if _oHeaderServicesGet('underline-hover') {
-					&:hover:after {
-						content: none;
-					}
-				}
 
 				@include oGridRespondTo($until: M) {
 					display: block;
