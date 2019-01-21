@@ -4,14 +4,11 @@ class DropDown {
 	 * @param {HTMLElement} [headerEl] - The component element in the DOM
 	 */
 	constructor (headerEl) {
-		this.primaryNav = window.n =headerEl.querySelector('.o-header-services__primary-nav');
+		this.primaryNav = headerEl.querySelector('.o-header-services__primary-nav');
 
-		this.navItems = Array.from(headerEl.querySelectorAll('[data-o-header-services-level="1"]'), item => {
-			item.addEventListener('click', this);
-			return item;
-		});
+		this.navItems = window.n = [...headerEl.querySelectorAll('[data-o-header-services-level="1"]')];
+		this.navItems.forEach(item => { item.firstElementChild.addEventListener('click', this); })
 	}
-
 	/**
 	 * Event Handler
 	 * @param {Object} event - The revent emitted by element/window interactions
@@ -71,7 +68,6 @@ class DropDown {
 	collapseAll() {
 		this.navItems.forEach(this.collapse);
 	}
-
 
 }
 
