@@ -8,13 +8,10 @@ class HeaderServices {
 	 * @param {HTMLElement} [headerEl] - The component element in the DOM
 	 */
 	constructor (headerEl) {
-		// new Drawer(headerEl);
+		new Drawer(headerEl);
 		new DropDown(headerEl);
 		new Scroll(headerEl);
 	}
-
-
-
 
 	/**
 	 * Initialise header component

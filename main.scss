@@ -10,6 +10,7 @@
 @import 'src/scss/base';
 @import 'src/scss/variables';
 @import 'src/scss/drawer';
+@import 'src/scss/drop-down';
 @import 'src/scss/top';
 @import 'src/scss/theme';
 @import 'src/scss/primary-nav';
@@ -21,15 +22,19 @@
 /// @param {String} $logo [default to ft-logo depending on brand (pink or white)]
 /// @access public
 @mixin oHeaderServices($opts: (
-	'types': ('primary-nav', 'secondary-nav', 'bleed', 'b2b', 'b2c'),
+	'types': ('primary-nav', 'secondary-nav', 'b2b', 'b2c'),
+	'features': ('bleed', 'drop-down')
 	'logo': $o-header-services-default-logo
-	)) {
-		$types: map-get($opts, 'types');
-		$primary-nav: index($types, 'primary-nav');
-		$secondary-nav: index($types, 'secondary-nav');
-		$bleed: index($types, 'bleed');
-		$b2b: index($types, 'b2b');
-		$b2c: index($types, 'b2c');
+)) {
+	$types: map-get($opts, 'types');
+	$primary-nav: index($types, 'primary-nav');
+	$secondary-nav: index($types, 'secondary-nav');
+	$b2b: index($types, 'b2b');
+	$b2c: index($types, 'b2c');
+
+	$bleed: index($features, 'bleed');
+	$drop-down: index($features, 'drop-down');
+
 	/// Base styles for a header
 	@include _oHeaderServicesBase($bleed);
 
@@ -51,6 +56,10 @@
 
 	@if $b2c and _oHeaderSupports('b2b') {
 		@include _oHeaderServicesTheme($theme: 'b2c');
+	}
+
+	@if $drop-down {
+		@include _oHeaderDropDown();
 	}
 }
 

@@ -4,34 +4,75 @@ class DropDown {
 	 * @param {HTMLElement} [headerEl] - The component element in the DOM
 	 */
 	constructor (headerEl) {
-		this.headerEl = headerEl;
+		this.primaryNav = window.n =headerEl.querySelector('.o-header-services__primary-nav');
 
-		this.primaryNav = Array.from(headerEl.querySelectorAll('[data-o-header-services-level="1"]'), item => {
+		this.navItems = Array.from(headerEl.querySelectorAll('[data-o-header-services-level="1"]'), item => {
 			item.addEventListener('click', this);
 			return item;
 		});
 	}
 
+	/**
+	 * Event Handler
+	 * @param {Object} event - The revent emitted by element/window interactions
+	 */
 	handleEvent(e) {
 		if (e.type === 'click') {
 			e.preventDefault();
 			let target = e.target.closest('li');
-			this.toggleDropDown(target);
+
+			if (!this.isExpanded(target)) {
+				if (!this.isDrawer()) {
+					this.collapseAll();
+				}
+				this.expand(target);
+			} else {
+				this.collapse(target);
+			}
+
+			e.stopPropagation();
+		} else if (e.type === 'resize') {
+			collapseAll();
 		}
 	}
 
-	toggleDropDown(target) {
-		this.primaryNav.forEach(this.collapse);
-		this.expand(target)
+	/**
+	 * Checks if primary nav is a drawer
+	 * This boolean will change the drop down behaviour.
+	 */
+	isDrawer() {
+		return this.primaryNav.classList.contains('o-header-services__primary-nav--drawer');
 	}
 
-	collapse(item) {
-		item.setAttribute('aria-expanded', false)
+	/**
+	 * Checks whether nav menu is expanded
+	 */
+	isExpanded(item)  {
+		return item.getAttribute('aria-expanded') === 'true';
 	}
 
+	/**
+	 * Expands closed nav menu
+	 */
 	expand(item) {
-		item.setAttribute('aria-expanded', true)
+		item.setAttribute('aria-expanded', true);
 	}
+
+	/**
+	 * Collapses open nav menu
+	 */
+	collapse(item) {
+		item.setAttribute('aria-expanded', false);
+	}
+
+	/**
+	 * Collapses all open nav menus
+	 */
+	collapseAll() {
+		this.navItems.forEach(this.collapse);
+	}
+
+
 }
 
 export default DropDown;
