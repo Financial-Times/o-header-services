@@ -8,6 +8,8 @@ class DropDown {
 
 		this.navItems = [...headerEl.querySelectorAll('[data-o-header-services-level="1"]')];
 		this.navItems.forEach(item => { item.firstElementChild.addEventListener('click', this); });
+
+		document.body.addEventListener('click', this);
 	}
 
 	/**
@@ -16,6 +18,11 @@ class DropDown {
 	 */
 	handleEvent(e) {
 		if (e.type === 'click') {
+			if (!e.target.parentNode.getAttribute('data-o-header-services-level')) {
+				DropDown.collapseAll(this.navItems);
+				return;
+			};
+
 			e.preventDefault();
 			let target = e.target.closest('li');
 
