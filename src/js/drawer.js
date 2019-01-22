@@ -67,7 +67,6 @@ class Drawer {
 		this.nav.classList.toggle(this.class.hidden);
 		this.burger.classList.toggle('o-header-services__hambuger--open');
 		this._toggleAriaAttributes(!this.nav.classList.contains(this.class.hidden));
-		this.nav.style.display = none;
 	}
 
 	/**
