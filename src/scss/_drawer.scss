@@ -11,10 +11,8 @@
 		right: 0;
 		bottom: 0;
 		z-index: $_o-header-services-primary-nav-z-index;
-		// clip-path: polygon(100% 100%, 100% 0, 0 0, 0 100);
 
 		transition:
-			// opacity 1s $o-visual-effects-transition-fade;
 			opacity 0.5s $o-visual-effects-transition-fade,
 			clip-path 0s ease;
 
