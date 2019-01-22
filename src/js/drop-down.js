@@ -6,9 +6,10 @@ class DropDown {
 	constructor (headerEl) {
 		this.primaryNav = headerEl.querySelector('.o-header-services__primary-nav');
 
-		this.navItems = window.n = [...headerEl.querySelectorAll('[data-o-header-services-level="1"]')];
-		this.navItems.forEach(item => { item.firstElementChild.addEventListener('click', this); })
+		this.navItems = [...headerEl.querySelectorAll('[data-o-header-services-level="1"]')];
+		this.navItems.forEach(item => { item.firstElementChild.addEventListener('click', this); });
 	}
+
 	/**
 	 * Event Handler
 	 * @param {Object} event - The revent emitted by element/window interactions
@@ -18,18 +19,18 @@ class DropDown {
 			e.preventDefault();
 			let target = e.target.closest('li');
 
-			if (!this.isExpanded(target)) {
+			if (!DropDown.isExpanded(target)) {
 				if (!this.isDrawer()) {
-					this.collapseAll();
+					DropDown.collapseAll(this.navItems);
 				}
-				this.expand(target);
+				DropDown.expand(target);
 			} else {
-				this.collapse(target);
+				DropDown.collapse(target);
 			}
 
 			e.stopPropagation();
 		} else if (e.type === 'resize') {
-			collapseAll();
+			DropDown.collapseAll(this.navItems);
 		}
 	}
 
@@ -44,29 +45,29 @@ class DropDown {
 	/**
 	 * Checks whether nav menu is expanded
 	 */
-	isExpanded(item)  {
+	static isExpanded(item) {
 		return item.getAttribute('aria-expanded') === 'true';
 	}
 
 	/**
 	 * Expands closed nav menu
 	 */
-	expand(item) {
+	static expand(item) {
 		item.setAttribute('aria-expanded', true);
 	}
 
 	/**
 	 * Collapses open nav menu
 	 */
-	collapse(item) {
+	static collapse(item) {
 		item.setAttribute('aria-expanded', false);
 	}
 
 	/**
 	 * Collapses all open nav menus
 	 */
-	collapseAll() {
-		this.navItems.forEach(this.collapse);
+	static collapseAll(items) {
+		items.forEach(DropDown.collapse);
 	}
 
 }
