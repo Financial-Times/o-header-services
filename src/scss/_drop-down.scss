@@ -12,10 +12,10 @@
 			&:after {
 				@include oIconsGetIcon('arrow-down', _oHeaderServicesGet('nav-text'), 24px);
 				content: '';
-				vertical-align: middle;
 
 				padding-left: 16px;
 				position: absolute;
+				top: 10px;
 				transition: transform .2s ease;
 			}
 		}

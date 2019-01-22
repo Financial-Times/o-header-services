@@ -5,6 +5,7 @@
 		position: relative;
 		background-color: _oHeaderServicesGet('nav-background');
 		border-bottom: 1px solid _oHeaderServicesGet('nav-border');
+		z-index: 1;
 	}
 
 	.o-header-services__primary-nav-list {

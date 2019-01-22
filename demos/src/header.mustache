@@ -25,17 +25,60 @@
 	{{#primary-navigation}}
 	<nav class="o-header-services__primary-nav" aria-label="primary">
 		<ul class="o-header-services__primary-nav-list">
-			<li>
-				<a aria-current="true" href="{{href}}">A Nav item</a>
+			<li data-o-header-services-level="1">
+				<a href="{{href}}">Fruit</a>
+				<ul data-o-header-services-level="2">
+					<li>
+						<a href="{{href}}">Fruit</a>
+					</li>
+					<li>
+						<a href="{{href}}">Apples & Pears</a>
+					</li>
+					<li>
+						<a href="{{href}}">Citrus</a>
+					</li>
+					<li>
+						<a href="{{href}}">Stone fruit</a>
+					</li>
+					<li>
+						<a href="{{href}}">Tropical / Exotic</a>
+					</li>
+					<li>
+						<a href="{{href}}">Berries</a>
+					</li>
+					<li>
+						<a href="{{href}}">Melons</a>
+					</li>
+					<li>
+						<a href="{{href}}">Tomatoes & Avocados</a>
+					</li>
+				</ul>
 			</li>
-			<li>
-				<a href="{{href}}">A longer navigation item</a>
-			</li>
-			<li>
-				<a href="{{href}}">Another Nav item</a>
-			</li>
-			<li>
-				<a href="{{href}}">Also Nav</a>
+			<li data-o-header-services-level="1">
+				<a aria-current="true" href="{{href}}">Vegetables</a>
+				<ul data-o-header-services-level="2">
+					<li>
+						<a href="{{href}}">Vegetables</a>
+					</li>
+					<li>
+						<a href="{{href}}">Leafy green</a>
+					</li>
+					<li>
+						<a href="{{href}}">Cruciferous</a>
+					</li>
+					<li>
+						<a href="{{href}}">Marrow</a>
+					</li>
+					<li>
+						<a href="{{href}}">Root</a>
+					</li>
+					<li>
+						<a href="{{href}}">Edible plant stem</a>
+					</li>
+					<li>
+						<a href="{{href}}">Allium</a>
+					</li>
+				</ul>
 			</li>
 		</ul>
 		<button class="o-header-services__visually-hidden" title="close primary navigation"></button>
@@ -47,26 +90,23 @@
 		<div class="o-header-services__secondary-nav-content" data-o-header-services-nav-list>
 			<ol class="o-header-services__secondary-nav-list o-header-services__secondary-nav-list--ancestors" aria-label="Ancestor sections">
 				<li>
-					<a href="{{href}}">ancestor section</a>
+					<a href="{{href}}">Vegetables</a>
 				</li>
 				<li>
-					<a href="{{href}}">ancestor section</a>
-				</li>
-				<li>
-					<a href="{{href}}">current section</a>
+					<a href="{{href}}">Allium</a>
 				</li>
 			</ol>
 
 			<ul class="o-header-services__secondary-nav-list o-header-services__secondary-nav-list--children" aria-label="Child sections">
 				<li>
-					<a href="{{href}}">child page</a>
+					<a href="{{href}}">Onion</a>
 				</li>
 				<li>
-					<a href="{{href}}">child page</a>
+					<a href="{{href}}">Shallot</a>
 				</li>
 				<li>
 					<a href="{{href}}" aria-current="true" aria-label="Current page">
-						child page
+						Garlic
 					</a>
 				</li>
 			</ul>

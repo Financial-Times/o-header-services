@@ -33,18 +33,6 @@
 	},
 	"demos": [
 		{
-			"name": "docs",
-			"title": "Header with title section",
-			"template": "demos/src/docs.mustache",
-			"description": "If your site has no navigation you can use this top bar on its own."
-		},
-		{
-			"name": "specs",
-			"title": "Header with title section",
-			"template": "demos/src/specs.mustache",
-			"description": "If your site has no navigation you can use this top bar on its own."
-		},
-		{
 			"name": "title-section",
 			"title": "Header with title section",
 			"description": "If your site has no navigation you can use this top bar on its own."
