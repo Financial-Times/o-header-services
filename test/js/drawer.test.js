@@ -49,23 +49,20 @@ describe('Header', () => {
 
 		it('display primary nav on burger icon click', () => {
 			let burgerIcon = '.o-header-services__hamburger-icon';
-
-			click(burgerIcon);
-			proclaim.isFalse(primaryNav.classList.contains('o-header-services__primary-nav--hidden'));
 			setTimeout(() => {
-				proclaim.isTrue(primaryNav.classList.contains('o-header-services__primary-nav--open'));
-			}, 200);
+				click(burgerIcon);
+				proclaim.isFalse(primaryNav.classList.contains('o-header-services__primary-nav--hidden'));
+			}, 100);
 		});
 
 		it('hides primary nav on second burger icon click', () => {
 			let burgerIcon = '.o-header-services__hamburger-icon';
 
-			click(burgerIcon);
-			click(burgerIcon);
-			proclaim.isFalse(primaryNav.classList.contains('o-header-services__primary-nav--open'));
 			setTimeout(() => {
+				click(burgerIcon);
+				click(burgerIcon);
 				proclaim.isTrue(primaryNav.classList.contains('o-header-services__primary-nav--hidden'));
-			}, 200);
+			}, 100);
 		});
 
 		it('shifts related content to primary nav', () => {
