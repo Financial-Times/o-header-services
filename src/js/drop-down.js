@@ -21,7 +21,7 @@ class DropDown {
 			if (!e.target.parentNode.getAttribute('data-o-header-services-level')) {
 				DropDown.collapseAll(this.navItems);
 				return;
-			};
+			}
 
 			e.preventDefault();
 			let target = e.target.closest('li');

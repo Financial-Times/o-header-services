@@ -59,6 +59,6 @@ describe('Dropdown', () => {
 			click(document, 'body');
 			attribute = navItems[0].getAttribute('aria-expanded') === 'false';
 			proclaim.isTrue(attribute);
-		})
+		});
 	});
 });
