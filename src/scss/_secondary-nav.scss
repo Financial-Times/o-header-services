@@ -28,7 +28,7 @@
 
 			a {
 				@include _oHeaderServicesHover($underline: true);
-				padding: 8px 0;
+				padding: oTypographySpacingSize(2) 0;
 				margin: 0;
 			}
 		}

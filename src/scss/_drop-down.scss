@@ -8,24 +8,24 @@
 		}
 
 		li[data-o-header-services-level] > a {
-			padding-right: 40px;
+			padding-right: oTypographySpacingSize(10);
 
 			&:after {
 				@include oIconsGetIcon('arrow-down', _oHeaderServicesGet('nav-text'), 24px);
 				content: '';
 
-				padding-left: 16px;
+				padding-left: oTypographySpacingSize(4);
 				position: absolute;
-				top: 10px;
+				top: $_o-header-services-padding;
 				transition: transform 0.2s ease;
 			}
 		}
 
 		ul[data-o-header-services-level] {
+			@include oTypographySize(-1);
 			background: _oHeaderServicesGet('nav-background');
 			border: 1px solid _oHeaderServicesGet('nav-border');
 			box-sizing: border-box;
-			font-size: 14px;
 			min-width: auto;
 			padding-left: 0;
 			position: absolute;

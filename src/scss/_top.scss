@@ -32,7 +32,7 @@
 			width: $_o-header-services-top-bar-short;
 
 			@include oGridRespondTo(M) {
-				margin: 8px 8px 8px 0;
+				margin: oTypographySpacingSize(2) oTypographySpacingSize(2) oTypographySpacingSize(2) 0;
 				height: $_o-header-services-top-icon-size;
 				width: $_o-header-services-top-icon-size;
 			}
@@ -89,7 +89,7 @@
 
 	.o-header-services__related-content {
 		margin: 0 0 0 auto;
-		padding: 16px $_o-header-services-padding;
+		padding: oTypographySpacingSize(4) $_o-header-services-padding;
 		display: flex;
 
 		li {
@@ -109,7 +109,7 @@
 
 				@include oGridRespondTo($until: M) {
 					display: block;
-					padding: $_o-header-services-padding $_o-header-services-padding*2;
+					padding: $_o-header-services-padding oTypographySpacingSize(3);
 					margin: 0;
 				}
 

@@ -35,7 +35,7 @@
 			.o-header-services__secondary-nav-content {
 				@include oGridContainer($bleed: $bleed)
 				max-width: 100%;
-				padding: 0 20px;
+				padding: 0 oTypographySpacingSize(5);
 			}
 
 			.o-header-services__primary-nav-list  {
@@ -54,8 +54,8 @@
 
 	@if $underline {
 		display: inline-block;
-		margin: 0 20px;
-		padding: 10px 0;
+		margin: 0 oTypographySpacingSize(5);
+		padding: $_o-header-services-padding 0;
 
 		&:hover:before,
 		&[aria-current=true]:before {
@@ -70,7 +70,7 @@
 	} @else {
 		display: block;
 		margin: 0;
-		padding: $_o-header-services-padding $_o-header-services-padding*2;
+		padding: $_o-header-services-padding  oTypographySpacingSize(5);
 
 		&:hover,
 		&[aria-current=true] {
