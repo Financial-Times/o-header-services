@@ -4,3 +4,12 @@ $o-header-services-is-silent: false;
 body {
 	font-family: arial;
 }
+
+.dummy-text {
+	@include oTypographySans(1);
+	max-width: 500px;
+	margin: auto;
+	padding: 10px 0;
+
+	a { @include oTypographyLink();}
+}
