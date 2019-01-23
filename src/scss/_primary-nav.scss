@@ -13,6 +13,7 @@
 		background-color: _oHeaderServicesGet('nav-background');
 		display: flex;
 		margin: auto;
+
 		@include oGridRespondTo(S) {
 			padding: 0;
 		};

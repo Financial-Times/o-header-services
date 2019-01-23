@@ -8,9 +8,9 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		visibility: visible;
+		visibility: hidden;
 		transition:
-			visibility 0.1s linear,
+			visibility 0.01s linear,
 			opacity 0.5s $o-visual-effects-transition-fade;
 
 		.o-header-services__primary-nav-list {
@@ -19,7 +19,7 @@
 			margin: 0;
 			overflow-y: auto;
 			padding: 0;
-			transform: translateX(0);
+			transform: translateX(-100%);
 			transition:
 				transform 0.5s $o-visual-effects-transition-expand;
 			height: 100%;
@@ -46,11 +46,11 @@
 			}
 		}
 
-		&.o-header-services__primary-nav--hidden {
-			visibility: hidden;
+		&.o-header-services__primary-nav--open {
+			visibility: visible;
 
 			.o-header-services__primary-nav-list {
-				transform: translateX(-100%);
+				transform: translateX(0%);
 			}
 		}
 	}

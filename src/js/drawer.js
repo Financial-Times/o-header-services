@@ -11,7 +11,7 @@ class Drawer {
 		this.nav = headerEl.querySelector('.o-header-services__primary-nav');
 		this.class = {
 			drawer: 'o-header-services__primary-nav--drawer',
-			hidden: 'o-header-services__primary-nav--hidden'
+			open: 'o-header-services__primary-nav--open'
 		};
 
 		if (!this.nav) { return; }
@@ -33,7 +33,7 @@ class Drawer {
 		if (e.type === 'resize') {
 			this.debouncedRender();
 		} else if (e.type === 'keydown') {
-			if (e.key === 'Escape' && !this.nav.classList.contains(this.class.hidden)) {
+			if (e.key === 'Escape' && this.nav.classList.contains(this.class.open)) {
 				this.toggleDrawer();
 				this.burger.focus();
 			}
@@ -56,7 +56,7 @@ class Drawer {
 
 		this._shiftRelatedContentList(enableDrawer);
 		this.nav.classList.toggle(this.class.drawer, enableDrawer);
-		this.nav.classList.toggle(this.class.hidden, enableDrawer);
+		this.nav.classList.toggle(this.class.open, !enableDrawer);
 		this.nav.setAttribute('aria-hidden', enableDrawer);
 	}
 
@@ -64,9 +64,9 @@ class Drawer {
 	 * Drawer hide/show functionality
 	 */
 	toggleDrawer () {
-		this.nav.classList.toggle(this.class.hidden);
+		this.nav.classList.toggle(this.class.open);
 		this.burger.classList.toggle('o-header-services__hambuger--open');
-		this._toggleAriaAttributes(!this.nav.classList.contains(this.class.hidden));
+		this._toggleAriaAttributes(this.nav.classList.contains(this.class.open));
 	}
 
 	/**
