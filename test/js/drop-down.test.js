@@ -5,13 +5,17 @@ import HeaderServices from '../../src/js/header';
 import * as fixtures from '../helpers/fixtures';
 
 describe('Dropdown', () => {
+	let attribute;
+	let click;
 	let headerEl;
 	let navItems;
-	let attribute;
 
 	beforeEach(() => {
 		document.body.innerHTML = fixtures.withPrimaryNav;
 		headerEl = document.body.querySelector('.o-header-services');
+		new HeaderServices(headerEl);
+		navItems = document.querySelectorAll('li[data-o-header-services-level="1"]');
+		click = (parent, element) => parent.querySelector(element).dispatchEvent(new Event('click'));
 	});
 
 	afterEach(() => {
@@ -20,14 +24,6 @@ describe('Dropdown', () => {
 	});
 
 	describe('toggles drop down menu via `aria-expanded`', () => {
-		let click;
-
-		beforeEach(() => {
-			new HeaderServices(headerEl);
-			navItems = document.querySelectorAll('li[data-o-header-services-level="1"]');
-			click = (parent, element) => parent.querySelector(element).dispatchEvent(new Event('click'));
-		});
-
 		it('open on click', () => {
 			click(navItems[0], 'a');
 			attribute = navItems[0].getAttribute('aria-expanded') === 'true';
@@ -59,6 +55,14 @@ describe('Dropdown', () => {
 			click(document, 'body');
 			attribute = navItems[0].getAttribute('aria-expanded') === 'false';
 			proclaim.isTrue(attribute);
+		});
+	});
+
+	describe('toggles drop down menu via `aria-expanded`', () => {
+		it('repositions dropdown menu if it doesnt fit to the right of the window', () => {
+			navItems[1].style.width = '1000px';
+			click(navItems[1], 'a');
+			proclaim.isTrue(navItems[1].lastElementChild.classList.contains('o-header-services__list--right'));
 		});
 	});
 });

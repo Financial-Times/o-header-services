@@ -12,6 +12,7 @@
 		@include oGridContainer;
 		background-color: _oHeaderServicesGet('nav-background');
 		display: flex;
+		flex-wrap: wrap;
 		margin: auto;
 
 		@include oGridRespondTo(S) {

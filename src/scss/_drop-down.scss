@@ -22,19 +22,23 @@
 		}
 
 		ul[data-o-header-services-level] {
-			padding-left: 0;
-			font-size: 14px;
-
-			position: absolute;
-			min-width: auto;
-
 			background: _oHeaderServicesGet('nav-background');
 			border: 1px solid _oHeaderServicesGet('nav-border');
 			box-sizing: border-box;
+			font-size: 14px;
+			min-width: auto;
+			padding-left: 0;
+			position: absolute;
+			opacity: 0;
 			transform: translateY(-100%);
-			transition: transform 0.2s ease-in;
-
+			transition:
+				opacity 0.01s linear,
+				transform 0.2s ease-in;
 			z-index: -1;
+
+			&.o-header-services__list--right {
+				right: 0;
+			}
 		}
 
 		.core li[data-o-header-services-level]:hover,
@@ -45,6 +49,7 @@
 
 			ul[data-o-header-services-level] {
 				transform: translateY(0);
+				opacity: 1;
 			}
 		}
 
@@ -53,8 +58,8 @@
 				border-right: 0;
 				opacity: 0;
 				transition:
-				opacity 0s ease,
-				transform 0s ease;
+					opacity 0s ease,
+					transform 0s ease;
 			}
 
 			li[aria-expanded=true] {

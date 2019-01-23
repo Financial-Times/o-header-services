@@ -7,7 +7,9 @@ class DropDown {
 		this.primaryNav = headerEl.querySelector('.o-header-services__primary-nav');
 
 		this.navItems = [...headerEl.querySelectorAll('[data-o-header-services-level="1"]')];
-		this.navItems.forEach(item => { item.firstElementChild.addEventListener('click', this); });
+		this.navItems.forEach(item => {
+			item.firstElementChild.addEventListener('click', this);
+		});
 
 		document.body.addEventListener('click', this);
 	}
@@ -61,6 +63,16 @@ class DropDown {
 	 */
 	static expand(item) {
 		item.setAttribute('aria-expanded', true);
+		DropDown.position(item.lastElementChild);
+	}
+
+	/**
+	 * Changes nav menu position relative to the window
+	 */
+	static position(item) {
+		if (item.getBoundingClientRect().right > window.innerWidth) {
+			item.classList.add('o-header-services__list--right');
+		}
 	}
 
 	/**
@@ -76,7 +88,6 @@ class DropDown {
 	static collapseAll(items) {
 		items.forEach(DropDown.collapse);
 	}
-
 }
 
 export default DropDown;

@@ -15,7 +15,6 @@ describe('Header', () => {
 
 	afterEach(() => {
 		document.body.removeChild(headerEl);
-		headerEl = null;
 		window.resizeTo(window.screen.availHeight, window.screen.availWidth);
 	});
 
@@ -37,7 +36,7 @@ describe('Header', () => {
 			window.resizeTo(740, 740);
 			new HeaderServices(headerEl);
 			primaryNav = headerEl.querySelector('.o-header-services__primary-nav');
-			click = element => document.querySelector(element).dispatchEvent(new Event('click'));
+			click = element => headerEl.querySelector(element).dispatchEvent(new Event('click'));
 		});
 
 		it('primary nav is hidden', () => {
