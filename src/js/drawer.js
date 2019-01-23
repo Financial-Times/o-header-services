@@ -88,16 +88,8 @@ class Drawer {
 	 */
 	_toggleAriaAttributes(expand) {
 		this.nav.setAttribute('aria-hidden', !expand);
-		this.nav.lastElementChild.setAttribute('aria-hidden', !expand);
 		this.burger.setAttribute('aria-expanded', expand);
-		if (expand) {
-			this.burger.querySelector('span').innerText = 'Close primary navigation';
-			this.nav.querySelector('.o-header-services__primary-nav-list li a').focus();
-			this.nav.lastElementChild.addEventListener('focusout', this);
-		} else {
-			this.burger.querySelector('span').innerText = 'Open primary navigation';
-			this.nav.lastElementChild.removeEventListener('focusout', this);
-		}
+		this.burger.querySelector('span').innerText = expand ? 'Close primary navigation' : 'Open primary navigation';
 	}
 }
 
