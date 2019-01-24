@@ -21,7 +21,7 @@ const	withPrimaryNav = `
 			</ul>
 		</div>
 		<nav class='o-header-services__primary-nav'>
-			<<ul class="o-header-services__primary-nav-list">
+			<ul class="o-header-services__primary-nav-list">
 				<li data-o-header-services-level="1">
 					<a href="#">Fruit</a>
 					<ul data-o-header-services-level="2">
