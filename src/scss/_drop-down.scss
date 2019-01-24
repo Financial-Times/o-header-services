@@ -6,45 +6,36 @@
 		li[data-o-header-services-level] {
 			position: relative;
 
-			a {
+			a:first-child {
 				display: inline-block;
-				padding-right: 4px;
 			}
 
 			button {
-				display: inline-block;
+				background-color: transparent;
+				border: 0;
+				border-left: 1px solid _oHeaderServicesGet('nav-border');
+				border-right: 1px solid _oHeaderServicesGet('nav-border');
+				height: 100%;
 				vertical-align: top;
+
+				&:after {
+					@include oIconsGetIcon('arrow-down', _oHeaderServicesGet('nav-text'), 24);
+					content: '';
+					transition: transform 0.2s ease;
+					vertical-align: middle;
+				}
+
+				&:hover {
+					background-color: _oHeaderServicesGet('nav-border');
+				}
 			}
 
 			a[aria-current='true'] + button {
 				background-color: _oHeaderServicesGet('nav-hover-background');
+				&:hover {
+					background-color: _oHeaderServicesGet('nav-border');
+				}
 			}
-		}
-
-		li[data-o-header-services-level] > button {
-			$themey: (
-				background: _oHeaderServicesGet('nav-background'),
-				accent: _oHeaderServicesGet('nav-text'),
-				colorizer: 'secondary'
-			);
-
-			@include oButtonsIconButton(
-				$icon-name: 'arrow-down§',
-				$theme: $themey,
-				$is-icon-only: true
-			);
-			background-color: transparent;
-			border: 0;
-			// min-width: $_o-header-services-button-icon-size;
-			// left: 0;
-			// padding-right: oTypographySpacingSize(10);
-			// @include oIconsGetIcon('arrow-down', _oHeaderServicesGet('nav-text'), 24px);
-			// content: '';
-			//
-			// padding-left: oTypographySpacingSize(4);
-			// position: absolute;
-			// top: $_o-header-services-padding;
-			transition: transform 0.2s ease;
 		}
 
 		ul[data-o-header-services-level] {
@@ -69,7 +60,7 @@
 
 		.core li[data-o-header-services-level]:hover,
 		li[aria-expanded=true] {
-			+ button {
+			> button:after {
 				transform: rotate(-180deg);
 			}
 

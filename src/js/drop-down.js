@@ -8,7 +8,7 @@ class DropDown {
 
 		this.navItems = [...headerEl.querySelectorAll('[data-o-header-services-level="1"]')];
 		this.navItems.forEach(item => {
-			item.firstElementChild.addEventListener('click', this);
+			item.querySelector('button').addEventListener('click', this);
 		});
 
 		document.body.addEventListener('click', this);
@@ -25,7 +25,6 @@ class DropDown {
 				return;
 			}
 
-			e.preventDefault();
 			let target = e.target.closest('li');
 
 			if (!DropDown.isExpanded(target)) {
@@ -63,6 +62,7 @@ class DropDown {
 	 */
 	static expand(item) {
 		item.setAttribute('aria-expanded', true);
+		item.setAttribute('aria-hidden', false);
 		DropDown.position(item.lastElementChild);
 	}
 
@@ -80,6 +80,7 @@ class DropDown {
 	 */
 	static collapse(item) {
 		item.setAttribute('aria-expanded', false);
+		item.setAttribute('aria-hidden', true);
 	}
 
 	/**
