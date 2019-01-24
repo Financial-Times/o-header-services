@@ -5,8 +5,9 @@
 	.o-header-services {
 		li[data-o-header-services-level] {
 			position: relative;
+			min-height: 40px;
 
-			a:first-child {
+			> a {
 				display: inline-block;
 			}
 
@@ -71,6 +72,20 @@
 		}
 
 		.o-header-services__primary-nav--drawer {
+			li[data-o-header-services-level] {
+				> a {
+					display: block;
+					float: left;
+					width: calc(100% - 82px;);
+				}
+
+				button {
+					display: block;
+					float: left;
+					height: 40px;
+				}
+			}
+
 			ul[data-o-header-services-level] {
 				border-right: 0;
 				opacity: 0;
@@ -81,6 +96,7 @@
 
 			li[aria-expanded=true] {
 				ul[data-o-header-services-level] {
+					clear: both;
 					opacity: 1;
 					position: relative;
 					z-index: 2;
