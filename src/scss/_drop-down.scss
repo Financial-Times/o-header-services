@@ -5,20 +5,46 @@
 	.o-header-services {
 		li[data-o-header-services-level] {
 			position: relative;
+
+			a {
+				display: inline-block;
+				padding-right: 4px;
+			}
+
+			button {
+				display: inline-block;
+				vertical-align: top;
+			}
+
+			a[aria-current='true'] + button {
+				background-color: _oHeaderServicesGet('nav-hover-background');
+			}
 		}
 
-		li[data-o-header-services-level] > a {
-			padding-right: oTypographySpacingSize(10);
+		li[data-o-header-services-level] > button {
+			$themey: (
+				background: _oHeaderServicesGet('nav-background'),
+				accent: _oHeaderServicesGet('nav-text'),
+				colorizer: 'secondary'
+			);
 
-			&:after {
-				@include oIconsGetIcon('arrow-down', _oHeaderServicesGet('nav-text'), 24px);
-				content: '';
-
-				padding-left: oTypographySpacingSize(4);
-				position: absolute;
-				top: $_o-header-services-padding;
-				transition: transform 0.2s ease;
-			}
+			@include oButtonsIconButton(
+				$icon-name: 'arrow-down§',
+				$theme: $themey,
+				$is-icon-only: true
+			);
+			background-color: transparent;
+			border: 0;
+			// min-width: $_o-header-services-button-icon-size;
+			// left: 0;
+			// padding-right: oTypographySpacingSize(10);
+			// @include oIconsGetIcon('arrow-down', _oHeaderServicesGet('nav-text'), 24px);
+			// content: '';
+			//
+			// padding-left: oTypographySpacingSize(4);
+			// position: absolute;
+			// top: $_o-header-services-padding;
+			transition: transform 0.2s ease;
 		}
 
 		ul[data-o-header-services-level] {
@@ -43,7 +69,7 @@
 
 		.core li[data-o-header-services-level]:hover,
 		li[aria-expanded=true] {
-			a:after {
+			+ button {
 				transform: rotate(-180deg);
 			}
 
