@@ -106,24 +106,15 @@
 	}
 
 	.core .o-header-services {
-		li[data-o-header-services-level]:hover {
-			a:after {
+		li[data-o-header-services-level] > button:hover {
+
+			&:after {
 				transform: rotate(-180deg);
 			}
 
-			ul[data-o-header-services-level] {
+			+ ul[data-o-header-services-level] {
 				transform: translateY(0);
 				opacity: 1;
-			}
-		}
-
-		.o-header-services__primary-nav--drawer {
-			li[data-o-header-services-level]:hover {
-				ul[data-o-header-services-level] {
-					opacity: 1;
-					position: relative;
-					z-index: 2;
-				}
 			}
 		}
 	}
