@@ -16,11 +16,6 @@
 @import 'src/scss/primary-nav';
 @import 'src/scss/secondary-nav';
 
-
-@include oHeaderServicesCustomize((
-	'logo': 'dewey-light',
-	'nav-text': #FF69B4,
-));
 /// Outputs all features and styles available to o-header-services
 /// @param {Map} $opts ['types':('primary-nav', 'secondary-nav', 'bleed', 'b2b', 'b2c'), 'features': ('bleed', 'drop-down'), 'logo': default to ft-logo depending on brand (pink or white)]
 /// @access public
