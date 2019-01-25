@@ -1,7 +1,7 @@
 /// @access private
 /// @param {String} $logo [ft-logo depending on brand (pink or white)]
 /// @outputs styling for title section of header
-@mixin _oHeaderServicesTop($logo: $o-header-services-default-logo) {
+@mixin _oHeaderServicesTop($logo: _oHeaderServicesGet('logo')) {
 	.o-header-services__top {
 		@include oGridContainer;
 		background-color: _oHeaderServicesGet('top-background');
@@ -21,7 +21,7 @@
 		align-items: center;
 	}
 
-	@if _oHeaderServicesGet('logo') {
+	@if $logo {
 		.o-header-services__logo {
 			background-image: url('https://www.ft.com/__origami/service/image/v2/images/raw/ftlogo-v1:#{$logo}?source=o-header-services&format=svg&width=55');
 			background-repeat: no-repeat;

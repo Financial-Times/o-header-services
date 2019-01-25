@@ -17,13 +17,17 @@
 @import 'src/scss/secondary-nav';
 
 
+@include oHeaderServicesCustomize((
+	'logo': 'dewey-light',
+	'nav-text': #FF69B4,
+));
 /// Outputs all features and styles available to o-header-services
 /// @param {Map} $opts ['types':('primary-nav', 'secondary-nav', 'bleed', 'b2b', 'b2c'), 'features': ('bleed', 'drop-down'), 'logo': default to ft-logo depending on brand (pink or white)]
 /// @access public
 @mixin oHeaderServices($opts: (
 	'types': ('primary-nav', 'secondary-nav', 'b2b', 'b2c'),
 	'features': ('bleed', 'drop-down'),
-	'logo': $o-header-services-default-logo
+	'logo': _oHeaderServicesGet('logo')
 )) {
 	$types: map-get($opts, 'types');
 	$features: map-get($opts, 'features');
@@ -35,7 +39,7 @@
 
 	/// Required because there would be no header without the title
 	/// if other features aren't added.
-	@include _oHeaderServicesTop(map-get($opts, 'logo'));
+	@include _oHeaderServicesTop($logo: map-get($opts, 'logo'));
 
 	@if index($types, 'primary-nav') {
 		@include _oHeaderServicesPrimaryNav;

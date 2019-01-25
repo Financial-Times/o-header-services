@@ -20,10 +20,10 @@
 		};
 
 		a {
-			$underline: _oHeaderServicesGet('nav-background') == _oHeaderServicesGet('nav-hover-background');
-			@include _oHeaderServicesHover($underline);
+			@include _oHeaderServicesHover(_oHeaderServicesGet('primary-nav-underline'));
 			@include oTypographyBold('sans');
 			text-transform: uppercase;
+			min-height: oTypographySpacingSize(5);
 		}
 	}
 

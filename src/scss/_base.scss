@@ -65,7 +65,7 @@
 			left: 0;
 			width: 100%;
 			height: oTypographySpacingSize(1);
-			background-color: _oHeaderServicesGet('nav-text');
+			background-color: _oHeaderServicesGet('nav-underline');
 		}
 	} @else {
 		display: block;
@@ -74,7 +74,6 @@
 
 		&:hover,
 		&[aria-current=true] {
-			color: inherit;
 			background-color: _oHeaderServicesGet('nav-hover-background');
 		}
 	}

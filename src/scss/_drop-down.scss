@@ -20,7 +20,7 @@
 				vertical-align: top;
 
 				&:after {
-					@include oIconsGetIcon('arrow-down', _oHeaderServicesGet('drop-down-icon-color'), 24);
+					@include oIconsGetIcon('arrow-down', _oHeaderServicesGet('arrow-icon-color'), 24);
 					content: '';
 					transition: transform 0.2s ease;
 					vertical-align: middle;
@@ -30,8 +30,8 @@
 					background-color: _oHeaderServicesGet('nav-border');
 
 					&:after {
-						@if _oHeaderServicesGet('drop-down-icon-hover-color') {
-							@include oIconsGetIcon('arrow-down', _oHeaderServicesGet('drop-down-icon-hover-color'), 24);
+						@if _oHeaderServicesGet('arrow-icon-hover-color') {
+							@include oIconsGetIcon('arrow-down', _oHeaderServicesGet('arrow-icon-hover-color'), 24);
 						}
 					}
 				}
@@ -43,7 +43,6 @@
 
 				&:hover {
 					background-color: _oHeaderServicesGet('nav-border');
-
 				}
 			}
 		}

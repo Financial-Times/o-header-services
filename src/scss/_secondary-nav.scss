@@ -46,7 +46,7 @@
 		}
 
 		&:before {
-			@include oIconsGetIcon('arrow-right', _oHeaderServicesGet('nav-text'),  oTypographySpacingSize(4));
+			@include oIconsGetIcon('arrow-right', _oHeaderServicesGet('arrow-icon-color'),  oTypographySpacingSize(4));
 			content: '';
 			position: relative;
 			top: 0.2em;
