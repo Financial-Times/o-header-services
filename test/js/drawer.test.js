@@ -4,45 +4,40 @@ import proclaim from 'proclaim';
 import HeaderServices from '../../src/js/header';
 import * as fixtures from '../helpers/fixtures';
 
-describe('Header', () => {
+describe('Drawer', () => {
 	let headerEl;
 	let primaryNav;
 
 	beforeEach(() => {
 		document.body.innerHTML = fixtures.withPrimaryNav;
 		headerEl = document.body.querySelector('.o-header-services');
+		new HeaderServices(headerEl);
+		primaryNav = headerEl.querySelector('.o-header-services__primary-nav');
 	});
 
 	afterEach(() => {
-		document.body.removeChild(headerEl);
+		document.body.innerHTML = '';
 		window.resizeTo(window.screen.availHeight, window.screen.availWidth);
 	});
 
-	describe('on viewports above 740px', () => {
-		beforeEach(() => {
-			new HeaderServices(headerEl);
-			primaryNav = headerEl.querySelector('.o-header-services__primary-nav');
-		});
-
+	context('on viewports above 740px', () => {
 		it('primary nav is visibile', () => {
-			proclaim.isFalse(primaryNav.classList.contains('o-header-services__primary-nav--hidden'));
+			proclaim.isTrue(primaryNav.classList.contains('o-header-services__primary-nav--open'));
 		});
 	});
 
-	describe('on viewports below 740px', () => {
+	context('on viewports below 740px', () => {
 		let click;
 
 		beforeEach(() => {
 			window.resizeTo(740, 740);
-			new HeaderServices(headerEl);
-			primaryNav = headerEl.querySelector('.o-header-services__primary-nav');
 			click = element => headerEl.querySelector(element).dispatchEvent(new Event('click'));
 		});
 
 		it('primary nav is hidden', () => {
 			setTimeout(() => {
-				proclaim.isTrue(primaryNav.classList.contains('o-header-services__primary-nav--hidden'));
-				proclaim.isTrue(primaryNav.hasAttribute('aria-hidden', true));
+				proclaim.isFalse(primaryNav.classList.contains('o-header-services__primary-nav--open'));
+				proclaim.isTrue(primaryNav.hasAttribute('aria-hidden', 'true'));
 			}, 100);
 		});
 
@@ -50,7 +45,7 @@ describe('Header', () => {
 			let burgerIcon = '.o-header-services__hamburger-icon';
 			setTimeout(() => {
 				click(burgerIcon);
-				proclaim.isFalse(primaryNav.classList.contains('o-header-services__primary-nav--hidden'));
+				proclaim.isTrue(primaryNav.classList.contains('o-header-services__primary-nav--open'));
 			}, 100);
 		});
 
@@ -60,14 +55,14 @@ describe('Header', () => {
 			setTimeout(() => {
 				click(burgerIcon);
 				click(burgerIcon);
-				proclaim.isTrue(primaryNav.classList.contains('o-header-services__primary-nav--hidden'));
+				proclaim.isTrue(primaryNav.classList.contains('o-header-services__primary-nav--open'));
 			}, 100);
 		});
 
 		it('shifts related content to primary nav', () => {
 			setTimeout(() => {
-				let listItems = primaryNav.querySelectorAll('li');
-				proclaim.equal(listItems.length, 6);
+				let listItems = primaryNav.querySelector('ul');
+				proclaim.equal(listItems.children.length, 3);
 			}, 100);
 		});
 	});

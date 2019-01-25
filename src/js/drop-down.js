@@ -8,10 +8,12 @@ class DropDown {
 
 		this.navItems = [...headerEl.querySelectorAll('[data-o-header-services-level="1"]')];
 		this.navItems.forEach(item => {
-			item.firstElementChild.addEventListener('click', this);
+			item.querySelector('button').addEventListener('click', this);
 		});
 
 		document.body.addEventListener('click', this);
+		window.addEventListener('resize', this);
+		window.addEventListener('keydown', this);
 	}
 
 	/**
@@ -25,10 +27,8 @@ class DropDown {
 				return;
 			}
 
-			e.preventDefault();
 			let target = e.target.closest('li');
-
-			if (!DropDown.isExpanded(target)) {
+			if (!DropDown.isExpanded(target) && e.target.type === 'button') {
 				if (!this.isDrawer()) {
 					DropDown.collapseAll(this.navItems);
 				}
@@ -38,7 +38,7 @@ class DropDown {
 			}
 
 			e.stopPropagation();
-		} else if (e.type === 'resize') {
+		} else if (e.type === 'resize' || (e.key === 'Escape')) {
 			DropDown.collapseAll(this.navItems);
 		}
 	}
@@ -62,8 +62,10 @@ class DropDown {
 	 * Expands closed nav menu
 	 */
 	static expand(item) {
+		let childList = item.querySelector('ul');
 		item.setAttribute('aria-expanded', true);
-		DropDown.position(item.lastElementChild);
+		childList.setAttribute('aria-hidden', false);
+		DropDown.position(childList);
 	}
 
 	/**
@@ -79,7 +81,9 @@ class DropDown {
 	 * Collapses open nav menu
 	 */
 	static collapse(item) {
+		let childList = item.querySelector('ul');
 		item.setAttribute('aria-expanded', false);
+		childList.setAttribute('aria-hidden', true);
 	}
 
 	/**
