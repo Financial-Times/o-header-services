@@ -38,7 +38,7 @@ describe.only('Drawer', () => {
 			setTimeout(() => {
 				proclaim.isFalse(primaryNav.classList.contains('o-header-services__primary-nav--open'));
 				proclaim.isTrue(primaryNav.hasAttribute('aria-hidden', 'true'));
-			}, 100)
+			}, 100);
 		});
 
 		it('display primary nav on burger icon click', () => {
