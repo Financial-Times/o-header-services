@@ -22,6 +22,7 @@ class DropDown {
 	 */
 	handleEvent(e) {
 		if (e.type === 'click') {
+			console.log(e.target);
 			if (!e.target.parentNode.getAttribute('data-o-header-services-level')) {
 				DropDown.collapseAll(this.navItems);
 				return;
