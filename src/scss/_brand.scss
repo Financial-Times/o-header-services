@@ -20,17 +20,20 @@
 			nav-background: oColorsGetPaletteColor('white-60'),
 			nav-border: oColorsGetPaletteColor('black-20'),
 			nav-hover-background: oColorsGetPaletteColor('black-5'),
+			drop-down-icon-color: oColorsGetPaletteColor('black'),
 			'b2b': (
 				product-title: oColorsGetPaletteColor('white'),
 				nav-text: oColorsGetPaletteColor('white'),
 				nav-background: oColorsGetPaletteColor('claret'),
-				nav-hover-background: oColorsGetPaletteColor('claret-30')
+				nav-hover-background: oColorsGetPaletteColor('claret-30'),
+				drop-down-icon-color: oColorsGetPaletteColor('white'),
 			),
 			'b2c': (
 				product-title: oColorsGetPaletteColor('org-b2c-light'),
 				nav-text: oColorsGetPaletteColor('white'),
 				nav-background: oColorsGetPaletteColor('org-b2c'),
 				nav-hover-background: oColorsGetPaletteColor('org-b2c-dark'),
+				drop-down-icon-color: oColorsGetPaletteColor('white'),
 			)
 		),
 		'supports-variants': (
@@ -48,6 +51,7 @@
 			nav-background: oColorsGetPaletteColor('slate-white-5'),
 			nav-border: oColorsGetPaletteColor('black-20'),
 			nav-hover-background: oColorsGetPaletteColor('slate-white-15'),
+			drop-down-icon-color: oColorsGetPaletteColor('slate'),
 		),
 		'supports-variants': ()
 	));
@@ -60,7 +64,9 @@
 			nav-text: oColorsGetPaletteColor('black'),
 			nav-background: oColorsGetPaletteColor('white'),
 			nav-border: oColorsGetPaletteColor('black'),
-			nav-hover-background: oColorsGetPaletteColor('white')
+			nav-hover-background: oColorsGetPaletteColor('white'),
+			drop-down-icon-color: oColorsGetPaletteColor('black'),
+			drop-down-icon-hover-color: oColorsGetPaletteColor('white'),
 		),
 		'supports-variants': ()
 	));

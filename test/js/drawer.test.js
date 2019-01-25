@@ -4,7 +4,7 @@ import proclaim from 'proclaim';
 import HeaderServices from '../../src/js/header';
 import * as fixtures from '../helpers/fixtures';
 
-describe.only('Drawer', () => {
+describe('Drawer', () => {
 	let headerEl;
 	let primaryNav;
 
