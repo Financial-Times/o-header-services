@@ -21,6 +21,7 @@ class Drawer {
 		this.burger.addEventListener('click', this);
 		window.addEventListener('resize', this);
 		window.addEventListener('keydown', this);
+
 		this.render();
 	}
 
@@ -45,7 +46,7 @@ class Drawer {
 	 * Drawer rendering
 	 */
 	render () {
-		const enableDrawer = oGrid.getCurrentLayout() === 'default' || oGrid.getCurrentLayout() === 'S' || window.innerWidth <= 740;
+		const enableDrawer = oGrid.getCurrentLayout() === 'default' || oGrid.getCurrentLayout() === 'S';
 
 		if (enableDrawer) {
 			this.nav.addEventListener('click', this);
@@ -64,7 +65,7 @@ class Drawer {
 	 * Drawer hide/show functionality
 	 */
 	toggleDrawer () {
-		this.nav.classList.toggle(this.class.open, this.nav.classList.contains(this.class.open));
+		this.nav.classList.toggle(this.class.open);
 		this.burger.classList.toggle('o-header-services__hambuger--open');
 		this._toggleAriaAttributes(this.nav.classList.contains(this.class.open));
 	}
