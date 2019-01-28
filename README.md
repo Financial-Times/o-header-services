@@ -113,8 +113,8 @@ You can be more selective about which types you would like to output, by using a
 
 
 To use a logo that is **not** the FT logo, the logo can be modified in one of two ways:
-- By using a logo name from the logo image set (e.g. 'Origami')
-- By passing in a full url or data url that points at the svg you want to use as a logo. Bear in mind that you can also run your chosen svg through the [Image Service's URL Builder](https://www.ft.com/__origami/service/image/v2/docs/url-builder), which will optimise the image and provide a URL for it.
+- By using a logo name from the logo image set (e.g. 'origami')
+- By passing in a full url or data url that points at the SVG you want to use as a logo (e.g. 'https://www.example.com/logo.svg'). Bear in mind that you can also run your chosen SVG through the [Image Service's URL Builder](https://www.ft.com/__origami/service/image/v2/docs/url-builder), which will optimise the image and provide a URL for it.
 
 In this example we include only the styles for a [primary navigation](#primary-navigation) with the [bleed modifier](#bleed-header). We opt to use the Origami logo from the [logo image set](https://registry.origami.ft.com/components/logo-images@1.8.0).
 
@@ -145,7 +145,7 @@ In this example we include only the styles for a [primary navigation](#primary-n
 );
 ```
 
-You can see all of the variables that are available for customising under `whitelabel` in `../src/scss/_brand.scss`.
+You can see all of the variables that are available for customising under `whitelabel` in the [brand SCSS file](../src/scss/_brand.scss#L70).
 
 ## JavaScript
 
