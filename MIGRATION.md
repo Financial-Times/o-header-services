@@ -2,10 +2,26 @@
 
 ### Migrating from v2 to v3
 
-V2 introduces many new changes to o-header-services. It now uses the primary nav as a drawer menu on smaller viewports. It removes a large dependency on o-header, and changes multiple class names and markup.
-It also removes most public mixins, and introduces a single public mixin, `oHeaderServices`;
+V2 introduces many new changes to o-header-services; It now transforms the primary nav into a drawer menu on smaller viewports. It introduces the option to have dropdown menus on primary navigation items. It removes a large dependency on o-header, and changes multiple class names and markup, and no longer allows custom class names. This major also removes most public mixins and makes `oHeaderServices` publicly available instead;
 <!-- private mixins here -->
-The markup for a full header has changed in the following way:
+```diff
+-oHeaderServicesContainer
++_oHeaderServicesBase
++_oHeaderServicesHover
+-oHeaderServicesPrimaryNav
++_oHeaderServicesPrimaryNav
++_oHeaderServicesDropDown
+-oHeaderServicesDrawer
++_oHeaderServicesDrawer
+-oHeaderServicesSubNav
++_oHeaderServicesSecondaryNav
+-oHeaderServicesTop
++_oHeaderServicesTop
+-oHeaderServicesTheme
++_oHeaderServicesTheme
+```
+
+The markup for a full header (**not** including dropdown menus) has changed in the following way:
 ```diff
 -<header class="o-header-services" data-o-component="o-header">
 +<header class='o-header-services' data-o-component='o-header-services'>
@@ -19,7 +35,8 @@ The markup for a full header has changed in the following way:
 		</div>
 		<div class='o-header-services__logo'></div>
 		<div class='o-header-services__title'>
-			<h1 class='o-header-services__product-name'><a href=''>Tool or Service name</a></h1>
+-			<a class='o-header-services__product-name' href=''>Tool or Service name</a>
++			<h1 class='o-header-services__product-name'><a href=''>Tool or Service name</a></h1>
 -				<span class='o-header-subrand__product-tagline'>Tagline to explain the product here</span>
 +				<span class='o-header-services__product-tagline'>Tagline to explain the product here</span>
 		</div>
