@@ -10,47 +10,50 @@
 @import 'src/scss/base';
 @import 'src/scss/variables';
 @import 'src/scss/drawer';
+@import 'src/scss/drop-down';
 @import 'src/scss/top';
 @import 'src/scss/theme';
 @import 'src/scss/primary-nav';
 @import 'src/scss/secondary-nav';
 
-
 /// Outputs all features and styles available to o-header-services
-/// @param {List} $opts ['primary-nav', 'secondary-nav', 'bleed', 'b2b', 'b2c']
-/// @param {String} $logo [default to ft-logo depending on brand (pink or white)]
+/// @param {Map} $opts ['types':('primary-nav', 'secondary-nav', 'bleed', 'b2b', 'b2c'), 'features': ('bleed', 'drop-down'), 'logo': default to ft-logo depending on brand (pink or white)]
 /// @access public
 @mixin oHeaderServices($opts: (
-	'types': ('primary-nav', 'secondary-nav', 'bleed', 'b2b', 'b2c'),
-	'logo': $o-header-services-default-logo
-	)) {
-		$types: map-get($opts, 'types');
-		$primary-nav: index($types, 'primary-nav');
-		$secondary-nav: index($types, 'secondary-nav');
-		$bleed: index($types, 'bleed');
-		$b2b: index($types, 'b2b');
-		$b2c: index($types, 'b2c');
+	'types': ('primary-nav', 'secondary-nav', 'b2b', 'b2c'),
+	'features': ('bleed', 'drop-down'),
+	'logo': _oHeaderServicesGet('logo')
+)) {
+	$types: map-get($opts, 'types');
+	$features: map-get($opts, 'features');
+
+	$bleed: index($features, 'bleed');
+
 	/// Base styles for a header
 	@include _oHeaderServicesBase($bleed);
 
 	/// Required because there would be no header without the title
 	/// if other features aren't added.
-	@include _oHeaderServicesTop(map-get($opts, 'logo'));
+	@include _oHeaderServicesTop($logo: map-get($opts, 'logo'));
 
-	@if $primary-nav {
+	@if index($types, 'primary-nav') {
 		@include _oHeaderServicesPrimaryNav;
 	}
 
-	@if $secondary-nav {
+	@if index($types, 'secondary-nav') {
 		@include _oHeaderServicesSecondaryNav;
 	}
 
-	@if $b2b and _oHeaderSupports('b2b') {
+	@if index($types, 'b2b') and _oHeaderSupports('b2b') {
 		@include _oHeaderServicesTheme($theme: 'b2b');
 	}
 
-	@if $b2c and _oHeaderSupports('b2b') {
+	@if index($types, 'b2c') and _oHeaderSupports('b2b') {
 		@include _oHeaderServicesTheme($theme: 'b2c');
+	}
+
+	@if index($features, 'drop-down') {
+		@include _oHeaderServicesDropDown();
 	}
 }
 

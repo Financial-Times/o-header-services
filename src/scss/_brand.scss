@@ -10,6 +10,14 @@
 	@return oBrandSupportsVariant($component: 'o-header-services', $variant: $variant);
 }
 
+/// Helper for `whitelabel` varibale customisation
+/// @brand whitelabel
+/// @param {Map} $variables - Brand variables to customise
+/// @access private
+@mixin oHeaderServicesCustomize($variables) {
+	@include oBrandCustomize('o-header-services', $variables);
+}
+
 @if oBrandGetCurrentBrand() == 'master' {
 	@include oBrandDefine('o-header-services', 'master', (
 		'variables': (
@@ -20,17 +28,22 @@
 			nav-background: oColorsGetPaletteColor('white-60'),
 			nav-border: oColorsGetPaletteColor('black-20'),
 			nav-hover-background: oColorsGetPaletteColor('black-5'),
+			nav-underline: oColorsGetPaletteColor('black'),
+			arrow-icon-color: oColorsGetPaletteColor('black'),
+			primary-nav-underline: false,
 			'b2b': (
 				product-title: oColorsGetPaletteColor('white'),
 				nav-text: oColorsGetPaletteColor('white'),
 				nav-background: oColorsGetPaletteColor('claret'),
-				nav-hover-background: oColorsGetPaletteColor('claret-30')
+				nav-hover-background: oColorsGetPaletteColor('claret-30'),
+				arrow-icon-color: oColorsGetPaletteColor('white'),
 			),
 			'b2c': (
 				product-title: oColorsGetPaletteColor('org-b2c-light'),
 				nav-text: oColorsGetPaletteColor('white'),
 				nav-background: oColorsGetPaletteColor('org-b2c'),
 				nav-hover-background: oColorsGetPaletteColor('org-b2c-dark'),
+				arrow-icon-color: oColorsGetPaletteColor('white'),
 			)
 		),
 		'supports-variants': (
@@ -48,6 +61,9 @@
 			nav-background: oColorsGetPaletteColor('slate-white-5'),
 			nav-border: oColorsGetPaletteColor('black-20'),
 			nav-hover-background: oColorsGetPaletteColor('slate-white-15'),
+			nav-underline: oColorsGetPaletteColor('black'),
+			arrow-icon-color: oColorsGetPaletteColor('slate'),
+			primary-nav-underline: false
 		),
 		'supports-variants': ()
 	));
@@ -60,7 +76,11 @@
 			nav-text: oColorsGetPaletteColor('black'),
 			nav-background: oColorsGetPaletteColor('white'),
 			nav-border: oColorsGetPaletteColor('black'),
-			nav-hover-background: oColorsGetPaletteColor('white')
+			nav-hover-background: oColorsGetPaletteColor('white'),
+			nav-underline: oColorsGetPaletteColor('black'),
+			arrow-icon-color: oColorsGetPaletteColor('black'),
+			arrow-icon-hover-color: oColorsGetPaletteColor('white'),
+			primary-nav-underline: true
 		),
 		'supports-variants': ()
 	));

@@ -1,7 +1,7 @@
 /// @access private
 /// @param {String} $logo [ft-logo depending on brand (pink or white)]
 /// @outputs styling for title section of header
-@mixin _oHeaderServicesTop($logo: $o-header-services-default-logo) {
+@mixin _oHeaderServicesTop($logo: _oHeaderServicesGet('logo')) {
 	.o-header-services__top {
 		@include oGridContainer;
 		background-color: _oHeaderServicesGet('top-background');
@@ -21,7 +21,7 @@
 		align-items: center;
 	}
 
-	@if _oHeaderServicesGet('logo') {
+	@if $logo {
 		.o-header-services__logo {
 			background-image: url('https://www.ft.com/__origami/service/image/v2/images/raw/ftlogo-v1:#{$logo}?source=o-header-services&format=svg&width=55');
 			background-repeat: no-repeat;
@@ -32,7 +32,7 @@
 			width: $_o-header-services-top-bar-short;
 
 			@include oGridRespondTo(M) {
-				margin: 8px 8px 8px 0;
+				margin: oTypographySpacingSize(2) oTypographySpacingSize(2) oTypographySpacingSize(2) 0;
 				height: $_o-header-services-top-icon-size;
 				width: $_o-header-services-top-icon-size;
 			}
@@ -89,26 +89,27 @@
 
 	.o-header-services__related-content {
 		margin: 0 0 0 auto;
-		padding: 16px $_o-header-services-padding;
+		padding: oTypographySpacingSize(4) $_o-header-services-padding;
 		display: flex;
 
 		li {
 			background-color: _oHeaderServicesGet('top-background');
+
+			@if _oHeaderServicesGet('nav-background') == _oHeaderServicesGet('nav-hover-background') {
+				&:hover:before {
+					content: none;
+				}
+			}
 
 			a {
 				@include oTypographyBold('sans');
 				margin: 0 $_o-header-services-padding;
 				color: _oHeaderServicesGet('top-text');
 
-				@if _oHeaderServicesGet('underline-hover') {
-					&:hover:after {
-						content: none;
-					}
-				}
 
 				@include oGridRespondTo($until: M) {
 					display: block;
-					padding: $_o-header-services-padding $_o-header-services-padding*2;
+					padding: $_o-header-services-padding oTypographySpacingSize(3);
 					margin: 0;
 				}
 
