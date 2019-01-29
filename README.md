@@ -5,10 +5,12 @@ This header is for tools and services built by the Financial Times.
 - [Markup](#markup)
 	- [Title Section](#title-section)
 	- [Primary navigation](#primary-navigation)
+	- [Primary navigation with drop down](#primary-navigation-with-drop-down)
 	- [Secondary navigation](#secondary-navigation)
 	- [Themes](#themes)
 	- [Bleed header](#bleed-header)
 - [Sass](#sass)
+	- [Customisation](#customisation)
 - [JavaScript](#javascript)
 - [Migration](#migration)
 - [Contact](#contact)
@@ -43,18 +45,26 @@ This section of the header has specific behaviour, as it turns into a drawer at 
 
 If you are using extra content (such as a 'Sign in' link), that will be pulled into the drawer, as well.
 
-You can see an example, with markup, of the [primary navigation in the Origami Registry](https://registry.origami.ft.com/components/o-header-services#demo-primary-navigation).
+For an example and markup, see the [primary navigation in the Origami Registry](https://registry.origami.ft.com/components/o-header-services#demo-primary-navigation).
+
+### Primary Navigation with drop down
+
+The primary navigation can also handle dropdown menus. These menus are hidden behind a button that lives beside the navigation item that it is pertinent to.
+
+Drop down menus also get pulled into the drawer on smaller viewports.
+
+For an example and markup, see the [primary navigation with drop downs in the Origami Registry](https://registry.origami.ft.com/components/o-header-services#demo-drop-down-navigation).
 
 ### Secondary Navigation
 
 The secondary navigation is also an **optional** addition to the header, but it makes more sense alongside the primary navigation, as it serves more complicated products.
 
-It includes two sections  of navigation, 'ancestors' and 'children'.
+It includes two sections of navigation: 'ancestors' and 'children'.
 The 'ancestor' section  works in the form of a breadcrumb, and the children are relative to the ancestor.
 
-At smaller viewports, it does _not_ collapse into the drawer, but becomes scrollable, instead.
+At smaller viewports, it does _not_ collapse into the drawer, but becomes scrollable instead.
 
-You can see an example, with markup, of the [secondary navigation in the Origami Registry](https://registry.origami.ft.com/components/o-header-services#demo-secondary-navigation).
+For an example and markup, see the [secondary navigation in the Origami Registry](https://registry.origami.ft.com/components/o-header-services#demo-secondary-navigation).
 
 ### Themes
 
@@ -69,7 +79,7 @@ To add a theme to the header, add the appropriate class to the header element. F
 </header>
 ```
 
-You can preview [B2B and B2C headers in the Origami Registry](https://registry.origami.ft.com/components/o-header-services#demo-theme-b2c).
+For an example and markup, see the [B2B and B2C headers in the Origami Registry](https://registry.origami.ft.com/components/o-header-services#demo-theme-b2c).
 
 ### Bleed Header
 If your application requires a bleed header, you'll need to add the `o-header-services--bleed` variant to your header.
@@ -101,7 +111,13 @@ You can be more selective about which types you would like to output, by using a
 **logo**
 - the name of a logo from the [logos image set](https://registry.origami.ft.com/components/logo-images@1.8.0). Defaults to the FT logo.
 
+
+To use a logo that is **not** the FT logo, the logo can be modified in one of two ways:
+- By using a logo name from the logo image set (e.g. 'origami')
+- By passing in a full url or data url that points at the SVG you want to use as a logo (e.g. 'https://www.example.com/logo.svg'). Bear in mind that you can also run your chosen SVG through the [Image Service's URL Builder](https://www.ft.com/__origami/service/image/v2/docs/url-builder), which will optimise the image and provide a URL for it.
+
 In this example we include only the styles for a [primary navigation](#primary-navigation) with the [bleed modifier](#bleed-header). We opt to use the Origami logo from the [logo image set](https://registry.origami.ft.com/components/logo-images@1.8.0).
+
 ```scss
 	@import 'o-header-services/main';
 
@@ -112,6 +128,24 @@ In this example we include only the styles for a [primary navigation](#primary-n
 
 	// Will output styles for a bleed header with a primary navigation and the Origami logo
 ```
+### Customisation
+
+`o-header-services` provides the option to customise the `whitelabel` brand. If you are using this brand, you can modify brand-specific variables by overriding them in a map in `oHeaderServicesCustomize`.
+
+```scss
+@import 'o-header-services/main';
+
+@include oHeaderServicesCustomize((
+	'nav-hover-background': '#FF69B4' // will apply to background colors on hover, where appropriate
+))
+
+@include oHeaderServices($opts:
+	'types': ('primary-nav'),
+	'features': ('drop-dowm')
+);
+```
+
+You can see all of the variables that are available for customising under `whitelabel` in the [brand SCSS file](../src/scss/_brand.scss#L70).
 
 ## JavaScript
 
