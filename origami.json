@@ -46,6 +46,15 @@
 			}
 		},
 		{
+			"name": "drop-down-navigation",
+			"title": "Header with primary navigation and drop down menus",
+			"description": "Navigation for an overview of a product's pages. These nav items collapse into a drawer at narrow screen widths, and can be presented as dropdown menus",
+			"data": {
+				"primary-navigation": true,
+				"drop-down": true
+			}
+		},
+		{
 			"name": "secondary-navigation",
 			"title": "Header with a primary and a secondary navigation",
 			"description": "For sites with more than a few sections, a secondary navigation is also available",
