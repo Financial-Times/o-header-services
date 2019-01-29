@@ -21,10 +21,6 @@
 		align-items: center;
 	}
 
-	.o-header-services__product-name {
-		margin: 0;
-	}
-
 	@if $logo {
 		.o-header-services__logo {
 			background-image: url(_oHeaderServicesLogo($logo));
