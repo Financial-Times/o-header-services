@@ -9,7 +9,7 @@
 			{{/primary-navigation}}
 		<div class="o-header-services__logo"></div>
 		<div class="o-header-services__title">
-			<a class="o-header-services__product-name" href="/">Tool or Service name</a>
+			<h1 class="o-header-services__product-name"><a href="/">Tool or Service name</a></h1>
 			<span class="o-header-services__product-tagline">Tagline to explain the product here</span>
 		</div>
 		<ul class="o-header-services__related-content">
@@ -25,8 +25,8 @@
 	{{#primary-navigation}}
 	<nav class="o-header-services__primary-nav" aria-label="primary">
 		<ul class="o-header-services__primary-nav-list">
-			<li data-o-header-services-level="1">
-				<a aria-current="true" href="{{href}}">Docs</a><!--
+			<li {{#drop-down}}data-o-header-services-level="1"{{/drop-down}}>
+				<a aria-current="true" href="{{href}}">Docs</a>{{#drop-down}}<!--
 				--><button class="o-header-services__drop-down-button" type="button" name="button" aria-label="Toggle dropdown menu"></button>
 				<ul data-o-header-services-level="2" aria-hidden="true">
 					<li>
@@ -42,10 +42,10 @@
 						<a href="{{href}}">Tutorials</a>
 					</li>
 					<button class="o-header-services__visually-hidden" type="button" name="button">Close dropdown menu</button>
-				</ul>
+				</ul>{{/drop-down}}
 			</li>
-			<li data-o-header-services-level="1">
-				<a href="{{href}}">Specs</a><!--
+			<li {{#drop-down}}data-o-header-services-level="1"{{/drop-down}}>
+				<a href="{{href}}">Specs</a>{{#drop-down}}<!--
 				--><button class="o-header-services__drop-down-button" type="button" name="button" aria-label="Toggle dropdown menu"></button>
 				<ul data-o-header-services-level="2" aria-hidden="true">
 					<li>
@@ -64,7 +64,7 @@
 						<a href="{{href}}">Manifest</a>
 					</li>
 					<button class="o-header-services__visually-hidden" type="button" name="button">Close dropdown menu</button>
-				</ul>
+				</ul>{{/drop-down}}
 			</li>
 			<li>
 				<a href="#">Registry</a>

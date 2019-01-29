@@ -5,7 +5,7 @@
 	.o-header-services {
 		li[data-o-header-services-level] {
 			position: relative;
-			min-height: 40px;
+			min-height: oTypographySpacingSize(10);
 
 			> a {
 				display: inline-block;
@@ -58,7 +58,7 @@
 			opacity: 0;
 			transform: translateY(-100%);
 			transition:
-				opacity 0.01s linear,
+				opacity 0.1s linear,
 				transform 0.2s ease-in;
 			z-index: -1;
 
@@ -81,17 +81,28 @@
 
 		.o-header-services__primary-nav--drawer {
 			li[data-o-header-services-level] {
+				display: flex;
+				flex-wrap: wrap;
+				width: 100%;
+
 				> a {
-					display: block;
-					float: left;
-					width: calc(100% - 82px;);
+					flex-grow: 1;
 				}
 
 				.o-header-services__drop-down-button {
-					display: block;
-					float: left;
-					height: 40px;
+					height: oTypographySpacingSize(10);
+					border: 1px solid _oHeaderServicesGet('nav-border');
 				}
+
+				@if oBrandGetCurrentBrand() == 'whitelabel' {
+					> a {
+						flex-grow: 0;
+					}
+
+					.o-header-services__drop-down-button {
+						margin-left: auto;
+					}
+				};
 			}
 
 			ul[data-o-header-services-level] {
@@ -103,10 +114,15 @@
 			}
 
 			li[aria-expanded=true] {
+				.o-header-services__drop-down-button {
+					border-width: 0 1px;
+				}
+
 				ul[data-o-header-services-level] {
-					clear: both;
+					// clear: both;
 					opacity: 1;
 					position: relative;
+					width: 100%;
 					z-index: 2;
 				}
 			}
