@@ -65,7 +65,7 @@
 			left: 0;
 			width: 100%;
 			height: oTypographySpacingSize(1);
-			background-color: _oHeaderServicesGet('nav-underline');
+			background-color: _oHeaderServicesGet('nav-underline-color');
 		}
 	} @else {
 		display: block;

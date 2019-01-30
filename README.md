@@ -133,16 +133,17 @@ In this example we include only the styles for a [primary navigation](#primary-n
 `o-header-services` provides the option to customise the `whitelabel` brand. If you are using this brand, you can modify brand-specific variables by overriding them in a map in `oHeaderServicesCustomize`.
 
 ```scss
+$o-brand: whitelabel;
 @import 'o-header-services/main';
 
 @include oHeaderServicesCustomize((
-	'nav-hover-background': '#FF69B4' // will apply to background colors on hover, where appropriate
+	'nav-hover-background': hotpink // will apply to background colors on hover, where appropriate
 ))
 
-@include oHeaderServices($opts:
+@include oHeaderServices($opts: (
 	'types': ('primary-nav'),
 	'features': ('drop-dowm')
-);
+));
 ```
 
 You can see all of the variables that are available for customising under `whitelabel` in the [brand SCSS file](../src/scss/_brand.scss#L70).
