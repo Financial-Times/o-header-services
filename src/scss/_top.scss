@@ -107,7 +107,7 @@
 				color: _oHeaderServicesGet('top-text');
 
 
-				@include oGridRespondTo($until: M) {
+				@include oGridRespondTo($from: M) {
 					display: block;
 					padding: $_o-header-services-padding oTypographySpacingSize(3);
 					margin: 0;
