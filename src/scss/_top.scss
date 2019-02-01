@@ -89,7 +89,7 @@
 
 	.o-header-services__related-content {
 		margin: 0 0 0 auto;
-		padding: oTypographySpacingSize(4) $_o-header-services-padding;
+		padding: oTypographySpacingSize(3)/2 $_o-header-services-padding;
 		display: flex;
 
 		li {
@@ -103,7 +103,7 @@
 
 			a {
 				@include oTypographyBold('sans');
-				margin: 0 $_o-header-services-padding;
+				margin: 0;
 				color: _oHeaderServicesGet('top-text');
 
 
@@ -115,6 +115,7 @@
 
 				&:hover {
 					text-decoration: underline;
+					background-color: transparent;
 				}
 			}
 		}
