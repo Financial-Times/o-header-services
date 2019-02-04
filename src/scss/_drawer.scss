@@ -40,6 +40,14 @@
 					color: inherit;
 					font-weight: oFontsWeight('regular');
 					text-transform: none;
+
+					@if oBrandGetCurrentBrand() == 'whitelabel' {
+						padding: 10px 20px;
+					}
+
+					&:hover:before {
+						background-color: transparent;
+					}
 				}
 
 				a:hover {
