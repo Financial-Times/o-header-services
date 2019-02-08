@@ -19,6 +19,14 @@
 			list-style-type: none;
 		}
 	}
+}
+
+/// @access private
+/// @param {Boolean} $underline [whether or not to make the hover an underline or a background change]
+/// @outputs hover styles
+@mixin _oHeaderServicesHover($underline) {
+	color: _oHeaderServicesGet('nav-text');
+	position: relative;
 
 	.o-header-services__visually-hidden {
 		@include oNormaliseVisuallyHidden;
