@@ -12,8 +12,12 @@
 
 /// Helper for `whitelabel` varibale customisation
 /// @brand whitelabel
-/// @param {Map} $variables - Brand variables to customise
-/// @access private
+/// @access public
+/// @example scss
+///		@include oHeaderServicesCustomize((
+///			'nav-background': hotpink;
+///			'nav-hover-background': candy;
+///		))
 @mixin oHeaderServicesCustomize($variables) {
 	@include oBrandCustomize('o-header-services', $variables);
 }
