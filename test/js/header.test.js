@@ -1,7 +1,7 @@
 /* eslint-env mocha*/
 
-import proclaim from 'proclaim';
-import HeaderServices from '../../src/js/header';
+const proclaim = require('proclaim');
+const HeaderServices = require('../../src/js/header');
 
 describe('Header instance', () => {
 	let headerEl;
