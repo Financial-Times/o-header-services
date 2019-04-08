@@ -13,7 +13,7 @@ class DropDown {
 
 		// the event listener is added to the body here to handle cases where a
 		// user might click anywhere else on the body to collapse open dropdowns
-		document.body.addEventListener('click', this); 
+		document.body.addEventListener('click', this);
 		window.addEventListener('resize', this);
 		window.addEventListener('keydown', this);
 	}
