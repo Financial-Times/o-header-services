@@ -7,6 +7,12 @@
 - Origami components now require a `$system-code` Sass variable is set by the project, which must be a valid [Bizops system code](https://biz-ops.in.ft.com/list/Systems).
 - If a logo has been included by name using `oHeaderServices` or `oHeaderServicesCustomize` mixins, its Origami imageset is no longer assumed to be [logo-images](https://registry.origami.ft.com/components/logo-images). Prepend the imageset to your logo name with a colon e.g. a logo `origami` should be `ftlogo-v1:origami`.
 
+#### Updated dependencies
+
+The dependencies for this component have all been updated to the latest major versions.
+If you have any conflicts while installing this version, you'll need to first update
+its dependencies. See [the Bower config for these](./bower.json).
+
 ### Migrating from v2 to v3
 
 V3 introduces many new changes to o-header-services; It now transforms the primary nav into a drawer menu on smaller viewports. It introduces the option to have dropdown menus on primary navigation items. It removes a large dependency on o-header, and changes multiple class names and markup, and no longer allows custom class names. This major also removes most public mixins and makes `oHeaderServices` publicly available instead;
