@@ -46,7 +46,7 @@
 
 			&:hover,
 			&[aria-current=true] {
-				background-color: _oHeaderServicesGet('nav-hover-background');
+				background-color: _oHeaderServicesGet('nav-hover-background'); // stylelint-disable-line selector-no-qualifying-type
 			}
 		}
 

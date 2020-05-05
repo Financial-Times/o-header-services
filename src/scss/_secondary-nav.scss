@@ -43,14 +43,14 @@
 
 				&:hover,
 				&[aria-current=true] {
-					color: _oHeaderServicesGet('text-hover-color');
+					color: _oHeaderServicesGet('text-hover-color'); // stylelint-disable-line selector-no-qualifying-type
 				}
 
 				&:hover:before,
 				&[aria-current=true]:before {
 					content: '';
 					position: absolute;
-					bottom: 0;
+					bottom: 0; // stylelint-disable-line selector-no-qualifying-type
 					left: 0;
 					width: 100%;
 					height: oSpacingByName('s1');
