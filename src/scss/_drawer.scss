@@ -36,8 +36,7 @@
 			width: 75vw;
 			background-color: _oHeaderServicesGet('drawer-background');
 			transform: translateX(-100%);
-			transition:
-				transform 0.5s $o-visual-effects-timing-expand;
+			transition: transform 0.5s $o-visual-effects-timing-expand;
 		}
 
 		// First level nav item.

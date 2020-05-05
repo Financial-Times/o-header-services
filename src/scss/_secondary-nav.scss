@@ -86,14 +86,14 @@
 	}
 
 	.o-header-services__secondary-nav-list--children li {
-		padding-left:  oSpacingByName('s4');
+		padding-left: oSpacingByName('s4');
 
 		&:first-child {
-			margin-left:  oSpacingByName('s3');
+			margin-left: oSpacingByName('s3');
 		}
 
 		&:last-child {
-			padding-right:  oSpacingByName('s3');
+			padding-right: oSpacingByName('s3');
 		}
 
 		&:first-child:before {
