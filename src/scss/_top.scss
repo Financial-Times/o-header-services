@@ -22,6 +22,12 @@
 
 	@if $logo {
 		.o-header-services__logo {
+			background-image: url(_oHeaderServicesLogo($logo));
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: 0;
+			height: $_o-header-services-top-bar-short;
+			width: $_o-header-services-top-bar-short;
 
 			@include oGridRespondTo(M) {
 				height: $_o-header-services-top-icon-size;
@@ -35,12 +41,6 @@
 			@include oGridRespondTo(M) {
 				margin-left: 0;
 			}
-			background-image: url(_oHeaderServicesLogo($logo));
-			background-repeat: no-repeat;
-			background-size: contain;
-			background-position: 0;
-			height: $_o-header-services-top-bar-short;
-			width: $_o-header-services-top-bar-short;
 		}
 
 		.o-header-services__title {
@@ -49,11 +49,11 @@
 	}
 
 	.o-header-services__hamburger {
+		height: $_o-header-services-top-bar-short;
+		width: $_o-header-services-top-bar-short;
 		@include oGridRespondTo($draw-breakpoint) {
 			display: none;
 		}
-		height: $_o-header-services-top-bar-short;
-		width: $_o-header-services-top-bar-short;
 	}
 
 	.o-header-services__hamburger-icon {
@@ -74,23 +74,23 @@
 
 	.o-header-services__product-tagline {
 		@include oTypographySans($scale: 3);
-		@include oGridRespondTo(L) {
-			display: inline-block;
-		}
 		margin-left: $_o-header-services-padding;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		display: none;
+		@include oGridRespondTo(L) {
+			display: inline-block;
+		}
 	}
 
 	.o-header-services__related-content {
+		display: none;
 
 		@include oGridRespondTo($from: $draw-breakpoint) {
 			display: flex;
 			margin: 0 0 0 auto;
 			padding: oSpacingByName('s3')/2 $_o-header-services-padding;
 		}
-		display: none;
 
 		li {
 			background-color: _oHeaderServicesGet('top-background');
