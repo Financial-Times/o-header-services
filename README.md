@@ -12,9 +12,9 @@ This header is for tools and services built by the Financial Times.
 - [Sass](#sass)
 	- [Customisation](#customisation)
 - [JavaScript](#javascript)
-- [Migration](#migration)
+- [Migration guide](#migration-guide)
 - [Contact](#contact)
-- [License](#license)
+- [Licence](#licence)
 
 ## Markup
 
@@ -189,7 +189,7 @@ import oHeaderServices from ('o-header-services');
 oHeaderServices.init();
 ```
 
-## Migration
+## Migration guide
 
 State | Major Version | Last Minor Release | Migration guide |
 :---: | :---: | :---: | :---:
