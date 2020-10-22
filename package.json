@@ -12,20 +12,20 @@
     },
     "main": "main.js",
     "peerDependencies": {
-        "@financial-times/o-brand": "^100.0.0-5",
-        "@financial-times/o-buttons": "^100.0.0-5",
-        "@financial-times/o-colors": "^100.0.0-5",
-        "@financial-times/o-grid": "^100.0.0-5",
-        "@financial-times/o-icons": "^100.0.0-5",
-        "@financial-times/o-normalise": "^100.0.0-5",
-        "@financial-times/o-spacing": "^100.0.0-5",
-        "@financial-times/o-typography": "^100.0.0-5",
-        "@financial-times/o-utils": "^100.0.0-5",
-        "@financial-times/o-visual-effects": "^100.0.0-5"
+        "@financial-times/o-brand": "^100.0.0-6",
+        "@financial-times/o-buttons": "^100.0.0-6",
+        "@financial-times/o-colors": "^100.0.0-6",
+        "@financial-times/o-grid": "^100.0.0-6",
+        "@financial-times/o-icons": "^100.0.0-6",
+        "@financial-times/o-normalise": "^100.0.0-6",
+        "@financial-times/o-spacing": "^100.0.0-6",
+        "@financial-times/o-typography": "^100.0.0-6",
+        "@financial-times/o-utils": "^100.0.0-6",
+        "@financial-times/o-visual-effects": "^100.0.0-6"
     },
     "description": "Responsive page header for sites with minimal or customised branding, including internal products, customer facing tools, and specialist titles.",
     "publishConfig": {
         "registry": "http://localhost:4873"
     },
-    "version": "100.0.0-5"
+    "version": "100.0.0-6"
 }
