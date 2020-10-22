@@ -104,7 +104,7 @@ If your application requires a bleed header, you'll need to add the `o-header-se
 
 In order to output every type of `o-header-services` style, you'll need to include the following:
 ```scss
-	@import 'o-header-services/main';
+	@import '@financial-times/o-header-services/main';
 
 	@include oHeaderServices();
 ```
@@ -132,7 +132,7 @@ To use a logo that is **not** the FT logo, the logo can be modified in one of tw
 In this example we include only the styles for a [primary navigation](#primary-navigation) with the [bleed modifier](#bleed-header). We opt to use the Origami logo from the [logo image set](https://registry.origami.ft.com/components/logo-images@1.8.0).
 
 ```scss
-	@import 'o-header-services/main';
+	@import '@financial-times/o-header-services/main';
 
 	@include oHeaderServices($opts: (
 		'types': ('primary-nav', 'bleed');
@@ -147,7 +147,7 @@ In this example we include only the styles for a [primary navigation](#primary-n
 
 ```scss
 $o-brand: whitelabel;
-@import 'o-header-services/main';
+@import '@financial-times/o-header-services/main';
 
 @include oHeaderServicesCustomize((
 	'nav-hover-background': hotpink // will apply to background colors on hover, where appropriate
