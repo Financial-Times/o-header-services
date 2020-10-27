@@ -1,5 +1,8 @@
 {
     "name": "@financial-times/o-header-services",
+    "version": "100.0.0-7",
+    "description": "Responsive page header for sites with minimal or customised branding, including internal products, customer facing tools, and specialist titles.",
+    "browser": "main.js",
     "devDependencies": {
         "eslint": "^7.9.0",
         "eslint-config-origami-component": "^2.1.0",
@@ -10,7 +13,6 @@
         "stylelint": "^13.7.1",
         "stylelint-config-origami-component": "^1.0.4"
     },
-    "browser": "main.js",
     "peerDependencies": {
         "@financial-times/o-brand": "^100.0.0-7",
         "@financial-times/o-buttons": "^100.0.0-7",
@@ -23,9 +25,7 @@
         "@financial-times/o-utils": "^100.0.0-7",
         "@financial-times/o-visual-effects": "^100.0.0-7"
     },
-    "description": "Responsive page header for sites with minimal or customised branding, including internal products, customer facing tools, and specialist titles.",
     "publishConfig": {
         "registry": "http://localhost:4873"
-    },
-    "version": "100.0.0-7"
+    }
 }
