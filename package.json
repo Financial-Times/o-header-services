@@ -1,6 +1,6 @@
 {
   "name": "@financial-times/o-header-services",
-  "version": "100.0.0-10",
+  "version": "100.0.0-11",
   "description": "Responsive page header for sites with minimal or customised branding, including internal products, customer facing tools, and specialist titles.",
   "keywords": [],
   "homepage": "https://github.com/Financial-Times/o-header-services#readme",
@@ -33,16 +33,16 @@
     "typescript": "^4.0.5"
   },
   "peerDependencies": {
-    "@financial-times/o-brand": "^100.0.0-10",
-    "@financial-times/o-buttons": "^100.0.0-10",
-    "@financial-times/o-colors": "^100.0.0-10",
-    "@financial-times/o-grid": "^100.0.0-10",
-    "@financial-times/o-icons": "^100.0.0-10",
-    "@financial-times/o-normalise": "^100.0.0-10",
-    "@financial-times/o-spacing": "^100.0.0-10",
-    "@financial-times/o-typography": "^100.0.0-10",
-    "@financial-times/o-utils": "^100.0.0-10",
-    "@financial-times/o-visual-effects": "^100.0.0-10"
+    "@financial-times/o-brand": "^100.0.0-11",
+    "@financial-times/o-buttons": "^100.0.0-11",
+    "@financial-times/o-colors": "^100.0.0-11",
+    "@financial-times/o-grid": "^100.0.0-11",
+    "@financial-times/o-icons": "^100.0.0-11",
+    "@financial-times/o-normalise": "^100.0.0-11",
+    "@financial-times/o-spacing": "^100.0.0-11",
+    "@financial-times/o-typography": "^100.0.0-11",
+    "@financial-times/o-utils": "^100.0.0-11",
+    "@financial-times/o-visual-effects": "^100.0.0-11"
   },
   "publishConfig": {
     "registry": "https://origami-npm-registry-prototype.herokuapp.com"
