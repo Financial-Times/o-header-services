@@ -1,9 +1,6 @@
 {
-	"description": "Responsive page header for sites with minimal or customised branding, including internal products, customer facing tools, and specialist titles.",
-	"keywords": [ "header", "page", "top" ],
-	"origamiType": "module",
-	"origamiCategory": "components",
-	"origamiVersion": 1,
+	"origamiType": "component",
+	"origamiVersion": "2.0",
 	"brands": [
 		"master",
 		"internal",
