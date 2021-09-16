@@ -1,5 +1,11 @@
 # o-header-services
 
+***
+
+**This component has moved to the [Origami Component System](https://github.com/Financial-Times/origami).**
+
+***
+
 This header is for tools and services built by the Financial Times.
 
 - [Usage](#usage)
